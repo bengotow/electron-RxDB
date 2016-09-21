@@ -1,9 +1,9 @@
-{Matcher, AttributeJoinedData, AttributeCollection} = require '../attributes'
-QueryRange = require './query-range'
-Utils = require './utils'
-_ = require 'underscore'
+/* eslint global-require: 0 */
+import {Matcher, AttributeJoinedData, AttributeCollection} from './attributes';
+import {reviver} from './database-object-registry';
+import QueryRange from './query-range';
 
-###
+/*
 Public: ModelQuery exposes an ActiveRecord-style syntax for building database queries
 that return models and model counts. Model queries are returned from the factory methods
 {DatabaseStore::find}, {DatabaseStore::findBy}, {DatabaseStore::findAll}, and {DatabaseStore::count}, and are the primary interface for retrieving data
@@ -18,7 +18,7 @@ and {DatabaseStore::unpersistModel}.
 ```coffee
 query = DatabaseStore.find(Thread, '123a2sc1ef4131')
 query.then (thread) ->
-  # thread or null
+  // thread or null
 ```
 
 **Advanced Example:** Fetch 50 threads in the inbox, in descending order
@@ -29,365 +29,457 @@ query.where([Thread.attributes.categories.contains('label-id')])
      .order([Thread.attributes.lastMessageReceivedTimestamp.descending()])
      .limit(100).offset(50)
      .then (threads) ->
-  # array of threads
+  // array of threads
 ```
 
 Section: Database
-###
-class ModelQuery
+*/
+export default class ModelQuery {
 
-  # Public
-  # - `class` A {Model} class to query
-  # - `database` (optional) An optional reference to a {DatabaseStore} the
-  #   query will be executed on.
-  #
-  constructor: (@_klass, @_database) ->
-    @_database || = require '../stores/database-store'
-    @_matchers = []
-    @_orders = []
-    @_distinct = false
-    @_range = QueryRange.infinite()
-    @_returnOne = false
-    @_returnIds = false
-    @_includeJoinedData = []
-    @_count = false
-    @
+  // Public
+  // - `class` A {Model} class to query
+  // - `database` (optional) An optional reference to a {DatabaseStore} the
+  //   query will be executed on.
+  //
+  constructor(klass, database) {
+    this._klass = klass;
+    this._database = database || require('./database-store');
+    this._matchers = [];
+    this._orders = [];
+    this._distinct = false;
+    this._range = QueryRange.infinite();
+    this._returnOne = false;
+    this._returnIds = false;
+    this._includeJoinedData = [];
+    this._count = false;
+  }
 
-  clone: ->
-    q = new ModelQuery(@_klass, @_database).where(@_matchers).order(@_orders)
-    q._orders = [].concat(@_orders)
-    q._includeJoinedData = [].concat(@_includeJoinedData)
-    q._range = @_range.clone()
-    q._distinct = @_distinct
-    q._returnOne = @_returnOne
-    q._returnIds = @_returnIds
-    q._count = @_count
-    q
+  clone() {
+    const q = new ModelQuery(this._klass, this._database).where(this._matchers).order(this._orders);
+    q._orders = [].concat(this._orders);
+    q._includeJoinedData = [].concat(this._includeJoinedData);
+    q._range = this._range.clone();
+    q._distinct = this._distinct;
+    q._returnOne = this._returnOne;
+    q._returnIds = this._returnIds;
+    q._count = this._count;
+    return q;
+  }
 
-  distinct: ->
-    @_distinct = true
-    @
+  distinct() {
+    this._distinct = true;
+    return this;
+  }
 
-  # Public: Add one or more where clauses to the query
-  #
-  # - `matchers` An {Array} of {Matcher} objects that add where clauses to the underlying query.
-  #
-  # This method is chainable.
-  #
-  where: (matchers) ->
-    @_assertNotFinalized()
+  // Public: Add one or more where clauses to the query
+  //
+  // - `matchers` An {Array} of {Matcher} objects that add where clauses to the underlying query.
+  //
+  // This method is chainable.
+  //
+  where(matchers) {
+    this._assertNotFinalized();
 
-    if matchers instanceof Matcher
-      @_matchers.push(matchers)
-    else if matchers instanceof Array
-      for m in matchers
-        throw new Error("You must provide instances of `Matcher`") unless m instanceof Matcher
-      @_matchers = @_matchers.concat(matchers)
-    else if matchers instanceof Object
-      # Support a shorthand format of {id: '123', accountId: '123'}
-      for key, value of matchers
-        attr = @_klass.attributes[key]
-        if !attr
-          msg = "Cannot create where clause `#{key}:#{value}`. #{key} is not an attribute of #{@_klass.name}"
-          throw new Error msg
+    if (matchers instanceof Matcher) {
+      this._matchers.push(matchers);
+    } else if (matchers instanceof Array) {
+      for (const m of matchers) {
+        if (!(m instanceof Matcher)) {
+          throw new Error("You must provide instances of `Matcher`");
+        }
+      }
+      this._matchers = this._matchers.concat(matchers);
+    } else if (matchers instanceof Object) {
+      // Support a shorthand format of {id: '123', accountId: '123'}
+      for (const key of Object.keys(matchers)) {
+        const value = matchers[key];
+        const attr = this._klass.attributes[key];
+        if (!attr) {
+          const msg = `Cannot create where clause \`${key}:${value}\`. ${key} is not an attribute of ${this._klass.name}`;
+          throw new Error(msg);
+        }
 
-        if value instanceof Array
-          @_matchers.push(attr.in(value))
-        else
-          @_matchers.push(attr.equal(value))
-    @
+        if (value instanceof Array) {
+          this._matchers.push(attr.in(value));
+        } else {
+          this._matchers.push(attr.equal(value));
+        }
+      }
+    }
+    return this;
+  }
 
-  whereAny: (matchers) ->
-    @_assertNotFinalized()
-    @_matchers.push(new Matcher.Or(matchers))
-    @
+  whereAny(matchers) {
+    this._assertNotFinalized();
+    this._matchers.push(new Matcher.Or(matchers));
+    return this;
+  }
 
-  search: (query) ->
-    @_assertNotFinalized()
-    @_matchers.push(new Matcher.Search(query))
-    @
+  search(query) {
+    this._assertNotFinalized();
+    this._matchers.push(new Matcher.Search(query));
+    return this;
+  }
 
-  # Public: Include specific joined data attributes in result objects.
-  # - `attr` A {AttributeJoinedData} that you want to be populated in
-  #  the returned models. Note: This results in a LEFT OUTER JOIN.
-  #  See {AttributeJoinedData} for more information.
-  #
-  # This method is chainable.
-  #
-  include: (attr) ->
-    @_assertNotFinalized()
-    if attr instanceof AttributeJoinedData is false
-      throw new Error("query.include() must be called with a joined data attribute")
-    @_includeJoinedData.push(attr)
-    @
+  // Public: Include specific joined data attributes in result objects.
+  // - `attr` A {AttributeJoinedData} that you want to be populated in
+  //  the returned models. Note: This results in a LEFT OUTER JOIN.
+  //  See {AttributeJoinedData} for more information.
+  //
+  // This method is chainable.
+  //
+  include(attr) {
+    this._assertNotFinalized();
+    if (!(attr instanceof AttributeJoinedData)) {
+      throw new Error("query.include() must be called with a joined data attribute");
+    }
+    this._includeJoinedData.push(attr);
+    return this;
+  }
 
-  # Public: Include all of the available joined data attributes in returned models.
-  #
-  # This method is chainable.
-  #
-  includeAll: ->
-    @_assertNotFinalized()
-    for key, attr of @_klass.attributes
-      @include(attr) if attr instanceof AttributeJoinedData
-    @
+  // Public: Include all of the available joined data attributes in returned models.
+  //
+  // This method is chainable.
+  //
+  includeAll() {
+    this._assertNotFinalized()
+    for (const key of Object.keys(this._klass.attributes)) {
+      const attr = this._klass.attributes[key];
+      if (attr instanceof AttributeJoinedData) {
+        this.include(attr);
+      }
+    }
+    return this;
+  }
 
-  # Public: Apply a sort order to the query.
-  # - `orders` An {Array} of one or more {SortOrder} objects that determine the
-  #   sort order of returned models.
-  #
-  # This method is chainable.
-  #
-  order: (orders) ->
-    @_assertNotFinalized()
-    orders = [orders] unless orders instanceof Array
-    @_orders = @_orders.concat(orders)
-    @
+  // Public: Apply a sort order to the query.
+  // - `orders` An {Array} of one or more {SortOrder} objects that determine the
+  //   sort order of returned models.
+  //
+  // This method is chainable.
+  //
+  order(ordersOrOrder) {
+    this._assertNotFinalized();
+    const orders = (ordersOrOrder instanceof Array) ? ordersOrOrder : [ordersOrOrder];
+    this._orders = this._orders.concat(orders);
+    return this;
+  }
 
-  # Public: Set the `singular` flag - only one model will be returned from the
-  # query, and a `LIMIT 1` clause will be used.
-  #
-  # This method is chainable.
-  #
-  one: ->
-    @_assertNotFinalized()
-    @_returnOne = true
-    @
+  // Public: Set the `singular` flag - only one model will be returned from the
+  // query, and a `LIMIT 1` clause will be used.
+  //
+  // This method is chainable.
+  //
+  one() {
+    this._assertNotFinalized();
+    this._returnOne = true;
+    return this;
+  }
 
-  # Public: Limit the number of query results.
-  #
-  # - `limit` {Number} The number of models that should be returned.
-  #
-  # This method is chainable.
-  #
-  limit: (limit) ->
-    @_assertNotFinalized()
-    throw new Error("Cannot use limit > 2 with one()") if @_returnOne and limit > 1
-    @_range = @_range.clone()
-    @_range.limit = limit
-    @
+  // Public: Limit the number of query results.
+  //
+  // - `limit` {Number} The number of models that should be returned.
+  //
+  // This method is chainable.
+  //
+  limit(limit) {
+    this._assertNotFinalized()
+    if (this._returnOne && limit > 1) {
+      throw new Error("Cannot use limit > 2 with one()");
+    }
+    this._range = this._range.clone();
+    this._range.limit = limit;
+    return this;
+  }
 
-  # Public:
-  #
-  # - `offset` {Number} The start offset of the query.
-  #
-  # This method is chainable.
-  #
-  offset: (offset) ->
-    @_assertNotFinalized()
-    @_range = @_range.clone()
-    @_range.offset = offset
-    @
+  // Public:
+  //
+  // - `offset` {Number} The start offset of the query.
+  //
+  // This method is chainable.
+  //
+  offset(offset) {
+    this._assertNotFinalized();
+    this._range = this._range.clone();
+    this._range.offset = offset;
+    return this;
+  }
 
-  # Public:
-  #
-  # A convenience method for setting both limit and offset given a desired page size.
-  #
-  page: (start, end, pageSize = 50, pagePadding = 100) ->
-    roundToPage = (n) -> Math.max(0, Math.floor(n / pageSize) * pageSize)
-    @offset(roundToPage(start - pagePadding))
-    @limit(roundToPage((end - start) + pagePadding * 2))
-    @
+  // Public:
+  //
+  // A convenience method for setting both limit and offset given a desired page size.
+  //
+  page(start, end, pageSize = 50, pagePadding = 100) {
+    const roundToPage = (n) => Math.max(0, Math.floor(n / pageSize) * pageSize)
+    this.offset(roundToPage(start - pagePadding));
+    this.limit(roundToPage((end - start) + pagePadding * 2));
+    return this;
+  }
 
-  # Public: Set the `count` flag - instead of returning inflated models,
-  # the query will return the result `COUNT`.
-  #
-  # This method is chainable.
-  #
-  count: ->
-    @_assertNotFinalized()
-    @_count = true
-    @
+  // Public: Set the `count` flag - instead of returning inflated models,
+  // the query will return the result `COUNT`.
+  //
+  // This method is chainable.
+  //
+  count() {
+    this._assertNotFinalized();
+    this._count = true;
+    return this;
+  }
 
-  idsOnly: ->
-    @_returnIds = true
-    @
+  idsOnly() {
+    this._assertNotFinalized();
+    this._returnIds = true;
+    return this;
+  }
 
-  ###
-  Query Execution
-  ###
+  // Query Execution
 
-  # Public: Short-hand syntax that calls run().then(fn) with the provided function.
-  #
-  # Returns a {Promise} that resolves with the Models returned by the
-  # query, or rejects with an error from the Database layer.
-  #
-  then: (next) ->
-    @run(@).then(next)
+  // Public: Short-hand syntax that calls run().then(fn) with the provided function.
+  //
+  // Returns a {Promise} that resolves with the Models returned by the
+  // query, or rejects with an error from the Database layer.
+  //
+  then(next) {
+    return this.run(this).then(next);
+  }
 
-  # Public: Returns a {Promise} that resolves with the Models returned by the
-  # query, or rejects with an error from the Database layer.
-  #
-  run: ->
-    @_database.run(@)
+  // Public: Returns a {Promise} that resolves with the Models returned by the
+  // query, or rejects with an error from the Database layer.
+  //
+  run() {
+    return this._database.run(this);
+  }
 
-  inflateResult: (result) ->
-    return null unless result
+  inflateResult(result) {
+    if (!result) {
+      return null;
+    }
 
-    if @_count
-      return result[0]['count'] / 1
-    else if @_returnIds
-      return result.map (row) -> row['id']
-    else
-      try
-        objects = result.map (row) =>
-          json = JSON.parse(row['data'], Utils.registeredObjectReviver)
-          object = (new @_klass).fromJSON(json)
-          for attr in @_includeJoinedData
-            value = row[attr.jsonKey]
-            value = null if value is AttributeJoinedData.NullPlaceholder
-            object[attr.modelKey] = value
-          object
-      catch jsonError
-        throw new Error("Query could not parse the database result. Query: #{@sql()}, Error: #{jsonError.toString()}")
-      return objects
+    if (this._count) {
+      return result[0].count / 1;
+    }
+    if (this._returnIds) {
+      return result.map(row => row.id);
+    }
 
-  formatResult: (inflated) ->
-    return inflated[0] if @_returnOne
-    return inflated if @_count
-    return [].concat(inflated)
+    try {
+      return result.map((row) => {
+        const json = JSON.parse(row.data, reviver)
+        const object = (new this._klass).fromJSON(json);
+        for (const attr of this._includeJoinedData) {
+          let value = row[attr.jsonKey];
+          if (value === AttributeJoinedData.NullPlaceholder) {
+            value = null;
+          }
+          object[attr.modelKey] = value;
+        }
+        return object;
+      });
+    } catch (jsonError) {
+      throw new Error(`Query could not parse the database result. Query: ${this.sql()}, Error: ${jsonError.toString()}`);
+    }
+  }
 
-  # Query SQL Building
+  formatResult(inflated) {
+    if (this._returnOne) {
+      return inflated[0];
+    }
+    if (this._count) {
+      return inflated;
+    }
+    return [].concat(inflated);
+  }
 
-  # Returns a {String} with the SQL generated for the query.
-  #
-  sql: ->
-    @finalize()
+  // Query SQL Building
 
-    if @_count
-      result = "COUNT(*) as count"
-    else if @_returnIds
-      result = "`#{@_klass.name}`.`id`"
-    else
-      result = "`#{@_klass.name}`.`data`"
-      @_includeJoinedData.forEach (attr) =>
-        result += ", #{attr.selectSQL(@_klass)} "
+  // Returns a {String} with the SQL generated for the query.
+  //
+  sql() {
+    this.finalize();
 
-    order = if @_count then "" else @_orderClause()
-    if @_range.limit?
-      limit = "LIMIT #{@_range.limit}"
-    else
-      limit = ""
-    if @_range.offset?
-      limit += " OFFSET #{@_range.offset}"
+    let result = null;
 
-    distinct = if @_distinct then ' DISTINCT' else ''
-    allMatchers = @matchersFlattened()
+    if (this._count) {
+      result = `COUNT(*) as count`;
+    } else if (this._returnIds) {
+      result = `\`${this._klass.name}\`.\`id\``;
+    } else {
+      result = `\`${this._klass.name}\`.\`data\``;
+      this._includeJoinedData.forEach((attr) => {
+        result += `, ${attr.selectSQL(this._klass)} `;
+      })
+    }
 
-    joins = allMatchers.filter (matcher) -> matcher.attr instanceof AttributeCollection
-    if joins.length is 1 and @_canSubselectForJoin(joins[0], allMatchers)
-      subSql = @_subselectSQL(joins[0], @_matchers, order, limit)
-      return "SELECT#{distinct} #{result} FROM `#{@_klass.name}` WHERE `id` IN (#{subSql}) #{order}"
-    else
-      return "SELECT#{distinct} #{result} FROM `#{@_klass.name}` #{@_whereClause()} #{order} #{limit}"
+    const order = this._count ? '' : this._orderClause();
 
-  # If one of our matchers requires a join, and the attribute configuration lists
-  # all of the other order and matcher attributes in `joinQueryableBy`, it means
-  # we can make the entire WHERE and ORDER BY on a sub-query, which improves
-  # performance considerably vs. finding all results from the join table and then
-  # doing the ordering after pulling the results in the main table.
-  #
-  # Note: This is currently only intended for use in the thread list
-  #
-  _canSubselectForJoin: (matcher, allMatchers) ->
-    joinAttribute = matcher.attribute()
+    let limit = '';
+    if (this._range.limit !== undefined) {
+      limit = `LIMIT ${this._range.limit}`;
+    } else {
+      limit = ''
+    }
+    if (this._range.offset !== undefined) {
+      limit += ` OFFSET ${this._range.offset}`;
+    }
 
-    return unless @_range.limit?
+    const distinct = this._distinct ? ' DISTINCT' : '';
+    const allMatchers = this.matchersFlattened();
 
-    allMatchersOnJoinTable = _.every allMatchers, (m) ->
-      m is matcher or joinAttribute.joinQueryableBy.indexOf(m.attr.modelKey) isnt -1 or m.attr.modelKey is 'id'
-    allOrdersOnJoinTable = _.every @_orders, (o) ->
-      joinAttribute.joinQueryableBy.indexOf(o.attr.modelKey) isnt -1
+    const joins = allMatchers.filter((matcher) => matcher.attr instanceof AttributeCollection)
 
-    return allMatchersOnJoinTable and allOrdersOnJoinTable
+    if ((joins.length === 1) && this._canSubselectForJoin(joins[0], allMatchers)) {
+      const subSql = this._subselectSQL(joins[0], this._matchers, order, limit);
+      return `SELECT${distinct} ${result} FROM \`${this._klass.name}\` WHERE \`id\` IN (${subSql}) ${order}`;
+    }
 
-  _subselectSQL: (returningMatcher, subselectMatchers, order, limit) ->
-    returningAttribute = returningMatcher.attribute()
+    return `SELECT${distinct} ${result} FROM \`${this._klass.name}\` ${this._whereClause()} ${order} ${limit}`;
+  }
 
-    table = Utils.tableNameForJoin(@_klass, returningAttribute.itemClass)
-    wheres = _.compact subselectMatchers.map (c) => c.whereSQL(@_klass)
+  // If one of our matchers requires a join, and the attribute configuration lists
+  // all of the other order and matcher attributes in \`joinQueryableBy\`, it means
+  // we can make the entire WHERE and ORDER BY on a sub-query, which improves
+  // performance considerably vs. finding all results from the join table and then
+  // doing the ordering after pulling the results in the main table.
+  //
+  // Note: This is currently only intended for use in the thread list
+  //
+  _canSubselectForJoin(matcher, allMatchers) {
+    const joinAttribute = matcher.attribute()
 
-    innerSQL = "SELECT `id` FROM `#{table}` WHERE #{wheres.join(' AND ')} #{order} #{limit}"
-    innerSQL = innerSQL.replace(new RegExp("`#{@_klass.name}`", 'g'), "`#{table}`")
-    innerSQL = innerSQL.replace(new RegExp("`#{returningMatcher.joinTableRef()}`", 'g'), "`#{table}`")
-    innerSQL
+    if (this._range.limit === undefined) {
+      return false;
+    }
 
-  _whereClause: ->
-    joins = []
-    @_matchers.forEach (c) =>
-      join = c.joinSQL(@_klass)
-      joins.push(join) if join
+    const allMatchersOnJoinTable = allMatchers.every((m) =>
+      (m === matcher) || (joinAttribute.joinQueryableBy.indexOf(m.attr.modelKey) !== -1) || (m.attr.modelKey === 'id')
+    );
+    const allOrdersOnJoinTable = this._orders.every((o) =>
+      (joinAttribute.joinQueryableBy.indexOf(o.attr.modelKey) !== -1)
+    );
 
-    @_includeJoinedData.forEach (attr) =>
-      join = attr.includeSQL(@_klass)
-      joins.push(join) if join
+    return (allMatchersOnJoinTable && allOrdersOnJoinTable);
+  }
 
-    wheres = []
-    @_matchers.forEach (c) =>
-      where = c.whereSQL(@_klass)
-      wheres.push(where) if where
+  _subselectSQL(returningMatcher, subselectMatchers, order, limit) {
+    const returningAttribute = returningMatcher.attribute()
 
-    sql = ""
-    sql += joins.join(' ')
-    sql += " WHERE " + wheres.join(' AND ') if wheres.length
-    sql
+    const table = Utils.tableNameForJoin(this._klass, returningAttribute.itemClass);
+    const wheres = subselectMatchers.map(c => c.whereSQL(this._klass)).filter(c => !!c);
 
-  _orderClause: ->
-    return "" unless @_orders.length
+    let innerSQL = `SELECT \`id\` FROM \`${table}\` WHERE ${wheres.join(' AND ')} ${order} ${limit}`;
+    innerSQL = innerSQL.replace(new RegExp(`\`${this._klass.name}\``, 'g'), `\`${table}\``);
+    innerSQL = innerSQL.replace(new RegExp(`\`${returningMatcher.joinTableRef()}\``, 'g'), `\`${table}\``);
+    return innerSQL;
+  }
 
-    sql = " ORDER BY "
-    @_orders.forEach (sort) =>
-      sql += sort.orderBySQL(@_klass)
-    sql
+  _whereClause() {
+    const joins = [];
+    this._matchers.forEach((c) => {
+      const join = c.joinSQL(this._klass)
+      if (join) {
+        joins.push(join);
+      }
+    });
 
-  # Private: Marks the object as final, preventing any changes to the where
-  # clauses, orders, etc.
-  finalize: ->
-    return if @_finalized
+    this._includeJoinedData.forEach((attr) => {
+      const join = attr.includeSQL(this._klass)
+      if (join) {
+        joins.push(join);
+      }
+    });
 
-    if @_orders.length is 0
-      natural = @_klass.naturalSortOrder()
-      @_orders.push(natural) if natural
+    const wheres = [];
+    this._matchers.forEach(c => {
+      const where = c.whereSQL(this._klass);
+      if (where) {
+        wheres.push(where)
+      }
+    });
 
-    if @_returnOne and not @_range.limit
-      @limit(1)
+    return `${joins.join(' ')} WHERE ${wheres.join(' AND ')}`;
+  }
 
-    @_finalized = true
-    @
+  _orderClause() {
+    if (this._orders.length === 0) {
+      return ''
+    }
 
-  # Private: Throws an exception if the query has been frozen.
-  _assertNotFinalized: ->
-    if @_finalized
-      throw new Error("ModelQuery: You cannot modify a query after calling `then` or `listen`")
+    let sql = ' ORDER BY '
+    this._orders.forEach((sort) => {
+      sql += sort.orderBySQL(this._klass);
+    });
+    return sql;
+  }
 
-  # Introspection
-  # (These are here to make specs easy)
+  // Private: Marks the object as final, preventing any changes to the where
+  // clauses, orders, etc.
+  finalize() {
+    if (this._finalized) {
+      return this;
+    }
 
-  matchers: ->
-    @_matchers
+    if (this._orders.length === 0) {
+      const natural = this._klass.naturalSortOrder();
+      if (natural) {
+        this._orders.push(natural);
+      }
+    }
 
-  matchersFlattened: ->
-    all = []
-    traverse = (matchers) ->
-      return unless matchers instanceof Array
-      for m in matchers
-        if m.children
-          traverse(m.children)
-        else
-          all.push(m)
-    traverse(@_matchers)
-    all
+    if (this._returnOne && !this._range.limit) {
+      this.limit(1);
+    }
 
-  matcherValueForModelKey: (key) ->
-    matcher = _.find @_matchers, (m) -> m.attr.modelKey = key
-    matcher?.val
+    this._finalized = true;
+    return this;
+  }
 
-  range: ->
-    @_range
+  // Private: Throws an exception if the query has been frozen.
+  _assertNotFinalized() {
+    if (this._finalized) {
+      throw new Error(`ModelQuery: You cannot modify a query after calling \`then\` or \`listen\``);
+    }
+  }
 
-  orderSortDescriptors: ->
-    @_orders
+  // Introspection
+  // (These are here to make specs easy)
 
-  objectClass: ->
-    @_klass.name
+  matchers() {
+    return this._matchers;
+  }
 
-module.exports = ModelQuery
+  matchersFlattened() {
+    const all = []
+    const traverse = (matchers) => {
+      if (!(matchers instanceof Array)) {
+        return;
+      }
+      for (const m of matchers) {
+        if (m.children) {
+          traverse(m.children);
+        } else {
+          all.push(m);
+        }
+      }
+    }
+    traverse(this._matchers);
+    return all;
+  }
+
+  matcherValueForModelKey(key) {
+    const matcher = this._matchers.find(m => m.attr.modelKey === key)
+    return matcher ? matcher.val : null;
+  }
+
+  range() {
+    return this._range;
+  }
+
+  orderSortDescriptors() {
+    return this._orders;
+  }
+
+  objectClass() {
+    return this._klass.name;
+  }
+}

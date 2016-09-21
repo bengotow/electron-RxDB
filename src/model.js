@@ -1,4 +1,4 @@
-import Attributes from '../attributes';
+import Attributes from './attributes';
 
 function generateTempId() {
   const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -34,7 +34,7 @@ Section: Models
 export default class Model {
 
   static attributes = {
-    'id': Attributes.String({
+    id: Attributes.String({
       queryable: true,
       modelKey: 'id',
     }),
@@ -44,13 +44,13 @@ export default class Model {
     return null;
   }
 
-  constructor: (values = {}) {
+  constructor(values = {}) {
     for (const key of Object.keys(this.constructor.attributes)) {
       if ((key === 'id') || (values[key] === undefined)) {
-          continue;
+        continue;
       }
       this[key] = values[key];
-    };
+    }
     this.id = this.id || generateTempId();
   }
 
@@ -64,7 +64,6 @@ export default class Model {
     return Object.assign({}, this.constructor.attributes)
   }
 
-  ////
   // Public: Inflates the model object from JSON, using the defined attributes to
   // guide type coercision.
   //
@@ -96,7 +95,7 @@ export default class Model {
   //
   toJSON(options = {}) {
     const json = {}
-    for (key of Object.keys(this.constructor.attributes)) {
+    for (const key of Object.keys(this.constructor.attributes)) {
       const attr = this.constructor.attributes[key];
       const attrValue = this[key];
 
@@ -127,7 +126,7 @@ export default class Model {
     }
     for (const matcher of criteria) {
       if (!matcher.evaluate(this)) {
-          return false;
+        return false;
       }
     }
     return true;
