@@ -1,4 +1,3 @@
-_ = require 'underscore'
 Actions = require './actions'
 Model = require './models/model'
 DatabaseStore = require './stores/database-store'
@@ -80,7 +79,7 @@ class ActionBridge
 
   _globalExtensionAction: (broadcastName) ->
     [scope, name] = broadcastName.split("::")
-    {actionFn} = _.findWhere(@globalActions, {scope, name}) ? {}
+    {actionFn} = @globalActions.find((a) => a.scope is scope and a.name is name) ? {}
     return actionFn
 
   onIPCMessage: (event, initiatorId, name, json) =>

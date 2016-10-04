@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "better-sqlite3": "bengotow/better-sqlite3#30297b0c9448379dd8d803b860351218c5ee3035",
+    "lru-cache": "^4.0.1",
+    "promise-queue": "^2.2.3",
+    "promise.prototype.finally": "^2.0.1",
+    "rx-lite": "^4.0.8"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

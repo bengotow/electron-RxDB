@@ -1,17 +1,10 @@
-const {app, ipcMain, BrowserWindow} = require('electron');
+const {app, BrowserWindow} = require('electron');
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
 
-// adds database support
-ipcMain.on('relay', (event, msg) => {
-  BrowserWindow.getAllWindows().forEach((win) => {
-    if (event.sender !== win.webContents) {
-      win.webContents.send('relay', msg);
-    }
-  });
-});
-
+const {Coordinator} = require('electron-coresqlite');
+global.databaseCoordinator = new Coordinator();
 
 // prevent window being garbage collected
 let mainWindow;
