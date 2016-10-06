@@ -5,14 +5,70 @@
     <title>Electron boilerplate</title>
     <link rel="stylesheet" href="index.css">
     <script src="renderer.js"></script>
+    <style>
+    div, h2 {
+      outline: none;
+    }
+
+    .container {
+      display: flex;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    .detail {
+      padding: 4px 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 2;
+    }
+    .detail h2 {
+      margin: 8px 0;
+    }
+    .detail h2:hover {
+      background-color: rgba(0,0,0,0.05);
+    }
+    .detail .content {
+      flex: 1;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+    .sidebar {
+      flex: 1;
+      background-color: #eee;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      box-shadow: inset -2px 0 2px 0 rgba(0,0,0,0.2);
+      min-width: 130px;
+    }
+    .sidebar .item {
+      padding: 5px 10px;
+    }
+    .sidebar .item:hover {
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.1);
+    }
+    .sidebar .item.selected,
+    .sidebar .item.selected:hover {
+      background-color: gray;
+    }
+    .floating {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+    .floating button {
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      outline: 0;
+    }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h1>Electron boilerplate</h1>
-      </header>
-      <section class="main"></section>
-      <footer></footer>
-    </div>
+    <div id="container"></div>
   </body>
 </html>
