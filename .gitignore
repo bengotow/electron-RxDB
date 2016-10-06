@@ -1,3 +1,5 @@
 .DS_Store
 /example/node_modules
 /node_modules
+/example/sqlite.db-wal
+/example/sqlite.db-shm

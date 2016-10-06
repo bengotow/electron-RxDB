@@ -17,8 +17,6 @@ function createMainWindow() {
 
   win.loadURL(`file://${__dirname}/index.html`);
   win.on('closed', () => {
-    // dereference the window
-    // for multiple windows store them in an array
     mainWindow = null;
   });
 

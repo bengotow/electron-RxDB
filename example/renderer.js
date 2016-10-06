@@ -129,7 +129,17 @@ class Detail extends React.Component {
     item.name = this.refs.name.innerText;
 
     window.dbStore.inTransaction((t) => {
-      t.persistModel(item);
+      return t.persistModel(item);
+    });
+  }
+
+  _onPopout = () => {
+
+  }
+
+  _onDelete = () => {
+    window.dbStore.inTransaction((t) => {
+      return t.unpersistModel(this.props.item);
     });
   }
 
@@ -137,7 +147,7 @@ class Detail extends React.Component {
     if (!this.props.item) {
       return (
         <div className="detail">
-          Please select an item
+          <div className="empty">Please select an item</div>
         </div>
       );
     }
@@ -145,6 +155,10 @@ class Detail extends React.Component {
     const {name, content} = this.props.item;
     return (
       <div className="detail">
+        <div className="actions">
+          <button onClick={this._onPopout}> ⇪ </button>
+          <button onClick={this._onDelete}> ✖️ </button>
+        </div>
         <h2
           ref="name"
           contentEditable
@@ -175,7 +189,16 @@ class Container extends React.Component {
   componentDidMount() {
     const query = window.dbStore.findAll(Note).order(Note.attributes.createdAt.descending());
     this._unsubscribe = query.observe().subscribe((items) => {
-      this.setState({items});
+      let {selectedItem} = this.state;
+
+      if (selectedItem) {
+        const oldIndex = this.state.items.findIndex(({id}) => selectedItem.id === id);
+        const nextIndex = items.findIndex(({id}) => selectedItem.id === id);
+        if (nextIndex === -1) {
+          selectedItem = items[oldIndex] || items[oldIndex - 1] || items[oldIndex + 1];
+        }
+      }
+      this.setState({items, selectedItem});
     });
   }
 
@@ -205,13 +228,10 @@ class Container extends React.Component {
           items={this.state.items}
           selectedItem={this.state.selectedItem}
           onSelect={this._onSelectItem}
-        >
-        </Sidebar>
+        />
         <Detail item={this.state.selectedItem} />
         <div className="floating">
-          <button onClick={this._onCreateItem}>
-            ➕
-          </button>
+          <button onClick={this._onCreateItem}>➕</button>
         </div>
       </div>
     )
