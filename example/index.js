@@ -13,9 +13,13 @@ function createMainWindow() {
   const win = new BrowserWindow({
     width: 600,
     height: 400,
+    show: false,
   });
 
-  win.loadURL(`file://${__dirname}/index.html`);
+  win.loadURL(`file://${__dirname}/renderer.html`);
+  win.once('ready-to-show', () => {
+    win.show();
+  })
   win.on('closed', () => {
     mainWindow = null;
   });

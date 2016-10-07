@@ -1,0 +1,117 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+header {
+  position: absolute;
+  width: 500px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  margin-top: -125px;
+  margin-left: -250px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 60px;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+
+div, h2 {
+  outline: none;
+}
+
+.actions {
+  position:absolute;
+  right: 10px;
+  top: 10px;
+  text-align: right;
+}
+.actions button {
+  border: 0;
+  background-color: transparent;
+  line-height: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin-left: 5px;
+  outline: none;
+}
+.actions button:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.container {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.detail {
+  padding: 4px 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+.detail .empty {
+  padding: 40vh 05px;
+  text-align: center;
+  color: #ccc;
+}
+.detail h2 {
+  margin: 8px 0;
+}
+.detail h2:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+.detail .content {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.sidebar {
+  flex: 1;
+  background-color: #eee;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-shadow: inset -2px 0 2px 0 rgba(0,0,0,0.2);
+  min-width: 130px;
+}
+.sidebar .item {
+  padding: 5px 10px;
+}
+.sidebar .item:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.1);
+}
+.sidebar .item.selected,
+.sidebar .item.selected:hover {
+  background-color: gray;
+}
+.floating {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.floating button {
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  outline: 0;
+  background: rgb(100,200,255);
+  border: 1px solid rgba(0,0,0,0.5);
+}
