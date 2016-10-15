@@ -6,13 +6,21 @@
   "dependencies": {
     "better-sqlite3": "bengotow/better-sqlite3#30297b0c9448379dd8d803b860351218c5ee3035",
     "lru-cache": "^4.0.1",
+    "node-gyp": "^3.4.0",
     "promise-queue": "^2.2.3",
     "promise.prototype.finally": "^2.0.1",
     "rx-lite": "^4.0.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.5.2",
+    "electron-prebuilt-compile": "^1.4.2",
+    "babel-preset-electron": "^0.37.8",
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-preset-react": "^6.16.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "electron ./spec/runner --enable-logging",
+    "postinstall": "node ./post-install.js"
   },
   "author": "",
   "license": "ISC"

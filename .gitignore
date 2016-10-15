@@ -3,3 +3,6 @@
 /node_modules
 /example/sqlite.db-wal
 /example/sqlite.db-shm
+/sqlite-test.db-wal
+/sqlite-test.db-shm
+/sqlite-test.db
