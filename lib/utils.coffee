@@ -111,11 +111,6 @@ Utils =
       Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     'local-' + s4() + s4() + '-' + s4()
 
-  generateFakeServerId: ->
-    s5 = ->
-      Math.floor((1 + Math.random()) * 0x10000000).toString(36).substring(1)
-    return s5() + s5() + s5() + s5() + s5()
-
   isTempId: (id) ->
     return false unless id and typeof(id) == 'string'
     id[0..5] is 'local-'
@@ -155,7 +150,7 @@ Utils =
 
   isEqualReact: (a, b, options={}) ->
     options.functionsAreEqual = true
-    options.ignoreKeys = (options.ignoreKeys ? []).push("clientId")
+    options.ignoreKeys = (options.ignoreKeys ? []).push("id")
     Utils.isEqual(a, b, options)
 
   # Customized version of Underscore 1.8.2's isEqual function

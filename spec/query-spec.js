@@ -290,7 +290,7 @@ describe("ModelQuery", function ModelQuerySpecs() {
           q.where({id: '1234'}).include(Message.attributes.body),
         sql: "SELECT `Message`.`data`, IFNULL(`MessageBody`.`value`, '!NULLVALUE!') AS `body`  " +
              "FROM `Message` LEFT OUTER JOIN `MessageBody` ON `MessageBody`.`id` = `Message`.`id` " +
-             "WHERE `Message`.`id` = '1234'  ORDER BY `Message`.`date` ASC",
+             "WHERE `Message`.`id` = '1234'",
       });
     });
   });

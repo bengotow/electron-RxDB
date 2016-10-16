@@ -9,6 +9,7 @@
     "node-gyp": "^3.4.0",
     "promise-queue": "^2.2.3",
     "promise.prototype.finally": "^2.0.1",
+    "promise.try": "^1.0.0",
     "rx-lite": "^4.0.8"
   },
   "devDependencies": {
@@ -19,7 +20,7 @@
     "babel-preset-react": "^6.16.0"
   },
   "scripts": {
-    "test": "electron ./spec/runner --enable-logging",
+    "test": "CI=true electron ./spec/runner --enable-logging",
     "postinstall": "node ./post-install.js"
   },
   "author": "",

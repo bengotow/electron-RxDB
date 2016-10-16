@@ -50,7 +50,7 @@ export default class Message extends Model {
       modelKey: 'snippet',
     }),
 
-    threadId: Attributes.ServerId({
+    threadId: Attributes.String({
       queryable: true,
       modelKey: 'threadId',
       jsonKey: 'thread_id',
@@ -77,7 +77,7 @@ export default class Message extends Model {
       queryable: true,
     }),
 
-    replyToMessageId: Attributes.ServerId({
+    replyToMessageId: Attributes.String({
       modelKey: 'replyToMessageId',
       jsonKey: 'reply_to_message_id',
     }),

@@ -2,6 +2,7 @@
 import TestModel from './fixtures/db-test-model';
 import Category from './fixtures/category';
 import DatabaseTransaction from '../lib/database-transaction';
+import DatabaseChangeRecord from '../lib/database-change-record';
 
 const testModelInstance = new TestModel({id: "1234"});
 const testModelInstanceA = new TestModel({id: "AAA"});
@@ -27,7 +28,7 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
         this.performed.push({query, values});
         return Promise.resolve([]);
       }),
-      accumulateAndTrigger: jasmine.createSpy('database.accumulateAndTrigger'),
+      transactionDidCommitChanges: jasmine.createSpy('database.transactionDidCommitChanges'),
       mutationHooks: () => this.databaseMutationHooks,
     };
 
@@ -43,7 +44,7 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
   describe("execute", () => {});
 
   describe("persistModel", () => {
-    fit("should throw an exception if the model is not a subclass of Model", () =>
+    it("should throw an exception if the model is not a subclass of Model", () =>
       expect(() => this.transaction.persistModel({id: 'asd', subject: 'bla'})).toThrow()
     );
 
@@ -56,31 +57,33 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
   });
 
   describe("persistModels", () => {
-    it("should call accumulateAndTrigger with a change that contains the models", () => {
-      runs(() => {
-        return this.transaction.execute(t => {
-          return t.persistModels([testModelInstanceA, testModelInstanceB]);
-        });
+    it("should call transactionDidCommitChanges with a change that contains the models", (done) => {
+      this.transaction.execute(t => {
+        return t.persistModels([testModelInstanceA, testModelInstanceB]);
       });
-      waitsFor(() => {
-        return this.database.accumulateAndTrigger.calls.count() > 0;
-      });
-      runs(() => {
-        const change = this.database.accumulateAndTrigger.mostRecentCall.args[0];
-        expect(change).toEqual({
+
+      jasmine.waitFor(() =>
+        this.database.transactionDidCommitChanges.calls.count() > 0
+      )
+      .then(() => {
+        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord({
           objectClass: TestModel.name,
           objectIds: [testModelInstanceA.id, testModelInstanceB.id],
           objects: [testModelInstanceA, testModelInstanceB],
           type: 'persist',
-        });
+        })]);
+        done();
       });
     });
 
-    it("should call through to _writeModels after checking them", () => {
+    it("should call through to _writeModels after checking them", (done) => {
       spyOn(this.transaction, '_writeModels').and.returnValue(Promise.resolve());
       this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
-      jasmine.clock().tick();
-      expect(this.transaction._writeModels.calls.count()).toBe(1);
+      jasmine.waitFor(() => this.transaction._writeModels.calls.count() > 0).then(() => {
+        expect(this.transaction._writeModels.calls.count()).toBe(1)
+        done()
+      });
     });
 
     it("should throw an exception if the models are not the same class, since it cannot be specified by the trigger payload", () =>
@@ -122,9 +125,9 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
         });
       });
 
-      it("should run pre-mutation hooks, wait to write models, and then run post-mutation hooks", () => {
+      it("should run pre-mutation hooks, wait to write models, and then run post-mutation hooks", (done) => {
         this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
-        jasmine.clock().tick();
+
         expect(this.hook.beforeDatabaseChange).toHaveBeenCalledWith(
           this.transaction._query,
           {
@@ -136,117 +139,109 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
           undefined
         );
         expect(this.transaction._writeModels).not.toHaveBeenCalled();
-        jasmine.clock().tick(1100);
-        jasmine.clock().tick();
-        expect(this.transaction._writeModels).toHaveBeenCalled();
-        expect(this.hook.afterDatabaseChange).not.toHaveBeenCalled();
-        this.writeModelsResolve();
-        jasmine.clock().tick();
-        jasmine.clock().tick();
-        expect(this.hook.afterDatabaseChange).toHaveBeenCalledWith(
-          this.transaction._query,
-          {
-            objects: [testModelInstanceA, testModelInstanceB],
-            objectIds: [testModelInstanceA.id, testModelInstanceB.id],
-            objectClass: testModelInstanceA.constructor.name,
-            type: 'persist',
-          },
-          "value"
-        );
+        jasmine.clock().tick(1000);
+        jasmine.waitFor(() => this.transaction._writeModels.calls.count() > 0).then(() => {
+          expect(this.hook.afterDatabaseChange).not.toHaveBeenCalled();
+          this.writeModelsResolve();
+
+          jasmine.waitFor(() => this.hook.afterDatabaseChange.calls.count() > 0).then(() => {
+            expect(this.hook.afterDatabaseChange).toHaveBeenCalledWith(
+              this.transaction._query,
+              {
+                objects: [testModelInstanceA, testModelInstanceB],
+                objectIds: [testModelInstanceA.id, testModelInstanceB.id],
+                objectClass: testModelInstanceA.constructor.name,
+                type: 'persist',
+              },
+              "value"
+            );
+            done();
+          });
+        });
       });
 
-      it("should carry on if a pre-mutation hook throws", () => {
+      it("should carry on if a pre-mutation hook throws", (done) => {
         this.beforeShouldThrow = true;
         this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
         jasmine.clock().tick(1000);
         expect(this.hook.beforeDatabaseChange).toHaveBeenCalled();
-        jasmine.clock().tick();
-        jasmine.clock().tick();
-        expect(this.transaction._writeModels).toHaveBeenCalled();
+        jasmine.waitFor(() => this.transaction._writeModels.calls.count() > 0).then(done);
       });
 
-      it("should carry on if a pre-mutation hook rejects", () => {
+      it("should carry on if a pre-mutation hook rejects", (done) => {
         this.beforeShouldReject = true;
         this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
         jasmine.clock().tick(1000);
         expect(this.hook.beforeDatabaseChange).toHaveBeenCalled();
-        jasmine.clock().tick();
-        jasmine.clock().tick();
-        expect(this.transaction._writeModels).toHaveBeenCalled();
+        jasmine.waitFor(() => this.transaction._writeModels.calls.count() > 0).then(done);
       });
     });
   });
 
   describe("unpersistModel", () => {
-    it("should delete the model by id", () =>
-      waitsForPromise(() => {
-        return this.transaction.execute(() => {
-          return this.transaction.unpersistModel(testModelInstance);
-        })
-        .then(() => {
-          expect(this.performed.length).toBe(3);
-          expect(this.performed[0].query).toBe("BEGIN IMMEDIATE TRANSACTION");
-          expect(this.performed[1].query).toBe("DELETE FROM `TestModel` WHERE `id` = ?");
-          expect(this.performed[1].values[0]).toBe('1234');
-          expect(this.performed[2].query).toBe("COMMIT");
-        });
+    it("should delete the model by id", (done) =>
+      this.transaction.execute(() => {
+        return this.transaction.unpersistModel(testModelInstance);
       })
-
+      .then(() => {
+        expect(this.performed.length).toBe(3);
+        expect(this.performed[0].query).toBe("BEGIN IMMEDIATE TRANSACTION");
+        expect(this.performed[1].query).toBe("DELETE FROM `TestModel` WHERE `id` = ?");
+        expect(this.performed[1].values[0]).toBe('1234');
+        expect(this.performed[2].query).toBe("COMMIT");
+        done();
+      })
     );
 
-    it("should call accumulateAndTrigger with a change that contains the model", () => {
-      runs(() => {
-        return this.transaction.execute(() => {
-          return this.transaction.unpersistModel(testModelInstance);
-        });
+    it("should call transactionDidCommitChanges with a change that contains the model", (done) => {
+      this.transaction.execute(() => {
+        return this.transaction.unpersistModel(testModelInstance);
       });
-      waitsFor(() => {
-        return this.database.accumulateAndTrigger.calls.count() > 0;
-      });
-      runs(() => {
-        const change = this.database.accumulateAndTrigger.mostRecentCall.args[0];
-        expect(change).toEqual({
+      jasmine.waitFor(() =>
+        this.database.transactionDidCommitChanges.calls.count() > 0
+      ).then(() => {
+        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord({
           objectClass: TestModel.name,
           objectIds: [testModelInstance.id],
           objects: [testModelInstance],
           type: 'unpersist',
-        });
+        })]);
+        done();
       });
     });
 
     describe("when the model has collection attributes", () =>
-      it("should delete all of the elements in the join tables", () => {
+      it("should delete all of the elements in the join tables", (done) => {
         TestModel.configureWithCollectionAttribute();
-        waitsForPromise(() => {
-          return this.transaction.execute(t => {
-            return t.unpersistModel(testModelInstance);
-          })
-          .then(() => {
-            expect(this.performed.length).toBe(4);
-            expect(this.performed[0].query).toBe("BEGIN IMMEDIATE TRANSACTION");
-            expect(this.performed[2].query).toBe("DELETE FROM `TestModelCategory` WHERE `id` = ?");
-            expect(this.performed[2].values[0]).toBe('1234');
-            expect(this.performed[3].query).toBe("COMMIT");
-          });
+        this.transaction.execute(t => {
+          return t.unpersistModel(testModelInstance);
+        })
+        .then(() => {
+          expect(this.performed.length).toBe(4);
+          expect(this.performed[0].query).toBe("BEGIN IMMEDIATE TRANSACTION");
+          expect(this.performed[2].query).toBe("DELETE FROM `TestModelCategory` WHERE `id` = ?");
+          expect(this.performed[2].values[0]).toBe('1234');
+          expect(this.performed[3].query).toBe("COMMIT");
+          done();
         });
       })
 
     );
 
     describe("when the model has joined data attributes", () =>
-      it("should delete the element in the joined data table", () => {
+      it("should delete the element in the joined data table", (done) => {
         TestModel.configureWithJoinedDataAttribute();
-        waitsForPromise(() => {
-          return this.transaction.execute(t => {
-            return t.unpersistModel(testModelInstance);
-          })
-          .then(() => {
-            expect(this.performed.length).toBe(4);
-            expect(this.performed[0].query).toBe("BEGIN IMMEDIATE TRANSACTION");
-            expect(this.performed[2].query).toBe("DELETE FROM `TestModelBody` WHERE `id` = ?");
-            expect(this.performed[2].values[0]).toBe('1234');
-            expect(this.performed[3].query).toBe("COMMIT");
-          });
+        this.transaction.execute(t => {
+          return t.unpersistModel(testModelInstance);
+        })
+        .then(() => {
+          expect(this.performed.length).toBe(4);
+          expect(this.performed[0].query).toBe("BEGIN IMMEDIATE TRANSACTION");
+          expect(this.performed[2].query).toBe("DELETE FROM `TestModelBody` WHERE `id` = ?");
+          expect(this.performed[2].values[0]).toBe('1234');
+          expect(this.performed[3].query).toBe("COMMIT");
+          done();
         });
       })
 
@@ -257,7 +252,7 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
     it("should compose a REPLACE INTO query to save the model", () => {
       TestModel.configureWithCollectionAttribute();
       this.transaction._writeModels([testModelInstance]);
-      expect(this.performed[0].query).toBe("REPLACE INTO `TestModel` (id,data,client_id,server_id,other) VALUES (?,?,?,?,?)");
+      expect(this.performed[0].query).toBe("REPLACE INTO `TestModel` (id,data,other) VALUES (?,?,?)");
     });
 
     it("should save the model JSON into the data column", () => {
@@ -372,9 +367,9 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
       beforeEach(() => TestModel.configureWithJoinedDataAttribute());
 
       it("should not include the value to the joined attribute in the JSON written to the main model table", () => {
-        this.m = new TestModel({clientId: 'local-6806434c-b0cd', serverId: 'server-1', body: 'hello world'});
+        this.m = new TestModel({id: 'local-6806434c-b0cd', body: 'hello world'});
         this.transaction._writeModels([this.m]);
-        expect(this.performed[0].values).toEqual(['server-1', '{"client_id":"local-6806434c-b0cd","server_id":"server-1","id":"server-1"}', 'local-6806434c-b0cd', 'server-1']);
+        expect(this.performed[0].values).toEqual(['local-6806434c-b0cd', '{"id":"local-6806434c-b0cd"}']);
       });
 
       it("should write the value to the joined table if it is defined", () => {

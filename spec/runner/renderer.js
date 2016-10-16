@@ -17,4 +17,17 @@ jasmineInstance.onComplete(() => {
 // });
 
 global.jasmine = jasmineInstance.jasmine;
+global.jasmine.waitFor = (fn) => (
+  new Promise((resolve, reject) => {
+    const start = Date.now()
+    const tick = () => {
+      if (Date.now() - start > 1000) {
+        return reject(new Error(`jasmine.waitFor timed out. ${fn}`));
+      }
+      return (fn() ? resolve() : process.nextTick(tick))
+    }
+    tick();
+  })
+)
+
 jasmineInstance.execute();

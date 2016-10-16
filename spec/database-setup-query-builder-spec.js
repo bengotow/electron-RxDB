@@ -36,7 +36,7 @@ describe("DatabaseSetupQueryBuilder", function DatabaseSetupQueryBuilderSpecs() 
       TestModel.configureWithCollectionAttribute();
       const queries = this.builder.setupQueriesForTable(TestModel);
       const expected = [
-        'CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,client_id TEXT,server_id TEXT,other TEXT)',
+        'CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,other TEXT)',
         'CREATE UNIQUE INDEX IF NOT EXISTS `TestModel_id` ON `TestModel` (`id`)',
         'CREATE TABLE IF NOT EXISTS `TestModelCategory` (id TEXT KEY,`value` TEXT,other TEXT)',
         'CREATE INDEX IF NOT EXISTS `TestModelCategory_id` ON `TestModelCategory` (`id` ASC)',
@@ -56,7 +56,7 @@ describe("DatabaseSetupQueryBuilder", function DatabaseSetupQueryBuilderSpecs() 
     describe("when the model provides additional sqlite config", () => {
       it("the setup method should return these queries", () => {
         TestModel.configureWithAdditionalSQLiteConfig();
-        spyOn(TestModel.additionalSQLiteConfig, 'setup').andCallThrough();
+        spyOn(TestModel.additionalSQLiteConfig, 'setup').and.callThrough();
         const queries = this.builder.setupQueriesForTable(TestModel);
         expect(TestModel.additionalSQLiteConfig.setup).toHaveBeenCalledWith();
         expect(queries.pop()).toBe('CREATE INDEX IF NOT EXISTS ThreadListIndex ON Thread(last_message_received_timestamp DESC, account_id, id)');

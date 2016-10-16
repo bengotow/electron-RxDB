@@ -3,89 +3,81 @@ import Model from '../lib/model';
 import Utils from '../lib/utils';
 import Attributes from '../lib/attributes';
 
+class SubSubmodel extends Model {
+  static attributes = Object.assign({}, Model.attributes, {
+    'value': Attributes.Number({
+      modelKey: 'value',
+      jsonKey: 'value',
+    }),
+  });
+}
+
+class SubmodelItem extends Model {}
+
+class Submodel extends Model {
+  static attributes = Object.assign({}, Model.attributes, {
+    'testBoolean': Attributes.Boolean({
+      modelKey: 'testBoolean',
+      jsonKey: 'test_boolean',
+    }),
+    'testCollection': Attributes.Collection({
+      modelKey: 'testCollection',
+      jsonKey: 'test_collection',
+      itemClass: SubmodelItem,
+    }),
+    'testJoinedData': Attributes.JoinedData({
+      modelKey: 'testJoinedData',
+      jsonKey: 'test_joined_data',
+    }),
+    'testNumber': Attributes.Number({
+      modelKey: 'testNumber',
+      jsonKey: 'test_number',
+    }),
+    'testString': Attributes.String({
+      modelKey: 'testString',
+      jsonKey: 'test_string',
+    }),
+    'testArray': Attributes.Collection({
+      itemClass: SubSubmodel,
+      modelKey: 'testArray',
+      jsonKey: 'test_array',
+    }),
+  });
+}
+
 describe("Model", function modelSpecs() {
   describe("constructor", () => {
     it("should accept a hash of attributes and assign them to the new Model", () => {
       const attrs = {
         id: "A",
-        accountId: "B",
+        testNumber: "B",
       };
-      const m = new Model(attrs);
+      const m = new Submodel(attrs);
       expect(m.id).toBe(attrs.id);
-      return expect(m.accountId).toBe(attrs.accountId);
+      expect(m.testNumber).toBe(attrs.testNumber);
     });
 
-    it("by default assigns things passed into the id constructor to the serverId", () => {
-      const attrs = {id: "A"};
-      const m = new Model(attrs);
-      return expect(m.serverId).toBe(attrs.id);
-    });
-
-    it("by default assigns values passed into the id constructor that look like localIds to be a localID", () => {
-      const attrs = {id: "A"};
-      const m = new Model(attrs);
-      return expect(m.serverId).toBe(attrs.id);
-    });
-
-    it("assigns serverIds and clientIds", () => {
-      const attrs = {
-        clientId: "local-A",
-        serverId: "A",
-      };
-      const m = new Model(attrs);
-      expect(m.serverId).toBe(attrs.serverId);
-      expect(m.clientId).toBe(attrs.clientId);
-      return expect(m.id).toBe(attrs.serverId);
-    });
-
-    it("throws an error if you attempt to manually assign the id", () => {
-      const m = new Model({id: "foo"});
-      return expect(() => { m.id = "bar" }).toThrow();
-    });
-
-    return it("automatically assigns a clientId (and id) to the model if no id is provided", () => {
+    it("automatically assigns an id to the model if no id is provided", () => {
       const m = new Model;
       expect(Utils.isTempId(m.id)).toBe(true);
-      expect(Utils.isTempId(m.clientId)).toBe(true);
-      return expect(m.serverId).toBeUndefined();
     });
   });
 
-  describe("attributes", () =>
-    it("should return the attributes of the class EXCEPT the id field", () => {
+  describe("attributes", () => {
+    it("should return the attributes of the class", () => {
       const m = new Model();
-      const retAttrs = Object.assign({}, m.constructor.attributes);
-      delete retAttrs.id;
-      return expect(m.attributes()).toEqual(retAttrs);
+      expect(m.attributes()).toEqual(m.constructor.attributes);
     })
 
-  );
+    it("should guard against accidental modification", () => {
+      const m = new Model();
+      Object.assign(m.attributes(), {other: 1});
+      expect(m.attributes()).toEqual(m.constructor.attributes);
+    })
+  });
 
   describe("clone", () =>
     it("should return a deep copy of the object", () => {
-      class SubSubmodel extends Model {
-        static attributes = Object.assign({}, Model.attributes, {
-          'value': Attributes.Number({
-            modelKey: 'value',
-            jsonKey: 'value',
-          }),
-        });
-      }
-
-      class Submodel extends Model {
-        static attributes = Object.assign({}, Model.attributes, {
-          'testNumber': Attributes.Number({
-            modelKey: 'testNumber',
-            jsonKey: 'test_number',
-          }),
-          'testArray': Attributes.Collection({
-            itemClass: SubSubmodel,
-            modelKey: 'testArray',
-            jsonKey: 'test_array',
-          }),
-        });
-      }
-
       const old = new Submodel({testNumber: 4, testArray: [new SubSubmodel({value: 2}), new SubSubmodel({value: 6})]});
       const clone = old.clone();
 
@@ -96,52 +88,28 @@ describe("Model", function modelSpecs() {
       expect(old.testArray).not.toBe(clone.testArray);
       // Check classes
       expect(old.testArray[0]).not.toBe(clone.testArray[0]);
-      return expect(old.testArray[0].constructor.name).toEqual(clone.testArray[0].constructor.name);
+      expect(old.testArray[0].constructor.name).toEqual(clone.testArray[0].constructor.name);
     })
 
   );
 
   describe("fromJSON", () => {
     beforeEach(() => {
-      class SubmodelItem extends Model {}
-
-      class Submodel extends Model {
-        static attributes = Object.assign({}, Model.attributes, {
-          'testNumber': Attributes.Number({
-            modelKey: 'testNumber',
-            jsonKey: 'test_number',
-          }),
-          'testBoolean': Attributes.Boolean({
-            modelKey: 'testBoolean',
-            jsonKey: 'test_boolean',
-          }),
-          'testCollection': Attributes.Collection({
-            modelKey: 'testCollection',
-            jsonKey: 'test_collection',
-            itemClass: SubmodelItem,
-          }),
-          'testJoinedData': Attributes.JoinedData({
-            modelKey: 'testJoinedData',
-            jsonKey: 'test_joined_data',
-          }),
-        });
-      }
-
       this.json = {
         'id': '1234',
         'test_number': 4,
         'test_boolean': true,
         'daysOld': 4,
-        'account_id': 'bla',
+        'test_string': 'bla',
       };
-      this.m = new Submodel;
+      this.m = new Submodel();
     });
 
     it("should assign attribute values by calling through to attribute fromJSON functions", () => {
-      spyOn(Model.attributes.accountId, 'fromJSON').and.callFake(() => 'inflated value!');
+      spyOn(Submodel.attributes.testString, 'fromJSON').and.callFake(() => 'inflated value!');
       this.m.fromJSON(this.json);
-      expect(Model.attributes.accountId.fromJSON.calls.count()).toBe(1);
-      return expect(this.m.accountId).toBe('inflated value!');
+      expect(Submodel.attributes.testString.fromJSON.calls.count()).toBe(1);
+      expect(this.m.testString).toBe('inflated value!');
     });
 
     it("should not touch attributes that are missing in the json", () => {
@@ -150,18 +118,18 @@ describe("Model", function modelSpecs() {
 
       this.m.object = 'abc';
       this.m.fromJSON(this.json);
-      return expect(this.m.object).toBe('abc');
+      expect(this.m.object).toBe('abc');
     });
 
     it("should not do anything with extra JSON keys", () => {
       this.m.fromJSON(this.json);
-      return expect(this.m.daysOld).toBe(undefined);
+      expect(this.m.daysOld).toBe(undefined);
     });
 
     it("should maintain empty string as empty strings", () => {
-      expect(this.m.accountId).toBe(undefined);
-      this.m.fromJSON({account_id: ''});
-      return expect(this.m.accountId).toBe('');
+      expect(this.m.testString).toBe(undefined);
+      this.m.fromJSON({test_string: ''});
+      expect(this.m.testString).toBe('');
     });
 
     describe("Attributes.Number", () =>
@@ -176,7 +144,7 @@ describe("Model", function modelSpecs() {
         expect(this.m.testNumber).toBe(null);
 
         this.m.fromJSON({'test_number': 0});
-        return expect(this.m.testNumber).toBe(0);
+        expect(this.m.testNumber).toBe(0);
       })
 
     );
@@ -190,7 +158,7 @@ describe("Model", function modelSpecs() {
         expect(this.m.testJoinedData).toBe('');
 
         this.m.fromJSON({'test_joined_data': 'lolz'});
-        return expect(this.m.testJoinedData).toBe('lolz');
+        expect(this.m.testJoinedData).toBe('lolz');
       })
 
     );
@@ -200,20 +168,20 @@ describe("Model", function modelSpecs() {
         this.m.fromJSON({'test_collection': [{id: '123'}]});
         expect(this.m.testCollection.length).toBe(1);
         expect(this.m.testCollection[0].id).toBe('123');
-        return expect(this.m.testCollection[0].constructor.name).toBe('SubmodelItem');
+        expect(this.m.testCollection[0].constructor.name).toBe('SubmodelItem');
       });
 
-      return it("should be fine with malformed arrays", () => {
+      it("should be fine with malformed arrays", () => {
         this.m.fromJSON({'test_collection': [null]});
         expect(this.m.testCollection.length).toBe(0);
         this.m.fromJSON({'test_collection': []});
         expect(this.m.testCollection.length).toBe(0);
         this.m.fromJSON({'test_collection': null});
-        return expect(this.m.testCollection.length).toBe(0);
+        expect(this.m.testCollection.length).toBe(0);
       });
     });
 
-    return describe("Attributes.Boolean", () =>
+    describe("Attributes.Boolean", () =>
       it("should read `true` or true and coerce everything else to false", () => {
         this.m.fromJSON({'test_boolean': true});
         expect(this.m.testBoolean).toBe(true);
@@ -234,7 +202,7 @@ describe("Model", function modelSpecs() {
         expect(this.m.testBoolean).toBe(false);
 
         this.m.fromJSON({'test_boolean': null});
-        return expect(this.m.testBoolean).toBe(false);
+        expect(this.m.testBoolean).toBe(false);
       })
 
     );
@@ -242,35 +210,35 @@ describe("Model", function modelSpecs() {
 
   describe("toJSON", () => {
     beforeEach(() => {
-      this.model = new Model({
+      this.model = new Submodel({
         id: "1234",
-        accountId: "ACD",
+        testString: "ACD",
       });
       return;
     });
 
     it("should return a JSON object and call attribute toJSON functions to map values", () => {
-      spyOn(Model.attributes.accountId, 'toJSON').and.callFake(() => 'inflated value!');
+      spyOn(Submodel.attributes.testString, 'toJSON').and.callFake(() => 'inflated value!');
 
       const json = this.model.toJSON();
       expect(json instanceof Object).toBe(true);
       expect(json.id).toBe('1234');
-      return expect(json.account_id).toBe('inflated value!');
+      expect(json.test_string).toBe('inflated value!');
     });
 
-    return it("should surface any exception one of the attribute toJSON functions raises", () => {
-      spyOn(Model.attributes.accountId, 'toJSON').and.callFake(() => {
+    it("should surface any exception one of the attribute toJSON functions raises", () => {
+      spyOn(Submodel.attributes.testString, 'toJSON').and.callFake(() => {
         throw new Error("Can't convert value into JSON format");
       });
-      return expect(() => { return this.model.toJSON(); }).toThrow();
+      expect(() => { this.model.toJSON(); }).toThrow();
     });
   });
 
-  return describe("matches", () => {
+  describe("matches", () => {
     beforeEach(() => {
       this.model = new Model({
         id: "1234",
-        accountId: "ACD",
+        testString: "ACD",
       });
 
       this.truthyMatcher = {evaluate() { return true; }};
@@ -280,14 +248,14 @@ describe("Model", function modelSpecs() {
     it("should run the matchers and return true iff all matchers pass", () => {
       expect(this.model.matches([this.truthyMatcher, this.truthyMatcher])).toBe(true);
       expect(this.model.matches([this.truthyMatcher, this.falsyMatcher])).toBe(false);
-      return expect(this.model.matches([this.falsyMatcher, this.truthyMatcher])).toBe(false);
+      expect(this.model.matches([this.falsyMatcher, this.truthyMatcher])).toBe(false);
     });
 
-    return it("should pass itself as an argument to the matchers", () => {
+    it("should pass itself as an argument to the matchers", () => {
       spyOn(this.truthyMatcher, 'evaluate').and.callFake(param => {
-        return expect(param).toBe(this.model);
+        expect(param).toBe(this.model);
       });
-      return this.model.matches([this.truthyMatcher]);
+      this.model.matches([this.truthyMatcher]);
     });
   });
 });

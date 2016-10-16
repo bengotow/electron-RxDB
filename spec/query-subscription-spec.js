@@ -5,14 +5,7 @@ import Utils from '../lib/utils';
 
 import {Database, Thread} from './fixtures';
 
-const waitFor = (fn) => (
-  new Promise((resolve) => {
-    const tick = () => (fn() ? resolve() : setTimeout(tick, 1))
-    tick();
-  })
-)
-
-fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
+describe("QuerySubscription", function QuerySubscriptionSpecs() {
   beforeEach(() => {
     jasmine.clock().install();
   });
@@ -77,7 +70,7 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
       subscription._lastResult = 'something';
 
       subscription.addCallback(cb);
-      waitFor(() => cb.calls.count() > 0).then(() => {
+      jasmine.waitFor(() => cb.calls.count() > 0).then(() => {
         expect(cb).toHaveBeenCalledWith('something');
         done();
       });
@@ -89,23 +82,23 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
       name: "query with full set of objects (4)",
       query: Database.findAll(Thread).where(Thread.attributes.accountId.equal('a')).limit(4).offset(2),
       lastModels: [
-        new Thread({accountId: 'a', clientId: '4', lastMessageReceivedTimestamp: 4}),
-        new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 3}),
-        new Thread({accountId: 'a', clientId: '2', lastMessageReceivedTimestamp: 2}),
-        new Thread({accountId: 'a', clientId: '1', lastMessageReceivedTimestamp: 1}),
+        new Thread({accountId: 'a', id: '4', lastMessageReceivedTimestamp: 4}),
+        new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 3}),
+        new Thread({accountId: 'a', id: '2', lastMessageReceivedTimestamp: 2}),
+        new Thread({accountId: 'a', id: '1', lastMessageReceivedTimestamp: 1}),
       ],
       tests: [{
-        name: 'Item in set saved - new serverId, same sort value',
+        name: 'Item in set saved - new values, same sort value',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'a', serverId: 's-4', clientId: '4', lastMessageReceivedTimestamp: 4, subject: 'hello'})],
+          objects: [new Thread({accountId: 'a', id: '4', lastMessageReceivedTimestamp: 4, subject: 'hello'})],
           type: 'persist',
         },
         nextModels: [
-          new Thread({accountId: 'a', serverId: 's-4', clientId: '4', lastMessageReceivedTimestamp: 4, subject: 'hello'}),
-          new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 3}),
-          new Thread({accountId: 'a', clientId: '2', lastMessageReceivedTimestamp: 2}),
-          new Thread({accountId: 'a', clientId: '1', lastMessageReceivedTimestamp: 1}),
+          new Thread({accountId: 'a', id: '4', lastMessageReceivedTimestamp: 4, subject: 'hello'}),
+          new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: 'a', id: '2', lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: 'a', id: '1', lastMessageReceivedTimestamp: 1}),
         ],
         mustUpdate: false,
         mustTrigger: true,
@@ -113,14 +106,14 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
         name: 'Item in set saved - new sort value',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'a', clientId: '5', lastMessageReceivedTimestamp: 3.5})],
+          objects: [new Thread({accountId: 'a', id: '5', lastMessageReceivedTimestamp: 3.5})],
           type: 'persist',
         },
         nextModels: [
-          new Thread({accountId: 'a', clientId: '4', lastMessageReceivedTimestamp: 4}),
-          new Thread({accountId: 'a', clientId: '5', lastMessageReceivedTimestamp: 3.5}),
-          new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 3}),
-          new Thread({accountId: 'a', clientId: '2', lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: 'a', id: '4', lastMessageReceivedTimestamp: 4}),
+          new Thread({accountId: 'a', id: '5', lastMessageReceivedTimestamp: 3.5}),
+          new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: 'a', id: '2', lastMessageReceivedTimestamp: 2}),
         ],
         mustUpdate: true,
         mustTrigger: true,
@@ -128,7 +121,7 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
         name: 'Item saved - does not match query clauses, offset > 0',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'b', clientId: '5', lastMessageReceivedTimestamp: 5})],
+          objects: [new Thread({accountId: 'b', id: '5', lastMessageReceivedTimestamp: 5})],
           type: 'persist',
         },
         nextModels: 'unchanged',
@@ -137,7 +130,7 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
         name: 'Item saved - matches query clauses',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'a', clientId: '5', lastMessageReceivedTimestamp: -2})],
+          objects: [new Thread({accountId: 'a', id: '5', lastMessageReceivedTimestamp: -2})],
           type: 'persist',
         },
         mustUpdate: true,
@@ -145,33 +138,33 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
         name: 'Item in set saved - no longer matches query clauses',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'b', clientId: '4', lastMessageReceivedTimestamp: 4})],
+          objects: [new Thread({accountId: 'b', id: '4', lastMessageReceivedTimestamp: 4})],
           type: 'persist',
         },
         nextModels: [
-          new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 3}),
-          new Thread({accountId: 'a', clientId: '2', lastMessageReceivedTimestamp: 2}),
-          new Thread({accountId: 'a', clientId: '1', lastMessageReceivedTimestamp: 1}),
+          new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: 'a', id: '2', lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: 'a', id: '1', lastMessageReceivedTimestamp: 1}),
         ],
         mustUpdate: true,
       }, {
         name: 'Item in set deleted',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'a', clientId: '4'})],
+          objects: [new Thread({accountId: 'a', id: '4'})],
           type: 'unpersist',
         },
         nextModels: [
-          new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 3}),
-          new Thread({accountId: 'a', clientId: '2', lastMessageReceivedTimestamp: 2}),
-          new Thread({accountId: 'a', clientId: '1', lastMessageReceivedTimestamp: 1}),
+          new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: 'a', id: '2', lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: 'a', id: '1', lastMessageReceivedTimestamp: 1}),
         ],
         mustUpdate: true,
       }, {
         name: 'Item not in set deleted',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'a', clientId: '5'})],
+          objects: [new Thread({accountId: 'a', id: '5'})],
           type: 'unpersist',
         },
         nextModels: 'unchanged',
@@ -184,16 +177,16 @@ fdescribe("QuerySubscription", function QuerySubscriptionSpecs() {
         Thread.attributes.unread.descending(),
       ]),
       lastModels: [
-        new Thread({accountId: 'a', clientId: '1', lastMessageReceivedTimestamp: 1, unread: true}),
-        new Thread({accountId: 'a', clientId: '2', lastMessageReceivedTimestamp: 1, unread: false}),
-        new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 1, unread: false}),
-        new Thread({accountId: 'a', clientId: '4', lastMessageReceivedTimestamp: 2, unread: true}),
+        new Thread({accountId: 'a', id: '1', lastMessageReceivedTimestamp: 1, unread: true}),
+        new Thread({accountId: 'a', id: '2', lastMessageReceivedTimestamp: 1, unread: false}),
+        new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 1, unread: false}),
+        new Thread({accountId: 'a', id: '4', lastMessageReceivedTimestamp: 2, unread: true}),
       ],
       tests: [{
         name: 'Item in set saved, secondary sort order changed',
         change: {
           objectClass: Thread.name,
-          objects: [new Thread({accountId: 'a', clientId: '3', lastMessageReceivedTimestamp: 1, unread: true})],
+          objects: [new Thread({accountId: 'a', id: '3', lastMessageReceivedTimestamp: 1, unread: true})],
           type: 'persist',
         },
         mustUpdate: true,
