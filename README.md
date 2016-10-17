@@ -38,7 +38,7 @@ components build queries and display the resulting data.
 
 ### Defining a Model:
 
-```
+```js
 export default class Note extends Model {
   static attributes = Object.assign(Model.attributes, {
     name: Attributes.String({
@@ -61,7 +61,7 @@ export default class Note extends Model {
 
 ### Saving a Model:
 
-```
+```js
 const note = new Note({
   name: 'Untitled',
   content: 'Write your note here!',
@@ -74,7 +74,7 @@ database.inTransaction((t) => {
 
 ### Querying for Models:
 
-```
+```js
 database
   .findAll(Note)
   .where({name: 'Untitled'})
@@ -86,7 +86,7 @@ database
 
 ### Observing a query:
 
-```
+```js
 componentDidMount() {
   const query = database
     .findAll(Note)
