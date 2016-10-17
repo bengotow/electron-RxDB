@@ -34,7 +34,7 @@ export default class SidebarItem extends React.Component {
   _onBlur = () => {
     const item = this.props.item;
     item.name = ReactDOM.findDOMNode(this).innerText;
-    window.dbStore.inTransaction((t) => {
+    window.Database.inTransaction((t) => {
       t.persistModel(item);
     });
     this.setState({editing: null});

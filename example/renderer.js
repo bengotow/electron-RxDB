@@ -3,7 +3,7 @@ import Container from './src/components/container';
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-window.dbStore = new DatabaseStore({
+window.Database = new DatabaseStore({
   primary: true,
   databasePath: 'sqlite.db',
   databaseVersion: "1",

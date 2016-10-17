@@ -10,7 +10,7 @@ export default class Detail extends React.Component {
     item.content = this.refs.content.innerHTML;
     item.name = this.refs.name.innerText;
 
-    window.dbStore.inTransaction((t) => {
+    window.Database.inTransaction((t) => {
       return t.persistModel(item);
     });
   }
@@ -20,7 +20,7 @@ export default class Detail extends React.Component {
   }
 
   _onDelete = () => {
-    window.dbStore.inTransaction((t) => {
+    window.Database.inTransaction((t) => {
       return t.unpersistModel(this.props.item);
     });
   }
