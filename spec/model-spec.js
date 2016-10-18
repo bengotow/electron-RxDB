@@ -1,6 +1,6 @@
 /* eslint quote-props: 0 */
 import Model from '../lib/model';
-import Utils from '../lib/utils';
+import {isTempId} from '../lib/utils';
 import Attributes from '../lib/attributes';
 
 class SubSubmodel extends Model {
@@ -58,8 +58,8 @@ describe("Model", function modelSpecs() {
     });
 
     it("automatically assigns an id to the model if no id is provided", () => {
-      const m = new Model;
-      expect(Utils.isTempId(m.id)).toBe(true);
+      const m = new Model();
+      expect(isTempId(m.id)).toBe(true);
     });
   });
 

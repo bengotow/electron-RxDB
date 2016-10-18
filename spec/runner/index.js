@@ -1,6 +1,6 @@
-const {app, BrowserWindow} = require('electron');
-
+import {app, BrowserWindow} from 'electron';
 import Coordinator from '../../lib/browser/coordinator';
+
 global.databaseCoordinator = new Coordinator();
 
 function createMainWindow() {

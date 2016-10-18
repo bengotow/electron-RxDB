@@ -6,3 +6,4 @@
 /sqlite-test.db-wal
 /sqlite-test.db-shm
 /sqlite-test.db
+/npm-debug.log

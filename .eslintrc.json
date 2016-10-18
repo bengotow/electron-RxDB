@@ -9,6 +9,7 @@
     "jasmine": true
   },
   "rules": {
+    "arrow-parens": "off",
     "arrow-body-style": "off",
     "prefer-arrow-callback": ["error", {"allowNamedFunctions": true}],
     "eqeqeq": ["error", "smart"],
@@ -16,13 +17,20 @@
     "object-curly-spacing": "off",
     "max-len": "off",
     "new-cap": ["error", {"capIsNew": false}],
+    "newline-per-chained-call": "off",
     "no-console": "off",
+    "no-plusplus": "off",
     "no-constant-condition": "off",
+    "no-mixed-operators": "off",
+    "no-continue": "off",
     "no-loop-func": "off",
+    "no-lonely-if": "off",
     "no-shadow": "error",
     "no-underscore-dangle": "off",
     "object-shorthand": "off",
     "quotes": "off",
+    "class-methods-use-this": "off",
+    "import/extensions": ["error", "never"],
     "quote-props": ["error", "consistent-as-needed", { "keywords": true }],
     "no-param-reassign": ["error", { "props": false }],
     "semi": "off",
@@ -32,6 +40,6 @@
     "react/sort-comp": "error"
   },
   "settings": {
-    "import/resolver": {"node": {"extensions": [".es6", ".jsx", ".coffee", ".json", ".cjsx", ".js"]}}
+    "import/core-modules": [ "electron", "jasmine" ]
   }
 }

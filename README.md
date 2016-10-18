@@ -160,3 +160,10 @@ npm test
 
 You can skip certain tests (temporarily) with `xit` and `xdescribe`,
 or focus on only certain tests with `fit` and `fdescribe`.
+
+#### Running the Linter
+
+```
+npm install
+npm run lint
+```

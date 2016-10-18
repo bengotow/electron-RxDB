@@ -1,7 +1,7 @@
 const app = require('electron').remote.app;
 const Jasmine = require('jasmine');
-const jasmineInstance = new Jasmine();
 
+const jasmineInstance = new Jasmine();
 jasmineInstance.loadConfigFile('spec/support/jasmine.json');
 jasmineInstance.onComplete(() => {
   app.quit();
