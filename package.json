@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "better-sqlite3": "bengotow/better-sqlite3#30297b0c9448379dd8d803b860351218c5ee3035",
+    "better-sqlite3": "git+https://github.com/bengotow/better-sqlite3.git#a888061ad334c76d2db4c06554c90785cc6e7cce",
     "lru-cache": "^4.0.1",
     "node-gyp": "^3.4.0",
     "promise-queue": "^2.2.3",

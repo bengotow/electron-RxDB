@@ -1,4 +1,6 @@
-sudo: false
+language: node_js
+node_js:
+  - 4.2
 
 addons:
   apt:
@@ -14,20 +16,8 @@ addons:
     - xvfb
     - rpm
 
-matrix:
-  include:
-  - os: linux
-    env: NODE_VERSION=4.2 CC=gcc-4.8 CXX=g++-4.8
-
-install:
-- echo $CC
-- echo $CXX
-- clang --version
-- if [ "$CC" = "gcc-4.8" ]; then gcc-4.8 -v; else gcc -v; fi
-- git clone https://github.com/creationix/nvm.git /tmp/.nvm
-- source /tmp/.nvm/nvm.sh
-- nvm install $NODE_VERSION
-- nvm use --delete-prefix $NODE_VERSION
+env:
+  - CC=gcc-4.8 CXX=g++-4.8
 
 before_script:
 - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
@@ -36,10 +26,5 @@ before_script:
   fi
 
 script:
-- npm install
 - npm run lint
 - npm test
-
-cache:
-  directories:
-    - node_modules
