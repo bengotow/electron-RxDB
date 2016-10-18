@@ -1,6 +1,6 @@
 # RxDB
 
-![](https://travis-ci.org/bengotow/electron-RxDB.svg?branch=master) <a href="https://travis-ci.org/bengotow/electron-RxDB">
+<a href="https://travis-ci.org/bengotow/electron-RxDB">![](https://travis-ci.org/bengotow/electron-RxDB.svg?branch=master)</a>
 
 RxDB is a high-performance, observable object store built on top of SQLite.
 RxDB draws inspiration from CoreData and Relay and is intended for
