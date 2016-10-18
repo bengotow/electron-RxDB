@@ -1,7 +1,7 @@
 import QueryRange from '../lib/query-range';
 import MutableQueryResultSet from '../lib/mutable-query-result-set';
 import QuerySubscription from '../lib/query-subscription';
-import Utils from '../lib/utils';
+import * as Utils from '../lib/utils';
 
 import {Database, Thread} from './fixtures';
 

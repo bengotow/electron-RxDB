@@ -16,6 +16,8 @@
     "max-len": "off",
     "new-cap": ["error", {"capIsNew": false}],
     "newline-per-chained-call": "off",
+    "no-plusplus": "off",
+    "no-mixed-operators": "off",
     "no-console": "off",
     "no-continue": "off",
     "no-lonely-if": "off",
