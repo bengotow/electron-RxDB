@@ -264,11 +264,11 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
       beforeEach(() => {
         TestModel.configureWithAllAttributes();
         this.m = new TestModel({
-          'id': 'local-6806434c-b0cd',
-          'datetime': new Date(),
-          'string': 'hello world',
-          'boolean': true,
-          'number': 15,
+          id: 'local-6806434c-b0cd',
+          datetime: new Date(),
+          string: 'hello world',
+          boolean: true,
+          number: 15,
         });
       });
 
