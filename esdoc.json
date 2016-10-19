@@ -1,0 +1,24 @@
+{
+  "source": "./lib",
+  "destination": "./esdoc",
+  "plugins": [
+    {"name": "esdoc-es7-plugin"}
+  ],
+  "access": ["public", "protected"],
+  "autoPrivate": true,
+  "unexportIdentifier": false,
+  "undocumentIdentifier": true,
+  "builtinExternal": true,
+  "title": "electron-RxDB",
+  "coverage": true,
+  "index": "./README.md",
+  "package": "./package.json",
+  "test": {
+    "type": "mocha",
+    "source": "./spec"
+  },
+  "manual": {
+    "overview": ["./manual/database.md"],
+    "changelog": ["./CHANGELOG.md"]
+  }
+}
