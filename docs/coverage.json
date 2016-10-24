@@ -1,7 +1,7 @@
 {
-  "coverage": "34.14%",
-  "expectCount": 246,
-  "actualCount": 84,
+  "coverage": "35.65%",
+  "expectCount": 230,
+  "actualCount": 82,
   "files": {
     "lib/attributes/attribute.js": {
       "expectCount": 12,
@@ -94,15 +94,14 @@
     },
     "lib/browser/coordinator.js": {
       "expectCount": 7,
-      "actualCount": 0,
+      "actualCount": 1,
       "undocumentLines": [
-        4,
-        5,
-        50,
+        15,
         60,
-        18,
-        29,
-        22
+        70,
+        28,
+        39,
+        32
       ]
     },
     "lib/database-change-record.js": {
@@ -114,30 +113,6 @@
         14,
         15,
         62
-      ]
-    },
-    "lib/database-change-record-debouncer.js": {
-      "expectCount": 3,
-      "actualCount": 1,
-      "undocumentLines": [
-        42,
-        9
-      ]
-    },
-    "lib/database-object-registry.js": {
-      "expectCount": 11,
-      "actualCount": 1,
-      "undocumentLines": [
-        19,
-        39,
-        23,
-        27,
-        35,
-        57,
-        86,
-        76,
-        68,
-        61
       ]
     },
     "lib/database-store.js": {
@@ -287,16 +262,6 @@
         171
       ]
     },
-    "lib/query-subscription-pool.js": {
-      "expectCount": 5,
-      "actualCount": 1,
-      "undocumentLines": [
-        19,
-        39,
-        12,
-        48
-      ]
-    },
     "lib/attributes/sort-order.js": {
       "expectCount": 6,
       "actualCount": 1,
@@ -325,6 +290,15 @@
       "actualCount": 0,
       "undocumentLines": [
         2
+      ]
+    },
+    "lib/database-object-registry.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        88,
+        78,
+        70
       ]
     }
   }

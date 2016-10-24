@@ -60,18 +60,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "electron-coresqlite/lib/database-change-record-debouncer.js~databasechangerecorddebouncer",
-    "class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html",
-    "<span>DatabaseChangeRecordDebouncer</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-change-record-debouncer.js</span>",
-    "class"
-  ],
-  [
-    "electron-coresqlite/lib/database-object-registry.js~databaseobjectregistry",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html",
-    "<span>DatabaseObjectRegistry</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-object-registry.js</span>",
-    "class"
-  ],
-  [
     "electron-coresqlite/lib/database-store.js~databasestore",
     "class/lib/database-store.js~DatabaseStore.html",
     "<span>DatabaseStore</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-store.js</span>",
@@ -135,12 +123,6 @@ window.esdocSearchIndex = [
     "electron-coresqlite/lib/query-subscription.js~querysubscription",
     "class/lib/query-subscription.js~QuerySubscription.html",
     "<span>QuerySubscription</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/query-subscription.js</span>",
-    "class"
-  ],
-  [
-    "electron-coresqlite/lib/query-subscription-pool.js~querysubscriptionpool",
-    "class/lib/query-subscription-pool.js~QuerySubscriptionPool.html",
-    "<span>QuerySubscriptionPool</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/query-subscription-pool.js</span>",
     "class"
   ],
   [
@@ -793,13 +775,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber332",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber348",
     "DatabaseTransaction _writeModels model collection attributes query building should page association records into multiple queries correctly",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber348",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber332",
     "DatabaseTransaction _writeModels model collection attributes query building should page association records into multiple queries correctly",
     "test"
   ],
@@ -1459,13 +1441,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber43",
+    "test-file/spec/query-range-spec.js.html#lineNumber28",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber38",
+    "test-file/spec/query-range-spec.js.html#lineNumber48",
+    "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/query-range-spec.js.html#lineNumber43",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
@@ -1477,13 +1465,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber28",
-    "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/query-range-spec.js.html#lineNumber48",
+    "test-file/spec/query-range-spec.js.html#lineNumber38",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
@@ -2220,18 +2202,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "lib/database-change-record-debouncer.js~databasechangerecorddebouncer#accumulate",
-    "class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html#instance-method-accumulate",
-    "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#accumulate",
-    "method"
-  ],
-  [
-    "lib/database-change-record-debouncer.js~databasechangerecorddebouncer#constructor",
-    "class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html#instance-constructor-constructor",
-    "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#constructor",
-    "method"
-  ],
-  [
     "lib/database-change-record.js",
     "file/lib/database-change-record.js.html",
     "lib/database-change-record.js",
@@ -2272,48 +2242,6 @@ window.esdocSearchIndex = [
     "file/lib/database-object-registry.js.html",
     "lib/database-object-registry.js",
     "file"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#constructor",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-constructor-constructor",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#constructor",
-    "method"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#deserialize",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-method-deserialize",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#deserialize",
-    "method"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#get",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-method-get",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#get",
-    "method"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#getallconstructors",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-method-getAllConstructors",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#getAllConstructors",
-    "method"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#isinregistry",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-method-isInRegistry",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#isInRegistry",
-    "method"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#register",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-method-register",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#register",
-    "method"
-  ],
-  [
-    "lib/database-object-registry.js~databaseobjectregistry#unregister",
-    "class/lib/database-object-registry.js~DatabaseObjectRegistry.html#instance-method-unregister",
-    "lib/database-object-registry.js~DatabaseObjectRegistry#unregister",
-    "method"
   ],
   [
     "lib/database-setup-query-builder.js",
@@ -2902,30 +2830,6 @@ window.esdocSearchIndex = [
     "file/lib/query-subscription-pool.js.html",
     "lib/query-subscription-pool.js",
     "file"
-  ],
-  [
-    "lib/query-subscription-pool.js~querysubscriptionpool#add",
-    "class/lib/query-subscription-pool.js~QuerySubscriptionPool.html#instance-method-add",
-    "lib/query-subscription-pool.js~QuerySubscriptionPool#add",
-    "method"
-  ],
-  [
-    "lib/query-subscription-pool.js~querysubscriptionpool#addprivatesubscription",
-    "class/lib/query-subscription-pool.js~QuerySubscriptionPool.html#instance-method-addPrivateSubscription",
-    "lib/query-subscription-pool.js~QuerySubscriptionPool#addPrivateSubscription",
-    "method"
-  ],
-  [
-    "lib/query-subscription-pool.js~querysubscriptionpool#constructor",
-    "class/lib/query-subscription-pool.js~QuerySubscriptionPool.html#instance-constructor-constructor",
-    "lib/query-subscription-pool.js~QuerySubscriptionPool#constructor",
-    "method"
-  ],
-  [
-    "lib/query-subscription-pool.js~querysubscriptionpool#printsubscriptions",
-    "class/lib/query-subscription-pool.js~QuerySubscriptionPool.html#instance-method-printSubscriptions",
-    "lib/query-subscription-pool.js~QuerySubscriptionPool#printSubscriptions",
-    "method"
   ],
   [
     "lib/query-subscription.js",

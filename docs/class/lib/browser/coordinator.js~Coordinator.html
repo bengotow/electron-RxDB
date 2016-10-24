@@ -32,9 +32,7 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
@@ -43,7 +41,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
@@ -72,13 +69,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Coordinator from &apos;<span><a href="file/lib/browser/coordinator.js.html#lineNumber4">electron-coresqlite/lib/browser/coordinator.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Coordinator from &apos;<span><a href="file/lib/browser/coordinator.js.html#lineNumber14">electron-coresqlite/lib/browser/coordinator.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/lib/browser/coordinator.js.html#lineNumber4">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/lib/browser/coordinator.js.html#lineNumber14">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -98,7 +95,13 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>To use RxDB, you need to attach the coordinator in your Electron browser process.
+It handles message dispatch across windows and manages the state of database
+files when they need to be created before use. Just import it and instantiate one:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import {Coordinator} from &apos;electron-rxdb&apos;;
+global._coordinator = new Coordinator();</code>
+</code></pre>
+</div>
 
   
 
@@ -294,7 +297,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber5">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber15">source</a></span></span>
     </span>
   </h3>
 
@@ -338,7 +341,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
@@ -400,7 +403,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber70">source</a></span></span>
     </span>
   </h3>
 
@@ -469,7 +472,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber18">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
@@ -519,7 +522,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber29">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber39">source</a></span></span>
     </span>
   </h3>
 
@@ -575,7 +578,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/browser/coordinator.js.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 

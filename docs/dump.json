@@ -2723,7 +2723,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {BrowserWindow, ipcMain} from 'electron';\nimport fs from 'fs';\n\nexport default class Coordinator {\n  constructor() {\n    this._phase = 'setup';\n\n    ipcMain.on('database-trigger', (event, ...args) => {\n      const sender = BrowserWindow.fromWebContents(event.sender);\n      BrowserWindow.getAllWindows().forEach((win) => {\n        if (win !== sender) {\n          win.webContents.send('database-trigger', ...args);\n        }\n      });\n    });\n  }\n\n  phase() {\n    return this._phase;\n  }\n\n  setPhase(phase) {\n    this._phase = phase;\n    BrowserWindow.getAllWindows().forEach((win) => {\n      win.webContents.send('database-phase-change');\n    });\n  }\n\n  recoverFromFatalDatabaseError(databasePath) {\n    setTimeout(() => {\n      if (this._databasePhase === 'close') {\n        return;\n      }\n      this.setDatabasePhase('close');\n      BrowserWindow.getAllWindows().forEach((win) => {\n        win.hide();\n      });\n      this._deleteDatabase(databasePath, () => {\n        this.setDatabasePhase('setup');\n        BrowserWindow.getAllWindows().forEach((win) => {\n          win.reload();\n          win.once('ready-to-show', () => {\n            win.show();\n          });\n        });\n      });\n    }, 0);\n  }\n\n  deleteDatabase(databasePath, callback) {\n    this.deleteFileWithRetry(`${databasePath}-wal`);\n    this.deleteFileWithRetry(`${databasePath}-shm`);\n    this.deleteFileWithRetry(databasePath, callback);\n  }\n\n  // On Windows, removing a file can fail if a process still has it open. When\n  // we close windows and log out, we need to wait for these processes to completely\n  // exit and then delete the file. It's hard to tell when this happens, so we just\n  // retry the deletion a few times.\n  deleteFileWithRetry(filePath, callback = () => {}, retries = 5) {\n    const callbackWithRetry = (err) => {\n      if (err && (err.message.indexOf('no such file') === -1)) {\n        console.log(`File Error: ${err.message} - retrying in 150msec`);\n        setTimeout(() => {\n          this.deleteFileWithRetry(filePath, callback, retries - 1);\n        }, 150);\n      } else {\n        callback(null);\n      }\n    }\n\n    if (!fs.existsSync(filePath)) {\n      callback(null);\n      return\n    }\n\n    if (retries > 0) {\n      fs.unlink(filePath, callbackWithRetry);\n    } else {\n      fs.unlink(filePath, callback);\n    }\n  }\n}\n"
+    "content": "import {BrowserWindow, ipcMain} from 'electron';\nimport fs from 'fs';\n\n/**\nTo use RxDB, you need to attach the coordinator in your Electron browser process.\nIt handles message dispatch across windows and manages the state of database\nfiles when they need to be created before use. Just import it and instantiate one:\n\n```js\nimport {Coordinator} from 'electron-rxdb';\nglobal._coordinator = new Coordinator();\n```\n*/\nexport default class Coordinator {\n  constructor() {\n    this._phase = 'setup';\n\n    ipcMain.on('database-trigger', (event, ...args) => {\n      const sender = BrowserWindow.fromWebContents(event.sender);\n      BrowserWindow.getAllWindows().forEach((win) => {\n        if (win !== sender) {\n          win.webContents.send('database-trigger', ...args);\n        }\n      });\n    });\n  }\n\n  phase() {\n    return this._phase;\n  }\n\n  setPhase(phase) {\n    this._phase = phase;\n    BrowserWindow.getAllWindows().forEach((win) => {\n      win.webContents.send('database-phase-change');\n    });\n  }\n\n  recoverFromFatalDatabaseError(databasePath) {\n    setTimeout(() => {\n      if (this._databasePhase === 'close') {\n        return;\n      }\n      this.setDatabasePhase('close');\n      BrowserWindow.getAllWindows().forEach((win) => {\n        win.hide();\n      });\n      this._deleteDatabase(databasePath, () => {\n        this.setDatabasePhase('setup');\n        BrowserWindow.getAllWindows().forEach((win) => {\n          win.reload();\n          win.once('ready-to-show', () => {\n            win.show();\n          });\n        });\n      });\n    }, 0);\n  }\n\n  deleteDatabase(databasePath, callback) {\n    this.deleteFileWithRetry(`${databasePath}-wal`);\n    this.deleteFileWithRetry(`${databasePath}-shm`);\n    this.deleteFileWithRetry(databasePath, callback);\n  }\n\n  // On Windows, removing a file can fail if a process still has it open. When\n  // we close windows and log out, we need to wait for these processes to completely\n  // exit and then delete the file. It's hard to tell when this happens, so we just\n  // retry the deletion a few times.\n  deleteFileWithRetry(filePath, callback = () => {}, retries = 5) {\n    const callbackWithRetry = (err) => {\n      if (err && (err.message.indexOf('no such file') === -1)) {\n        console.log(`File Error: ${err.message} - retrying in 150msec`);\n        setTimeout(() => {\n          this.deleteFileWithRetry(filePath, callback, retries - 1);\n        }, 150);\n      } else {\n        callback(null);\n      }\n    }\n\n    if (!fs.existsSync(filePath)) {\n      callback(null);\n      return\n    }\n\n    if (retries > 0) {\n      fs.unlink(filePath, callbackWithRetry);\n    } else {\n      fs.unlink(filePath, callback);\n    }\n  }\n}\n"
   },
   {
     "__docId__": 119,
@@ -2737,9 +2737,8 @@
     "export": true,
     "importPath": "electron-coresqlite/lib/browser/coordinator.js",
     "importStyle": "Coordinator",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "To use RxDB, you need to attach the coordinator in your Electron browser process.\nIt handles message dispatch across windows and manages the state of database\nfiles when they need to be created before use. Just import it and instantiate one:\n\n```js\nimport {Coordinator} from 'electron-rxdb';\nglobal._coordinator = new Coordinator();\n```",
+    "lineNumber": 14,
     "interface": false
   },
   {
@@ -2752,7 +2751,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 5,
+    "lineNumber": 15,
     "undocument": true,
     "params": [],
     "generator": false
@@ -2767,7 +2766,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#_phase",
     "access": null,
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 16,
     "undocument": true,
     "type": {
       "types": [
@@ -2785,7 +2784,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#phase",
     "access": null,
     "description": null,
-    "lineNumber": 18,
+    "lineNumber": 28,
     "undocument": true,
     "params": [],
     "return": {
@@ -2805,7 +2804,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#setPhase",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 32,
     "undocument": true,
     "params": [
       {
@@ -2827,7 +2826,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#_phase",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 33,
     "undocument": true,
     "type": {
       "types": [
@@ -2845,7 +2844,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#recoverFromFatalDatabaseError",
     "access": null,
     "description": null,
-    "lineNumber": 29,
+    "lineNumber": 39,
     "undocument": true,
     "params": [
       {
@@ -2867,7 +2866,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#deleteDatabase",
     "access": null,
     "description": null,
-    "lineNumber": 50,
+    "lineNumber": 60,
     "undocument": true,
     "params": [
       {
@@ -2895,7 +2894,7 @@
     "longname": "lib/browser/coordinator.js~Coordinator#deleteFileWithRetry",
     "access": null,
     "description": null,
-    "lineNumber": 60,
+    "lineNumber": 70,
     "undocument": true,
     "params": [
       {
@@ -2972,7 +2971,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "/**\nDatabaseChangeRecordDebouncer.accumulate is a guarded version of trigger that can accumulate changes.\nThis means that even if you're a bad person and call `persistModel` 100 times\nfrom 100 task objects queued at the same time, it will only create one\n`trigger` event. This is important since the database triggering impacts\nthe entire application.\n*/\nexport default class DatabaseChangeRecordDebouncer {\n  constructor({onTrigger, maxTriggerDelay}) {\n    this._options = {onTrigger, maxTriggerDelay};\n    this._record = null;\n  }\n\n  _flushAfterDelay() {\n    this._cancelFlush();\n    this._flushTimer = setTimeout(() => this._flush(), this._options.maxTriggerDelay);\n  }\n\n  _cancelFlush() {\n    if (this._flushTimer) {\n      clearTimeout(this._flushTimer);\n      this._flushTimer = null;\n    }\n  }\n\n  _flush() {\n    if (!this._record) {\n      return;\n    }\n\n    this._cancelFlush();\n    this._options.onTrigger(this._record);\n    this._record = null;\n\n    if (this._promiseResolve) {\n      this._promiseResolve();\n      this._promiseResolve = null;\n      this._promise = null;\n    }\n  }\n\n  accumulate(change) {\n    this._promise = this._promise || new Promise((resolve) => {\n      this._promiseResolve = resolve;\n    });\n\n    if (this._record && this._record.canAppend(change)) {\n      this._record.append(change);\n    } else {\n      this._flush();\n      this._record = change;\n      this._flushAfterDelay();\n    }\n\n    return this._promise;\n  }\n}\n"
+    "content": "/**\nDatabaseChangeRecordDebouncer.accumulate is a guarded version of trigger that can accumulate changes.\nThis means that even if you're a bad person and call `persistModel` 100 times\nfrom 100 task objects queued at the same time, it will only create one\n`trigger` event. This is important since the database triggering impacts\nthe entire application.\n\n@private\n*/\nexport default class DatabaseChangeRecordDebouncer {\n  constructor({onTrigger, maxTriggerDelay}) {\n    this._options = {onTrigger, maxTriggerDelay};\n    this._record = null;\n  }\n\n  _flushAfterDelay() {\n    this._cancelFlush();\n    this._flushTimer = setTimeout(() => this._flush(), this._options.maxTriggerDelay);\n  }\n\n  _cancelFlush() {\n    if (this._flushTimer) {\n      clearTimeout(this._flushTimer);\n      this._flushTimer = null;\n    }\n  }\n\n  _flush() {\n    if (!this._record) {\n      return;\n    }\n\n    this._cancelFlush();\n    this._options.onTrigger(this._record);\n    this._record = null;\n\n    if (this._promiseResolve) {\n      this._promiseResolve();\n      this._promiseResolve = null;\n      this._promise = null;\n    }\n  }\n\n  accumulate(change) {\n    this._promise = this._promise || new Promise((resolve) => {\n      this._promiseResolve = resolve;\n    });\n\n    if (this._record && this._record.canAppend(change)) {\n      this._record.append(change);\n    } else {\n      this._flush();\n      this._record = change;\n      this._flushAfterDelay();\n    }\n\n    return this._promise;\n  }\n}\n"
   },
   {
     "__docId__": 131,
@@ -2982,12 +2981,12 @@
     "name": "DatabaseChangeRecordDebouncer",
     "memberof": "lib/database-change-record-debouncer.js",
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer",
-    "access": null,
+    "access": "private",
     "export": true,
     "importPath": "electron-coresqlite/lib/database-change-record-debouncer.js",
     "importStyle": "DatabaseChangeRecordDebouncer",
     "description": "DatabaseChangeRecordDebouncer.accumulate is a guarded version of trigger that can accumulate changes.\nThis means that even if you're a bad person and call `persistModel` 100 times\nfrom 100 task objects queued at the same time, it will only create one\n`trigger` event. This is important since the database triggering impacts\nthe entire application.",
-    "lineNumber": 8,
+    "lineNumber": 10,
     "interface": false
   },
   {
@@ -3000,7 +2999,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 11,
     "undocument": true,
     "params": [
       {
@@ -3027,7 +3026,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_options",
     "access": null,
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 12,
     "undocument": true,
     "type": {
       "types": [
@@ -3045,7 +3044,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_record",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 13,
     "undocument": true,
     "type": {
       "types": [
@@ -3063,7 +3062,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_flushAfterDelay",
     "access": null,
     "description": null,
-    "lineNumber": 14,
+    "lineNumber": 16,
     "undocument": true,
     "params": [],
     "generator": false
@@ -3078,7 +3077,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_flushTimer",
     "access": null,
     "description": null,
-    "lineNumber": 16,
+    "lineNumber": 18,
     "undocument": true,
     "type": {
       "types": [
@@ -3096,7 +3095,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_cancelFlush",
     "access": null,
     "description": null,
-    "lineNumber": 19,
+    "lineNumber": 21,
     "undocument": true,
     "params": [],
     "generator": false
@@ -3111,7 +3110,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_flushTimer",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -3129,7 +3128,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_flush",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 28,
     "undocument": true,
     "params": [],
     "generator": false
@@ -3144,7 +3143,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_record",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 35,
     "undocument": true,
     "type": {
       "types": [
@@ -3162,7 +3161,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_promiseResolve",
     "access": null,
     "description": null,
-    "lineNumber": 37,
+    "lineNumber": 39,
     "undocument": true,
     "type": {
       "types": [
@@ -3180,7 +3179,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_promise",
     "access": null,
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 40,
     "undocument": true,
     "type": {
       "types": [
@@ -3198,7 +3197,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#accumulate",
     "access": null,
     "description": null,
-    "lineNumber": 42,
+    "lineNumber": 44,
     "undocument": true,
     "params": [
       {
@@ -3225,7 +3224,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_promise",
     "access": null,
     "description": null,
-    "lineNumber": 43,
+    "lineNumber": 45,
     "undocument": true,
     "type": {
       "types": [
@@ -3243,7 +3242,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_promiseResolve",
     "access": null,
     "description": null,
-    "lineNumber": 44,
+    "lineNumber": 46,
     "undocument": true,
     "type": {
       "types": [
@@ -3261,7 +3260,7 @@
     "longname": "lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer#_record",
     "access": null,
     "description": null,
-    "lineNumber": 51,
+    "lineNumber": 53,
     "undocument": true,
     "type": {
       "types": [
@@ -3508,7 +3507,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "/**\n * Public: This keeps track of constructors so we know how to inflate\n * serialized objects.\n *\n * We map constructor string names with factory functions that will return\n * the actual constructor itself.\n *\n * The reason we have an extra function call to return a constructor is so\n * we don't need to `require` all constructors at once on load. We are\n * wasting a very large amount of time on bootup requiring files that may\n * never be used or only used way down the line.\n *\n * If 3rd party packages want to register new inflatable models, they can\n * use `register` and pass the constructor generator along with the name.\n *\n * Note that there is one registry per window.\n */\nclass DatabaseObjectRegistry {\n  constructor() {\n    this._constructorFactories = {};\n  }\n\n  get(name) {\n    return this._constructorFactories[name].call(null);\n  }\n\n  getAllConstructors() {\n    const constructors = []\n    for (const name of Object.keys(this._constructorFactories)) {\n      constructors.push(this.get(name));\n    }\n    return constructors;\n  }\n\n  isInRegistry(name) {\n    return !!this._constructorFactories[name];\n  }\n\n  deserialize(name, dataJSON) {\n    let data = dataJSON;\n    if (typeof data === \"string\") {\n      data = JSON.parse(dataJSON);\n    }\n\n    const constructor = this.get(name);\n\n    if (typeof constructor !== \"function\") {\n      throw new Error(`Unsure of how to inflate ${JSON.stringify(data)}. Your constructor factory must return a class constructor.`);\n    }\n\n    const object = new constructor();\n    object.fromJSON(data);\n\n    return object;\n  }\n\n  register(name, constructorFactory) {\n    this._constructorFactories[name] = constructorFactory;\n  }\n\n  unregister(name) {\n    delete this._constructorFactories[name];\n  }\n}\n\nconst registry = new DatabaseObjectRegistry();\n\nexport function reviver(k, v) {\n  if (!v || !v.__constructorName) {\n    return v;\n  }\n  const type = v.__constructorName;\n  return registry.isInRegistry(type) ? registry.deserialize(type, v) : v;\n}\n\nexport function replacer(k, v) {\n  if (typeof v === 'object' && !!v) {\n    const type = this[k].constructor.name;\n    if (DatabaseObjectRegistry.isInRegistry(type)) {\n      v.__constructorName = type;\n    }\n  }\n  return v;\n}\n\nexport default registry;\n"
+    "content": "/**\nThis keeps track of constructors so we know how to inflate\nserialized objects.\n\nWe map constructor string names with factory functions that will return\nthe actual constructor itself.\n\nThe reason we have an extra function call to return a constructor is so\nwe don't need to `require` all constructors at once on load. We are\nwasting a very large amount of time on bootup requiring files that may\nnever be used or only used way down the line.\n\nIf 3rd party packages want to register new inflatable models, they can\nuse `register` and pass the constructor generator along with the name.\n\nNote that there is one registry per window.\n\n@private\n*/\nclass DatabaseObjectRegistry {\n  constructor() {\n    this._constructorFactories = {};\n  }\n\n  get(name) {\n    return this._constructorFactories[name].call(null);\n  }\n\n  getAllConstructors() {\n    const constructors = []\n    for (const name of Object.keys(this._constructorFactories)) {\n      constructors.push(this.get(name));\n    }\n    return constructors;\n  }\n\n  isInRegistry(name) {\n    return !!this._constructorFactories[name];\n  }\n\n  deserialize(name, dataJSON) {\n    let data = dataJSON;\n    if (typeof data === \"string\") {\n      data = JSON.parse(dataJSON);\n    }\n\n    const constructor = this.get(name);\n\n    if (typeof constructor !== \"function\") {\n      throw new Error(`Unsure of how to inflate ${JSON.stringify(data)}. Your constructor factory must return a class constructor.`);\n    }\n\n    const object = new constructor();\n    object.fromJSON(data);\n\n    return object;\n  }\n\n  register(name, constructorFactory) {\n    this._constructorFactories[name] = constructorFactory;\n  }\n\n  unregister(name) {\n    delete this._constructorFactories[name];\n  }\n}\n\nconst registry = new DatabaseObjectRegistry();\n\nexport function reviver(k, v) {\n  if (!v || !v.__constructorName) {\n    return v;\n  }\n  const type = v.__constructorName;\n  return registry.isInRegistry(type) ? registry.deserialize(type, v) : v;\n}\n\nexport function replacer(k, v) {\n  if (typeof v === 'object' && !!v) {\n    const type = this[k].constructor.name;\n    if (DatabaseObjectRegistry.isInRegistry(type)) {\n      v.__constructorName = type;\n    }\n  }\n  return v;\n}\n\nexport default registry;\n"
   },
   {
     "__docId__": 160,
@@ -3523,7 +3522,7 @@
     "importPath": "electron-coresqlite/lib/database-object-registry.js",
     "importStyle": "{reviver}",
     "description": null,
-    "lineNumber": 68,
+    "lineNumber": 70,
     "undocument": true,
     "params": [
       {
@@ -3559,7 +3558,7 @@
     "importPath": "electron-coresqlite/lib/database-object-registry.js",
     "importStyle": "{replacer}",
     "description": null,
-    "lineNumber": 76,
+    "lineNumber": 78,
     "undocument": true,
     "params": [
       {
@@ -3590,12 +3589,12 @@
     "name": "DatabaseObjectRegistry",
     "memberof": "lib/database-object-registry.js",
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry",
-    "access": null,
+    "access": "private",
     "export": true,
     "importPath": "electron-coresqlite/lib/database-object-registry.js",
     "importStyle": null,
-    "description": "Public: This keeps track of constructors so we know how to inflate\nserialized objects.\n\nWe map constructor string names with factory functions that will return\nthe actual constructor itself.\n\nThe reason we have an extra function call to return a constructor is so\nwe don't need to `require` all constructors at once on load. We are\nwasting a very large amount of time on bootup requiring files that may\nnever be used or only used way down the line.\n\nIf 3rd party packages want to register new inflatable models, they can\nuse `register` and pass the constructor generator along with the name.\n\nNote that there is one registry per window.",
-    "lineNumber": 18,
+    "description": "This keeps track of constructors so we know how to inflate\nserialized objects.\n\nWe map constructor string names with factory functions that will return\nthe actual constructor itself.\n\nThe reason we have an extra function call to return a constructor is so\nwe don't need to `require` all constructors at once on load. We are\nwasting a very large amount of time on bootup requiring files that may\nnever be used or only used way down the line.\n\nIf 3rd party packages want to register new inflatable models, they can\nuse `register` and pass the constructor generator along with the name.\n\nNote that there is one registry per window.",
+    "lineNumber": 20,
     "pseudoExport": true,
     "interface": false
   },
@@ -3609,7 +3608,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 19,
+    "lineNumber": 21,
     "undocument": true,
     "params": [],
     "generator": false
@@ -3624,7 +3623,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#_constructorFactories",
     "access": null,
     "description": null,
-    "lineNumber": 20,
+    "lineNumber": 22,
     "undocument": true,
     "type": {
       "types": [
@@ -3642,7 +3641,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#get",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 25,
     "undocument": true,
     "params": [
       {
@@ -3669,7 +3668,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#getAllConstructors",
     "access": null,
     "description": null,
-    "lineNumber": 27,
+    "lineNumber": 29,
     "undocument": true,
     "params": [],
     "return": {
@@ -3689,7 +3688,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#isInRegistry",
     "access": null,
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 37,
     "undocument": true,
     "params": [
       {
@@ -3716,7 +3715,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#deserialize",
     "access": null,
     "description": null,
-    "lineNumber": 39,
+    "lineNumber": 41,
     "undocument": true,
     "params": [
       {
@@ -3749,7 +3748,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#register",
     "access": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 59,
     "undocument": true,
     "params": [
       {
@@ -3777,7 +3776,7 @@
     "longname": "lib/database-object-registry.js~DatabaseObjectRegistry#unregister",
     "access": null,
     "description": null,
-    "lineNumber": 61,
+    "lineNumber": 63,
     "undocument": true,
     "params": [
       {
@@ -3802,7 +3801,7 @@
     "importPath": "electron-coresqlite/lib/database-object-registry.js",
     "importStyle": "registry",
     "description": null,
-    "lineNumber": 86,
+    "lineNumber": 88,
     "undocument": true,
     "type": {
       "types": [
@@ -7864,7 +7863,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "/* eslint global-require: 0 */\nimport QuerySubscription from './query-subscription';\n\n/**\nThe QuerySubscriptionPool maintains a list of all of the query\nsubscriptions in the app. In the future, this class will monitor performance,\nmerge equivalent subscriptions, etc.\n\n@protected\n*/\nexport default class QuerySubscriptionPool {\n  constructor(database) {\n    this._database = database;\n    this._subscriptions = {};\n    this._cleanupChecks = [];\n    this._setup();\n  }\n\n  add(query, callback) {\n    // TODO\n    // if (NylasEnv.inDevMode()) {\n    //   callback._registrationPoint = this._formatRegistrationPoint((new Error).stack);\n    // }\n\n    const key = this._keyForQuery(query);\n    let subscription = this._subscriptions[key];\n    if (!subscription) {\n      subscription = new QuerySubscription(query);\n      this._subscriptions[key] = subscription;\n    }\n\n    subscription.addCallback(callback);\n    return () => {\n      subscription.removeCallback(callback);\n      this._scheduleCleanupCheckForSubscription(key);\n    };\n  }\n\n  addPrivateSubscription(key, subscription, callback) {\n    this._subscriptions[key] = subscription;\n    subscription.addCallback(callback);\n    return () => {\n      subscription.removeCallback(callback);\n      this._scheduleCleanupCheckForSubscription(key);\n    };\n  }\n\n  printSubscriptions() {\n    // TODO\n    // if (!NylasEnv.inDevMode()) {\n    //   console.log(\"printSubscriptions is only available in developer mode.\");\n    //   return;\n    // }\n\n    for (const key of Object.keys(this._subscriptions)) {\n      const subscription = this._subscriptions[key];\n      console.log(key);\n      console.group();\n      for (const callback of subscription._callbacks) {\n        console.log(`${callback._registrationPoint}`);\n      }\n      console.groupEnd();\n    }\n  }\n\n  _scheduleCleanupCheckForSubscription(key) {\n    // We unlisten / relisten to lots of subscriptions and setTimeout is actually\n    // /not/ that fast. Create one timeout for all checks, not one for each.\n    if (this._cleanupChecks.length === 0) {\n      setTimeout(() => this._runCleanupChecks(), 1);\n    }\n    this._cleanupChecks.push(key);\n  }\n\n  _runCleanupChecks() {\n    for (const key of this._cleanupChecks) {\n      const subscription = this._subscriptions[key];\n      if (subscription && (subscription.callbackCount() === 0)) {\n        delete this._subscriptions[key];\n      }\n    }\n    this._cleanupChecks = [];\n  }\n\n  _formatRegistrationPoint(stackString) {\n    const stack = stackString.split('\\n');\n    let ii = 0;\n    let seenRx = false;\n    while (ii < stack.length) {\n      const hasRx = stack[ii].indexOf('rx.lite') !== -1;\n      seenRx = seenRx || hasRx;\n      if (seenRx === true && !hasRx) {\n        break;\n      }\n      ii += 1;\n    }\n\n    return stack.slice(ii, ii + 4).join('\\n');\n  }\n\n  _keyForQuery(query) {\n    return query.sql();\n  }\n\n  _setup() {\n    this._database.listen(this._onChange);\n  }\n\n  _onChange = (record) => {\n    for (const key of Object.keys(this._subscriptions)) {\n      const subscription = this._subscriptions[key];\n      subscription.applyChangeRecord(record);\n    }\n  }\n}\n"
+    "content": "/* eslint global-require: 0 */\nimport QuerySubscription from './query-subscription';\n\n/**\nThe QuerySubscriptionPool maintains a list of all of the query\nsubscriptions in the app. In the future, this class will monitor performance,\nmerge equivalent subscriptions, etc.\n\n@private\n*/\nexport default class QuerySubscriptionPool {\n  constructor(database) {\n    this._database = database;\n    this._subscriptions = {};\n    this._cleanupChecks = [];\n    this._setup();\n  }\n\n  add(query, callback) {\n    // TODO\n    // if (NylasEnv.inDevMode()) {\n    //   callback._registrationPoint = this._formatRegistrationPoint((new Error).stack);\n    // }\n\n    const key = this._keyForQuery(query);\n    let subscription = this._subscriptions[key];\n    if (!subscription) {\n      subscription = new QuerySubscription(query);\n      this._subscriptions[key] = subscription;\n    }\n\n    subscription.addCallback(callback);\n    return () => {\n      subscription.removeCallback(callback);\n      this._scheduleCleanupCheckForSubscription(key);\n    };\n  }\n\n  addPrivateSubscription(key, subscription, callback) {\n    this._subscriptions[key] = subscription;\n    subscription.addCallback(callback);\n    return () => {\n      subscription.removeCallback(callback);\n      this._scheduleCleanupCheckForSubscription(key);\n    };\n  }\n\n  printSubscriptions() {\n    // TODO\n    // if (!NylasEnv.inDevMode()) {\n    //   console.log(\"printSubscriptions is only available in developer mode.\");\n    //   return;\n    // }\n\n    for (const key of Object.keys(this._subscriptions)) {\n      const subscription = this._subscriptions[key];\n      console.log(key);\n      console.group();\n      for (const callback of subscription._callbacks) {\n        console.log(`${callback._registrationPoint}`);\n      }\n      console.groupEnd();\n    }\n  }\n\n  _scheduleCleanupCheckForSubscription(key) {\n    // We unlisten / relisten to lots of subscriptions and setTimeout is actually\n    // /not/ that fast. Create one timeout for all checks, not one for each.\n    if (this._cleanupChecks.length === 0) {\n      setTimeout(() => this._runCleanupChecks(), 1);\n    }\n    this._cleanupChecks.push(key);\n  }\n\n  _runCleanupChecks() {\n    for (const key of this._cleanupChecks) {\n      const subscription = this._subscriptions[key];\n      if (subscription && (subscription.callbackCount() === 0)) {\n        delete this._subscriptions[key];\n      }\n    }\n    this._cleanupChecks = [];\n  }\n\n  _formatRegistrationPoint(stackString) {\n    const stack = stackString.split('\\n');\n    let ii = 0;\n    let seenRx = false;\n    while (ii < stack.length) {\n      const hasRx = stack[ii].indexOf('rx.lite') !== -1;\n      seenRx = seenRx || hasRx;\n      if (seenRx === true && !hasRx) {\n        break;\n      }\n      ii += 1;\n    }\n\n    return stack.slice(ii, ii + 4).join('\\n');\n  }\n\n  _keyForQuery(query) {\n    return query.sql();\n  }\n\n  _setup() {\n    this._database.listen(this._onChange);\n  }\n\n  _onChange = (record) => {\n    for (const key of Object.keys(this._subscriptions)) {\n      const subscription = this._subscriptions[key];\n      subscription.applyChangeRecord(record);\n    }\n  }\n}\n"
   },
   {
     "__docId__": 343,
@@ -7874,7 +7873,7 @@
     "name": "QuerySubscriptionPool",
     "memberof": "lib/query-subscription-pool.js",
     "longname": "lib/query-subscription-pool.js~QuerySubscriptionPool",
-    "access": "protected",
+    "access": "private",
     "export": true,
     "importPath": "electron-coresqlite/lib/query-subscription-pool.js",
     "importStyle": "QuerySubscriptionPool",
