@@ -7,6 +7,8 @@ RxDB draws inspiration from CoreData and Relay and is intended for
 database-driven Electron applications. It was originally built for
 the [Nylas N1](https://github.com/nylas/N1) mail client.
 
+View the [API Reference](https://bengotow.github.io/electron-RxDB) on GitHub Pages.
+
 ## An *Observable* Object Store
 
 - RxDB queries are [Rx.JS Observables](https://github.com/Reactive-Extensions/RxJS).
@@ -137,6 +139,12 @@ changes with unknown effects, and are explicitly not allowed.
 Instead of expanding support for arbitrary queries, RxDB focuses on making
 reading and saving objects *blazing fast*, so doing a query, modifying a few
 hundred matches, and saving them back is perfectly fine.
+
+## API Reference
+
+The example project may be the best place to get started, but a full
+[API Reference](https://bengotow.github.io/electron-RxDB) is available
+on GitHub Pages.
 
 ## Contributing
 

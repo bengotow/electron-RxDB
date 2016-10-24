@@ -29,7 +29,7 @@
   "scripts": {
     "test": "CI=true electron ./spec/runner --enable-logging",
     "lint": "./node_modules/.bin/eslint ./lib/ ./spec/",
-    "docs": "documentation build --github -o docs -f html lib/",
+    "docs": "esdoc -c esdoc.json",
     "postinstall": "node ./post-install.js"
   },
   "author": "",
