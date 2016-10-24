@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/query-subscription-pool.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/query-subscription-pool.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint global-require: 0 */
+import QuerySubscription from &apos;./query-subscription&apos;;
+
+/**
+The QuerySubscriptionPool maintains a list of all of the query
+subscriptions in the app. In the future, this class will monitor performance,
+merge equivalent subscriptions, etc.
+
+@protected
+*/
+export default class QuerySubscriptionPool {
+  constructor(database) {
+    this._database = database;
+    this._subscriptions = {};
+    this._cleanupChecks = [];
+    this._setup();
+  }
+
+  add(query, callback) {
+    // TODO
+    // if (NylasEnv.inDevMode()) {
+    //   callback._registrationPoint = this._formatRegistrationPoint((new Error).stack);
+    // }
+
+    const key = this._keyForQuery(query);
+    let subscription = this._subscriptions[key];
+    if (!subscription) {
+      subscription = new QuerySubscription(query);
+      this._subscriptions[key] = subscription;
+    }
+
+    subscription.addCallback(callback);
+    return () =&gt; {
+      subscription.removeCallback(callback);
+      this._scheduleCleanupCheckForSubscription(key);
+    };
+  }
+
+  addPrivateSubscription(key, subscription, callback) {
+    this._subscriptions[key] = subscription;
+    subscription.addCallback(callback);
+    return () =&gt; {
+      subscription.removeCallback(callback);
+      this._scheduleCleanupCheckForSubscription(key);
+    };
+  }
+
+  printSubscriptions() {
+    // TODO
+    // if (!NylasEnv.inDevMode()) {
+    //   console.log(&quot;printSubscriptions is only available in developer mode.&quot;);
+    //   return;
+    // }
+
+    for (const key of Object.keys(this._subscriptions)) {
+      const subscription = this._subscriptions[key];
+      console.log(key);
+      console.group();
+      for (const callback of subscription._callbacks) {
+        console.log(`${callback._registrationPoint}`);
+      }
+      console.groupEnd();
+    }
+  }
+
+  _scheduleCleanupCheckForSubscription(key) {
+    // We unlisten / relisten to lots of subscriptions and setTimeout is actually
+    // /not/ that fast. Create one timeout for all checks, not one for each.
+    if (this._cleanupChecks.length === 0) {
+      setTimeout(() =&gt; this._runCleanupChecks(), 1);
+    }
+    this._cleanupChecks.push(key);
+  }
+
+  _runCleanupChecks() {
+    for (const key of this._cleanupChecks) {
+      const subscription = this._subscriptions[key];
+      if (subscription &amp;&amp; (subscription.callbackCount() === 0)) {
+        delete this._subscriptions[key];
+      }
+    }
+    this._cleanupChecks = [];
+  }
+
+  _formatRegistrationPoint(stackString) {
+    const stack = stackString.split(&apos;\n&apos;);
+    let ii = 0;
+    let seenRx = false;
+    while (ii &lt; stack.length) {
+      const hasRx = stack[ii].indexOf(&apos;rx.lite&apos;) !== -1;
+      seenRx = seenRx || hasRx;
+      if (seenRx === true &amp;&amp; !hasRx) {
+        break;
+      }
+      ii += 1;
+    }
+
+    return stack.slice(ii, ii + 4).join(&apos;\n&apos;);
+  }
+
+  _keyForQuery(query) {
+    return query.sql();
+  }
+
+  _setup() {
+    this._database.listen(this._onChange);
+  }
+
+  _onChange = (record) =&gt; {
+    for (const key of Object.keys(this._subscriptions)) {
+      const subscription = this._subscriptions[key];
+      subscription.applyChangeRecord(record);
+    }
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

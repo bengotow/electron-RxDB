@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/database-change-record.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/database-change-record.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {registeredObjectReplacer, registeredObjectReviver} from &apos;./utils&apos;;
+
+/**
+An RxDB database emits DatabaseChangeRecord objects once a transaction has completed.
+The change record contains a copy of the model(s) that were modified, the type of
+modification (persist / destroy) and the model class.
+
+DatabaseChangeRecords can be serialized to JSON and RxDB transparently bridges
+them between windows of Electron applications. Change records of the same type
+and model class can also be merged.
+*/
+export default class DatabaseChangeRecord {
+
+  constructor(options) {
+    this.options = options;
+
+    // When DatabaseChangeRecords are sent over IPC to other windows, their object
+    // payload is sub-serialized into a JSON string. This means that we can wait
+    // to deserialize models until someone in the window asks for `change.objects`
+    this._objects = options.objects;
+    this._objectsString = options.objectsString;
+
+    Object.defineProperty(this, &apos;type&apos;, {
+      get: () =&gt; options.type,
+    })
+    Object.defineProperty(this, &apos;objectClass&apos;, {
+      get: () =&gt; options.objectClass,
+    })
+    Object.defineProperty(this, &apos;objects&apos;, {
+      get: () =&gt; {
+        this._objects = this._objects || JSON.parse(this._objectsString, registeredObjectReviver);
+        return this._objects;
+      },
+    })
+  }
+
+  canAppend(other) {
+    return (this.objectClass === other.objectClass) &amp;&amp; (this.type === other.type);
+  }
+
+  append(other) {
+    if (!this._indexLookup) {
+      this._indexLookup = {};
+      this.objects.forEach((obj, idx) =&gt; {
+        this._indexLookup[obj.id] = idx;
+      });
+    }
+
+    // When we join new models into our set, replace existing ones so the same
+    // model cannot exist in the change record set multiple times.
+    for (const obj of other.objects) {
+      const idx = this._indexLookup[obj.id]
+      if (idx) {
+        this.objects[idx] = obj;
+      } else {
+        this._indexLookup[obj.id] = this.objects.length
+        this.objects.push(obj);
+      }
+    }
+  }
+
+  toJSON() {
+    this._objectsString = this._objectsString || JSON.stringify(this._objects, registeredObjectReplacer);
+    return {
+      type: this.type,
+      objectClass: this.objectClass,
+      objectsString: this._objectsString,
+    };
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

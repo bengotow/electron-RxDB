@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/model-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/model-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint quote-props: 0 */
+import Model from &apos;../lib/model&apos;;
+import {isTempId} from &apos;../lib/utils&apos;;
+import Attributes from &apos;../lib/attributes&apos;;
+
+class SubSubmodel extends Model {
+  static attributes = Object.assign({}, Model.attributes, {
+    &apos;value&apos;: Attributes.Number({
+      modelKey: &apos;value&apos;,
+      jsonKey: &apos;value&apos;,
+    }),
+  });
+}
+
+class SubmodelItem extends Model {}
+
+class Submodel extends Model {
+  static attributes = Object.assign({}, Model.attributes, {
+    &apos;testBoolean&apos;: Attributes.Boolean({
+      modelKey: &apos;testBoolean&apos;,
+      jsonKey: &apos;test_boolean&apos;,
+    }),
+    &apos;testCollection&apos;: Attributes.Collection({
+      modelKey: &apos;testCollection&apos;,
+      jsonKey: &apos;test_collection&apos;,
+      itemClass: SubmodelItem,
+    }),
+    &apos;testJoinedData&apos;: Attributes.JoinedData({
+      modelKey: &apos;testJoinedData&apos;,
+      jsonKey: &apos;test_joined_data&apos;,
+    }),
+    &apos;testNumber&apos;: Attributes.Number({
+      modelKey: &apos;testNumber&apos;,
+      jsonKey: &apos;test_number&apos;,
+    }),
+    &apos;testString&apos;: Attributes.String({
+      modelKey: &apos;testString&apos;,
+      jsonKey: &apos;test_string&apos;,
+    }),
+    &apos;testArray&apos;: Attributes.Collection({
+      itemClass: SubSubmodel,
+      modelKey: &apos;testArray&apos;,
+      jsonKey: &apos;test_array&apos;,
+    }),
+  });
+}
+
+describe(&quot;Model&quot;, function modelSpecs() {
+  describe(&quot;constructor&quot;, () =&gt; {
+    it(&quot;should accept a hash of attributes and assign them to the new Model&quot;, () =&gt; {
+      const attrs = {
+        id: &quot;A&quot;,
+        testNumber: &quot;B&quot;,
+      };
+      const m = new Submodel(attrs);
+      expect(m.id).toBe(attrs.id);
+      expect(m.testNumber).toBe(attrs.testNumber);
+    });
+
+    it(&quot;automatically assigns an id to the model if no id is provided&quot;, () =&gt; {
+      const m = new Model();
+      expect(isTempId(m.id)).toBe(true);
+    });
+  });
+
+  describe(&quot;attributes&quot;, () =&gt; {
+    it(&quot;should return the attributes of the class&quot;, () =&gt; {
+      const m = new Model();
+      expect(m.attributes()).toEqual(m.constructor.attributes);
+    })
+
+    it(&quot;should guard against accidental modification&quot;, () =&gt; {
+      const m = new Model();
+      Object.assign(m.attributes(), {other: 1});
+      expect(m.attributes()).toEqual(m.constructor.attributes);
+    })
+  });
+
+  describe(&quot;clone&quot;, () =&gt;
+    it(&quot;should return a deep copy of the object&quot;, () =&gt; {
+      const old = new Submodel({testNumber: 4, testArray: [new SubSubmodel({value: 2}), new SubSubmodel({value: 6})]});
+      const clone = old.clone();
+
+      // Check entire trees are equivalent
+      expect(old.toJSON()).toEqual(clone.toJSON());
+      // Check object identity has changed
+      expect(old.constructor.name).toEqual(clone.constructor.name);
+      expect(old.testArray).not.toBe(clone.testArray);
+      // Check classes
+      expect(old.testArray[0]).not.toBe(clone.testArray[0]);
+      expect(old.testArray[0].constructor.name).toEqual(clone.testArray[0].constructor.name);
+    })
+
+  );
+
+  describe(&quot;fromJSON&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.json = {
+        &apos;id&apos;: &apos;1234&apos;,
+        &apos;test_number&apos;: 4,
+        &apos;test_boolean&apos;: true,
+        &apos;daysOld&apos;: 4,
+        &apos;test_string&apos;: &apos;bla&apos;,
+      };
+      this.m = new Submodel();
+    });
+
+    it(&quot;should assign attribute values by calling through to attribute fromJSON functions&quot;, () =&gt; {
+      spyOn(Submodel.attributes.testString, &apos;fromJSON&apos;).and.callFake(() =&gt; &apos;inflated value!&apos;);
+      this.m.fromJSON(this.json);
+      expect(Submodel.attributes.testString.fromJSON.calls.count()).toBe(1);
+      expect(this.m.testString).toBe(&apos;inflated value!&apos;);
+    });
+
+    it(&quot;should not touch attributes that are missing in the json&quot;, () =&gt; {
+      this.m.fromJSON(this.json);
+      expect(this.m.object).toBe(undefined);
+
+      this.m.object = &apos;abc&apos;;
+      this.m.fromJSON(this.json);
+      expect(this.m.object).toBe(&apos;abc&apos;);
+    });
+
+    it(&quot;should not do anything with extra JSON keys&quot;, () =&gt; {
+      this.m.fromJSON(this.json);
+      expect(this.m.daysOld).toBe(undefined);
+    });
+
+    it(&quot;should maintain empty string as empty strings&quot;, () =&gt; {
+      expect(this.m.testString).toBe(undefined);
+      this.m.fromJSON({test_string: &apos;&apos;});
+      expect(this.m.testString).toBe(&apos;&apos;);
+    });
+
+    describe(&quot;Attributes.Number&quot;, () =&gt;
+      it(&quot;should read number attributes and coerce them to numeric values&quot;, () =&gt; {
+        this.m.fromJSON({&apos;test_number&apos;: 4});
+        expect(this.m.testNumber).toBe(4);
+
+        this.m.fromJSON({&apos;test_number&apos;: &apos;4&apos;});
+        expect(this.m.testNumber).toBe(4);
+
+        this.m.fromJSON({&apos;test_number&apos;: &apos;lolz&apos;});
+        expect(this.m.testNumber).toBe(null);
+
+        this.m.fromJSON({&apos;test_number&apos;: 0});
+        expect(this.m.testNumber).toBe(0);
+      })
+
+    );
+
+    describe(&quot;Attributes.JoinedData&quot;, () =&gt;
+      it(&quot;should read joined data attributes and coerce them to string values&quot;, () =&gt; {
+        this.m.fromJSON({&apos;test_joined_data&apos;: null});
+        expect(this.m.testJoinedData).toBe(null);
+
+        this.m.fromJSON({&apos;test_joined_data&apos;: &apos;&apos;});
+        expect(this.m.testJoinedData).toBe(&apos;&apos;);
+
+        this.m.fromJSON({&apos;test_joined_data&apos;: &apos;lolz&apos;});
+        expect(this.m.testJoinedData).toBe(&apos;lolz&apos;);
+      })
+
+    );
+
+    describe(&quot;Attributes.Collection&quot;, () =&gt; {
+      it(&quot;should parse and inflate items&quot;, () =&gt; {
+        this.m.fromJSON({&apos;test_collection&apos;: [{id: &apos;123&apos;}]});
+        expect(this.m.testCollection.length).toBe(1);
+        expect(this.m.testCollection[0].id).toBe(&apos;123&apos;);
+        expect(this.m.testCollection[0].constructor.name).toBe(&apos;SubmodelItem&apos;);
+      });
+
+      it(&quot;should be fine with malformed arrays&quot;, () =&gt; {
+        this.m.fromJSON({&apos;test_collection&apos;: [null]});
+        expect(this.m.testCollection.length).toBe(0);
+        this.m.fromJSON({&apos;test_collection&apos;: []});
+        expect(this.m.testCollection.length).toBe(0);
+        this.m.fromJSON({&apos;test_collection&apos;: null});
+        expect(this.m.testCollection.length).toBe(0);
+      });
+    });
+
+    describe(&quot;Attributes.Boolean&quot;, () =&gt;
+      it(&quot;should read `true` or true and coerce everything else to false&quot;, () =&gt; {
+        this.m.fromJSON({&apos;test_boolean&apos;: true});
+        expect(this.m.testBoolean).toBe(true);
+
+        this.m.fromJSON({&apos;test_boolean&apos;: &apos;true&apos;});
+        expect(this.m.testBoolean).toBe(true);
+
+        this.m.fromJSON({&apos;test_boolean&apos;: 4});
+        expect(this.m.testBoolean).toBe(false);
+
+        this.m.fromJSON({&apos;test_boolean&apos;: &apos;4&apos;});
+        expect(this.m.testBoolean).toBe(false);
+
+        this.m.fromJSON({&apos;test_boolean&apos;: false});
+        expect(this.m.testBoolean).toBe(false);
+
+        this.m.fromJSON({&apos;test_boolean&apos;: 0});
+        expect(this.m.testBoolean).toBe(false);
+
+        this.m.fromJSON({&apos;test_boolean&apos;: null});
+        expect(this.m.testBoolean).toBe(false);
+      })
+
+    );
+  });
+
+  describe(&quot;toJSON&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.model = new Submodel({
+        id: &quot;1234&quot;,
+        testString: &quot;ACD&quot;,
+      });
+      return;
+    });
+
+    it(&quot;should return a JSON object and call attribute toJSON functions to map values&quot;, () =&gt; {
+      spyOn(Submodel.attributes.testString, &apos;toJSON&apos;).and.callFake(() =&gt; &apos;inflated value!&apos;);
+
+      const json = this.model.toJSON();
+      expect(json instanceof Object).toBe(true);
+      expect(json.id).toBe(&apos;1234&apos;);
+      expect(json.test_string).toBe(&apos;inflated value!&apos;);
+    });
+
+    it(&quot;should surface any exception one of the attribute toJSON functions raises&quot;, () =&gt; {
+      spyOn(Submodel.attributes.testString, &apos;toJSON&apos;).and.callFake(() =&gt; {
+        throw new Error(&quot;Can&apos;t convert value into JSON format&quot;);
+      });
+      expect(() =&gt; { this.model.toJSON(); }).toThrow();
+    });
+  });
+
+  describe(&quot;matches&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.model = new Model({
+        id: &quot;1234&quot;,
+        testString: &quot;ACD&quot;,
+      });
+
+      this.truthyMatcher = {evaluate() { return true; }};
+      this.falsyMatcher = {evaluate() { return false; }};
+    });
+
+    it(&quot;should run the matchers and return true iff all matchers pass&quot;, () =&gt; {
+      expect(this.model.matches([this.truthyMatcher, this.truthyMatcher])).toBe(true);
+      expect(this.model.matches([this.truthyMatcher, this.falsyMatcher])).toBe(false);
+      expect(this.model.matches([this.falsyMatcher, this.truthyMatcher])).toBe(false);
+    });
+
+    it(&quot;should pass itself as an argument to the matchers&quot;, () =&gt; {
+      spyOn(this.truthyMatcher, &apos;evaluate&apos;).and.callFake(param =&gt; {
+        expect(param).toBe(this.model);
+      });
+      this.model.matches([this.truthyMatcher]);
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/database-setup-query-builder-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/database-setup-query-builder-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint quote-props: 0 */
+import TestModel from &apos;./fixtures/db-test-model&apos;;
+import Attributes from &apos;../lib/attributes&apos;;
+import DatabaseSetupQueryBuilder from &apos;../lib/database-setup-query-builder&apos;;
+
+describe(&quot;DatabaseSetupQueryBuilder&quot;, function DatabaseSetupQueryBuilderSpecs() {
+  beforeEach(() =&gt; {
+    this.builder = new DatabaseSetupQueryBuilder();
+  });
+
+  describe(&quot;setupQueriesForTable&quot;, () =&gt; {
+    it(&quot;should return the queries for creating the table and the primary unique index&quot;, () =&gt; {
+      TestModel.attributes = {
+        &apos;attrQueryable&apos;: Attributes.DateTime({
+          queryable: true,
+          modelKey: &apos;attrQueryable&apos;,
+          jsonKey: &apos;attr_queryable&apos;,
+        }),
+
+        &apos;attrNonQueryable&apos;: Attributes.Collection({
+          modelKey: &apos;attrNonQueryable&apos;,
+          jsonKey: &apos;attr_non_queryable&apos;,
+        }),
+      };
+      const queries = this.builder.setupQueriesForTable(TestModel);
+      const expected = [
+        &apos;CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,attr_queryable INTEGER)&apos;,
+        &apos;CREATE UNIQUE INDEX IF NOT EXISTS `TestModel_id` ON `TestModel` (`id`)&apos;,
+      ];
+      queries.map((query, i) =&gt;
+        expect(query).toBe(expected[i])
+      );
+    });
+
+    it(&quot;should correctly create join tables for models that have queryable collections&quot;, () =&gt; {
+      TestModel.configureWithCollectionAttribute();
+      const queries = this.builder.setupQueriesForTable(TestModel);
+      const expected = [
+        &apos;CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,other TEXT)&apos;,
+        &apos;CREATE UNIQUE INDEX IF NOT EXISTS `TestModel_id` ON `TestModel` (`id`)&apos;,
+        &apos;CREATE TABLE IF NOT EXISTS `TestModelCategory` (id TEXT KEY,`value` TEXT,other TEXT)&apos;,
+        &apos;CREATE INDEX IF NOT EXISTS `TestModelCategory_id` ON `TestModelCategory` (`id` ASC)&apos;,
+        &apos;CREATE UNIQUE INDEX IF NOT EXISTS `TestModelCategory_val_id` ON `TestModelCategory` (`value` ASC, `id` ASC)&apos;,
+      ];
+      queries.map((query, i) =&gt;
+        expect(query).toBe(expected[i])
+      );
+    });
+
+    it(&quot;should use the correct column type for each attribute&quot;, () =&gt; {
+      TestModel.configureWithAllAttributes();
+      const queries = this.builder.setupQueriesForTable(TestModel);
+      expect(queries[0]).toBe(&apos;CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,datetime INTEGER,string-json-key TEXT,boolean INTEGER,number INTEGER)&apos;);
+    });
+
+    describe(&quot;when the model provides additional sqlite config&quot;, () =&gt; {
+      it(&quot;the setup method should return these queries&quot;, () =&gt; {
+        TestModel.configureWithAdditionalSQLiteConfig();
+        spyOn(TestModel.additionalSQLiteConfig, &apos;setup&apos;).and.callThrough();
+        const queries = this.builder.setupQueriesForTable(TestModel);
+        expect(TestModel.additionalSQLiteConfig.setup).toHaveBeenCalledWith();
+        expect(queries.pop()).toBe(&apos;CREATE INDEX IF NOT EXISTS ThreadListIndex ON Thread(last_message_received_timestamp DESC, account_id, id)&apos;);
+      });
+
+      it(&quot;should not fail if additional config is present, but setup is undefined&quot;, () =&gt; {
+        delete TestModel.additionalSQLiteConfig.setup;
+        this.m = new TestModel({id: &apos;local-6806434c-b0cd&apos;, body: &apos;hello world&apos;});
+        expect(() =&gt; this.builder.setupQueriesForTable(TestModel)).not.toThrow();
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

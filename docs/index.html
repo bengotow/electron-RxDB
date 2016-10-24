@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="rxdb">RxDB</h1>
+<p><a href="https://travis-ci.org/bengotow/electron-RxDB"><img src="https://travis-ci.org/bengotow/electron-RxDB.svg?branch=master" alt=""></a></p>
+<p>RxDB is a high-performance, observable object store built on top of SQLite.
+RxDB draws inspiration from CoreData and Relay and is intended for
+database-driven Electron applications. It was originally built for
+the <a href="https://github.com/nylas/N1">Nylas N1</a> mail client.</p>
+<h2 id="an-observable-object-store">An <em>Observable</em> Object Store</h2>
+<ul>
+<li><p>RxDB queries are <a href="https://github.com/Reactive-Extensions/RxJS">Rx.JS Observables</a>.
+Simply create queries and declaratively
+bind them to your application&apos;s views. Queries internally subscribe to the
+database, watch for changes, and vend new versions of their result sets as
+necessary. They&apos;ve been heavily optimized for performance, and often update
+without making SQL queries.</p>
+</li>
+<li><p>RxDB databases are event emitters. Want to keep things in sync with your data?
+Add listeners to refresh application state as objects are saved and removed.</p>
+</li>
+</ul>
+<p>Example: Nylas N1 uses a Flux architecture. Many of the Flux Stores in the
+application vend state derived from an RxDB database containing the user&apos;s
+mail data. When an object is written to the database, it emits and event,
+and stores (like the UnreadCountStore) can evaluate whether to update
+downstream application state.</p>
+<h2 id="basic-usage">Basic Usage</h2>
+<h3 id="defining-a-model-">Defining a Model:</h3>
+<pre><code class="lang-js"><code class="source-code prettyprint">export default class Note extends Model {
+  static attributes = Object.assign(Model.attributes, {
+    name: Attributes.String({
+      modelKey: &apos;name&apos;,
+      jsonKey: &apos;name&apos;,
+      queryable: true,
+    }),
+    content: Attributes.String({
+      modelKey: &apos;content&apos;,
+      jsonKey: &apos;content&apos;,
+    }),
+    createdAt: Attributes.DateTime({
+      modelKey: &apos;createdAt&apos;,
+      jsonKey: &apos;createdAt&apos;,
+      queryable: true,
+    }),
+  });
+}</code>
+</code></pre>
+<h3 id="saving-a-model-">Saving a Model:</h3>
+<pre><code class="lang-js"><code class="source-code prettyprint">const note = new Note({
+  name: &apos;Untitled&apos;,
+  content: &apos;Write your note here!&apos;,
+  createdAt: new Date(),
+});
+database.inTransaction((t) =&gt; {
+  return t.persistModel(note);
+});</code>
+</code></pre>
+<h3 id="querying-for-models-">Querying for Models:</h3>
+<pre><code class="lang-js"><code class="source-code prettyprint">database
+  .findAll(Note)
+  .where({name: &apos;Untitled&apos;})
+  .order(Note.attributes.createdAt.descending())
+  .then((notes) =&gt; {
+  // got some notes!
+})</code>
+</code></pre>
+<h3 id="observing-a-query-">Observing a query:</h3>
+<pre><code class="lang-js"><code class="source-code prettyprint">componentDidMount() {
+  const query = database
+    .findAll(Note)
+    .where({name: &apos;Untitled&apos;})
+    .order(Note.attributes.createdAt.descending())
+
+  this._unsubscribe = query.observe().subscribe((items) =&gt; {
+    this.setState({items});
+  });
+}</code>
+</code></pre>
+<h2 id="features">Features</h2>
+<ul>
+<li><p>Models:</p>
+<ul>
+<li>Definition via ES2016 classes extending <code>RxDB.Model</code></li>
+<li>Out of the box support for JSON serialization</li>
+<li>Easy attribute definition and validation</li>
+<li>Automatic schema generation based on <code>queryable</code> fields</li>
+<li>Support for splitting object data across tables, keeping SQLite row size small</li>
+</ul>
+</li>
+<li><p>Queries:</p>
+<ul>
+<li>Results via a Promise API. (`query.then((results) =&gt; ...)``)</li>
+<li>Live results via an Rx.JS Observable API. (<code>query.observable().subscribe((results) =&gt; ...)</code>)</li>
+<li>Clean query syntax inspired by ActiveRecord and NSPredicate</li>
+<li>Support for basic relationships and retrieving of joined objects</li>
+<li>Full-text search powered by SQLite&apos;s FTS5</li>
+</ul>
+</li>
+<li><p>Database:</p>
+<ul>
+<li>ChangeRecord objects emitted for every modification of data</li>
+<li>Changes bridged across window processes for multi-window apps</li>
+<li>Support for opening multiple databases simultaneously</li>
+</ul>
+</li>
+<li><p>High test coverage!</p>
+</li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<h3 id="how-does-this-fit-in-to-flux-redux-etc-">How does this fit in to Flux / Redux / etc?</h3>
+<p>RxDB is not intended to be a replacement for <a href="https://github.com/reactjs/redux">Redux</a>
+or other application state frameworks, and works great alongside them!</p>
+<p>Redux is ideal for storing small bits of state, like the user&apos;s current selection.
+In a typical RxDB application, this application state determines the views that
+are displayed and the queries that are declaratively bound to those views. Individual
+components build queries and display the resulting data.</p>
+<h3 id="wait-i-can-t-make-update-queries-">Wait, I can&apos;t make <code>UPDATE</code> queries?</h3>
+<p>RxDB exposes an ActiveRecord-style query syntax, but only for fetching models.
+RxDB&apos;s powerful observable queries, modification hooks, and other features
+depend on application code being able to see every change to every object.</p>
+<p>Queries like <code>UPDATE Note SET read = 1 WHERE ...</code> allow you to make
+changes with unknown effects, and are explicitly not allowed.
+(Every live query of a Note would need to be re-run following that change!)
+Instead of expanding support for arbitrary queries, RxDB focuses on making
+reading and saving objects <em>blazing fast</em>, so doing a query, modifying a few
+hundred matches, and saving them back is perfectly fine.</p>
+<h2 id="contributing">Contributing</h2>
+<h4 id="running-the-notes-example">Running the Notes Example</h4>
+<pre><code class="lang-bash"><code class="source-code prettyprint">npm install
+cd ./example
+npm install
+npm start</code>
+</code></pre>
+<h4 id="running-the-tests">Running the Tests</h4>
+<p>RxDB&apos;s tests are written in <a href="jasmine.github.io/2.5/introduction.html">Jasmine 2</a>
+and run in a tiny Electron application for consistency with the target environment.
+To run the tests, use <code>npm test</code>:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint">npm install
+npm test</code>
+</code></pre>
+<p>You can skip certain tests (temporarily) with <code>xit</code> and <code>xdescribe</code>,
+or focus on only certain tests with <code>fit</code> and <code>fdescribe</code>.</p>
+<h4 id="running-the-linter">Running the Linter</h4>
+<pre><code><code class="source-code prettyprint">npm install
+npm run lint</code>
+</code></pre></div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

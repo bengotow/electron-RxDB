@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/query-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/query-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint quote-props: 0 */
+import Model from &apos;../lib/model&apos;;
+import ModelQuery from &apos;../lib/query&apos;;
+import Attributes from &apos;../lib/attributes&apos;;
+
+import Thread from &apos;./fixtures/thread&apos;;
+import Message from &apos;./fixtures/message&apos;;
+
+export default class Account extends Model {
+  static attributes = Object.assign({}, Model.attributes, {
+    name: Attributes.String({
+      modelKey: &apos;name&apos;,
+    }),
+
+    provider: Attributes.String({
+      modelKey: &apos;provider&apos;,
+    }),
+
+    emailAddress: Attributes.String({
+      queryable: true,
+      modelKey: &apos;emailAddress&apos;,
+      jsonKey: &apos;email_address&apos;,
+    }),
+
+    organizationUnit: Attributes.String({
+      modelKey: &apos;organizationUnit&apos;,
+      jsonKey: &apos;organization_unit&apos;,
+    }),
+
+    label: Attributes.String({
+      modelKey: &apos;label&apos;,
+    }),
+
+    aliases: Attributes.Object({
+      modelKey: &apos;aliases&apos;,
+    }),
+
+    defaultAlias: Attributes.Object({
+      modelKey: &apos;defaultAlias&apos;,
+      jsonKey: &apos;default_alias&apos;,
+    }),
+
+    syncState: Attributes.String({
+      modelKey: &apos;syncState&apos;,
+      jsonKey: &apos;sync_state&apos;,
+    }),
+  });
+}
+
+describe(&quot;ModelQuery&quot;, function ModelQuerySpecs() {
+  beforeEach(() =&gt; {
+    this.db = {};
+  });
+
+  describe(&quot;where&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.q = new ModelQuery(Thread, this.db);
+      this.m1 = Thread.attributes.id.equal(4);
+      this.m2 = Thread.attributes.categories.contains(&apos;category-id&apos;);
+    });
+
+    it(&quot;should accept an array of Matcher objects&quot;, () =&gt; {
+      this.q.where([this.m1, this.m2]);
+      expect(this.q._matchers.length).toBe(2);
+      expect(this.q._matchers[0]).toBe(this.m1);
+      expect(this.q._matchers[1]).toBe(this.m2);
+    });
+
+    it(&quot;should accept a single Matcher object&quot;, () =&gt; {
+      this.q.where(this.m1);
+      expect(this.q._matchers.length).toBe(1);
+      expect(this.q._matchers[0]).toBe(this.m1);
+    });
+
+    it(&quot;should append to any existing where clauses&quot;, () =&gt; {
+      this.q.where(this.m1);
+      this.q.where(this.m2);
+      expect(this.q._matchers.length).toBe(2);
+      expect(this.q._matchers[0]).toBe(this.m1);
+      expect(this.q._matchers[1]).toBe(this.m2);
+    });
+
+    it(&quot;should accept a shorthand format&quot;, () =&gt; {
+      this.q.where({id: 4, lastMessageReceivedTimestamp: 1234});
+      expect(this.q._matchers.length).toBe(2);
+      expect(this.q._matchers[0].attr.modelKey).toBe(&apos;id&apos;);
+      expect(this.q._matchers[0].comparator).toBe(&apos;=&apos;);
+      expect(this.q._matchers[0].val).toBe(4);
+    });
+
+    it(&quot;should return the query so it can be chained&quot;, () =&gt; {
+      expect(this.q.where({id: 4})).toBe(this.q);
+    });
+
+    it(&quot;should immediately raise an exception if an un-queryable attribute is specified&quot;, () =&gt;
+      expect(() =&gt; {
+        this.q.where({snippet: &apos;My Snippet&apos;});
+      }).toThrow()
+    );
+
+    it(&quot;should immediately raise an exception if a non-existent attribute is specified&quot;, () =&gt;
+      expect(() =&gt; {
+        this.q.where({looksLikeADuck: &apos;of course&apos;});
+      }).toThrow()
+    );
+  });
+
+  describe(&quot;order&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.q = new ModelQuery(Thread, this.db);
+      this.o1 = Thread.attributes.lastMessageReceivedTimestamp.descending();
+      this.o2 = Thread.attributes.subject.descending();
+    });
+
+    it(&quot;should accept an array of SortOrders&quot;, () =&gt; {
+      this.q.order([this.o1, this.o2]);
+      expect(this.q._orders.length).toBe(2);
+    });
+
+    it(&quot;should accept a single SortOrder object&quot;, () =&gt; {
+      this.q.order(this.o2);
+      expect(this.q._orders.length).toBe(1);
+    });
+
+    it(&quot;should extend any existing ordering&quot;, () =&gt; {
+      this.q.order(this.o1);
+      this.q.order(this.o2);
+      expect(this.q._orders.length).toBe(2);
+      expect(this.q._orders[0]).toBe(this.o1);
+      expect(this.q._orders[1]).toBe(this.o2);
+    });
+
+    it(&quot;should return the query so it can be chained&quot;, () =&gt; {
+      expect(this.q.order(this.o2)).toBe(this.q);
+    });
+  });
+
+  describe(&quot;include&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.q = new ModelQuery(Message, this.db);
+    });
+
+    it(&quot;should throw an exception if the attribute is not a joined data attribute&quot;, () =&gt;
+      expect(() =&gt; {
+        this.q.include(Message.attributes.unread);
+      }).toThrow()
+
+    );
+
+    it(&quot;should add the provided property to the list of joined properties&quot;, () =&gt; {
+      expect(this.q._includeJoinedData).toEqual([]);
+      this.q.include(Message.attributes.body);
+      expect(this.q._includeJoinedData).toEqual([Message.attributes.body]);
+    });
+  });
+
+  describe(&quot;includeAll&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.q = new ModelQuery(Message, this.db);
+    });
+
+    it(&quot;should add all the JoinedData attributes of the class&quot;, () =&gt; {
+      expect(this.q._includeJoinedData).toEqual([]);
+      this.q.includeAll();
+      expect(this.q._includeJoinedData).toEqual([Message.attributes.body]);
+    });
+  });
+
+  describe(&quot;response formatting&quot;, () =&gt;
+    it(&quot;should always return a Number for counts&quot;, () =&gt; {
+      const q = new ModelQuery(Message, this.db);
+      q.where({accountId: &apos;abcd&apos;}).count();
+
+      const raw = [{count: &quot;12&quot;}];
+      expect(q.formatResult(q.inflateResult(raw))).toBe(12);
+    })
+
+  );
+
+  describe(&quot;sql&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.runScenario = (klass, scenario) =&gt; {
+        const q = new ModelQuery(klass, this.db);
+        Attributes.Matcher.muid = 1;
+        scenario.builder(q);
+        expect(q.sql().trim()).toBe(scenario.sql.trim());
+      };
+    });
+
+    it(&quot;should finalize the query so no further changes can be made&quot;, () =&gt; {
+      const q = new ModelQuery(Account, this.db);
+      spyOn(q, &apos;finalize&apos;);
+      q.sql();
+      expect(q.finalize).toHaveBeenCalled();
+    });
+
+    it(&quot;should correctly generate queries with multiple where clauses&quot;, () =&gt; {
+      this.runScenario(Account, {
+        builder: (q) =&gt;
+          q.where({emailAddress: &apos;ben@nylas.com&apos;}).where({id: 2}),
+        sql: &quot;SELECT `Account`.`data` FROM `Account`  &quot; +
+             &quot;WHERE `Account`.`email_address` = &apos;ben@nylas.com&apos; AND `Account`.`id` = 2&quot;,
+      });
+    });
+
+    it(&quot;should correctly escape single quotes with more double single quotes (LIKE)&quot;, () =&gt; {
+      this.runScenario(Account, {
+        builder: (q) =&gt;
+          q.where(Account.attributes.emailAddress.like(&quot;you&apos;re&quot;)),
+        sql: &quot;SELECT `Account`.`data` FROM `Account`  WHERE `Account`.`email_address` like &apos;%you&apos;&apos;re%&apos;&quot;,
+      });
+    });
+
+    it(&quot;should correctly escape single quotes with more double single quotes (equal)&quot;, () =&gt; {
+      this.runScenario(Account, {
+        builder: (q) =&gt;
+          q.where(Account.attributes.emailAddress.equal(&quot;you&apos;re&quot;)),
+        sql: &quot;SELECT `Account`.`data` FROM `Account`  WHERE `Account`.`email_address` = &apos;you&apos;&apos;re&apos;&quot;,
+      });
+    });
+
+    it(&quot;should correctly generate COUNT queries&quot;, () =&gt; {
+      this.runScenario(Thread, {
+        builder: (q) =&gt;
+          q.where({accountId: &apos;abcd&apos;}).count(),
+        sql: &quot;SELECT COUNT(*) as count FROM `Thread`  &quot; +
+             &quot;WHERE `Thread`.`account_id` = &apos;abcd&apos;  &quot;,
+      });
+    });
+
+    it(&quot;should correctly generate LIMIT 1 queries for single items&quot;, () =&gt; {
+      this.runScenario(Thread, {
+        builder: (q) =&gt;
+          q.where({accountId: &apos;abcd&apos;}).one(),
+        sql: &quot;SELECT `Thread`.`data` FROM `Thread`  &quot; +
+             &quot;WHERE `Thread`.`account_id` = &apos;abcd&apos;  &quot; +
+             &quot;ORDER BY `Thread`.`last_message_received_timestamp` DESC LIMIT 1&quot;,
+      });
+    });
+
+    it(&quot;should correctly generate `contains` queries using JOINS&quot;, () =&gt; {
+      this.runScenario(Thread, {
+        builder: (q) =&gt;
+          q.where(Thread.attributes.categories.contains(&apos;category-id&apos;)).where({id: &apos;1234&apos;}),
+        sql: &quot;SELECT `Thread`.`data` FROM `Thread` &quot; +
+             &quot;INNER JOIN `ThreadCategory` AS `M1` ON `M1`.`id` = `Thread`.`id` &quot; +
+             &quot;WHERE `M1`.`value` = &apos;category-id&apos; AND `Thread`.`id` = &apos;1234&apos;  &quot; +
+             &quot;ORDER BY `Thread`.`last_message_received_timestamp` DESC&quot;,
+      });
+
+      this.runScenario(Thread, {
+        builder: (q) =&gt;
+          q.where([Thread.attributes.categories.contains(&apos;l-1&apos;), Thread.attributes.categories.contains(&apos;l-2&apos;)]),
+        sql: &quot;SELECT `Thread`.`data` FROM `Thread` &quot; +
+             &quot;INNER JOIN `ThreadCategory` AS `M1` ON `M1`.`id` = `Thread`.`id` &quot; +
+             &quot;INNER JOIN `ThreadCategory` AS `M2` ON `M2`.`id` = `Thread`.`id` &quot; +
+             &quot;WHERE `M1`.`value` = &apos;l-1&apos; AND `M2`.`value` = &apos;l-2&apos;  &quot; +
+             &quot;ORDER BY `Thread`.`last_message_received_timestamp` DESC&quot;,
+      });
+    });
+
+    it(&quot;should correctly generate queries with the class&apos;s naturalSortOrder when one is available and no other orders are provided&quot;, () =&gt; {
+      this.runScenario(Thread, {
+        builder: (q) =&gt;
+          q.where({accountId: &apos;abcd&apos;}),
+        sql: &quot;SELECT `Thread`.`data` FROM `Thread`  &quot; +
+             &quot;WHERE `Thread`.`account_id` = &apos;abcd&apos;  &quot; +
+             &quot;ORDER BY `Thread`.`last_message_received_timestamp` DESC&quot;,
+      });
+
+      this.runScenario(Thread, {
+        builder: (q) =&gt;
+          q.where({accountId: &apos;abcd&apos;}).order(Thread.attributes.lastMessageReceivedTimestamp.ascending()),
+        sql: &quot;SELECT `Thread`.`data` FROM `Thread`  &quot; +
+             &quot;WHERE `Thread`.`account_id` = &apos;abcd&apos;  &quot; +
+             &quot;ORDER BY `Thread`.`last_message_received_timestamp` ASC&quot;,
+      });
+
+      this.runScenario(Account, {
+        builder: (q) =&gt;
+          q.where({id: &apos;abcd&apos;}),
+        sql: &quot;SELECT `Account`.`data` FROM `Account`  &quot; +
+             &quot;WHERE `Account`.`id` = &apos;abcd&apos;  &quot;,
+      });
+    });
+
+    it(&quot;should correctly generate queries requesting joined data attributes&quot;, () =&gt; {
+      this.runScenario(Message, {
+        builder: (q) =&gt;
+          q.where({id: &apos;1234&apos;}).include(Message.attributes.body),
+        sql: &quot;SELECT `Message`.`data`, IFNULL(`MessageBody`.`value`, &apos;!NULLVALUE!&apos;) AS `body`  &quot; +
+             &quot;FROM `Message` LEFT OUTER JOIN `MessageBody` ON `MessageBody`.`id` = `Message`.`id` &quot; +
+             &quot;WHERE `Message`.`id` = &apos;1234&apos;&quot;,
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

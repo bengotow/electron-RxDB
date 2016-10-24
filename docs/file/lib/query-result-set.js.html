@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/query-result-set.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/query-result-set.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import QueryRange from &apos;./query-range&apos;;
+
+/**
+Instances of QueryResultSet hold a set of models retrieved from the database
+for a given query and offset.
+
+Complete vs Incomplete:
+
+QueryResultSet keeps an array of item ids and a lookup table of models.
+The lookup table may be incomplete if the QuerySubscription isn&apos;t finished
+preparing results. You can use `isComplete` to determine whether the set
+has every model.
+
+Offset vs Index:
+
+To avoid confusion, &quot;index&quot; (used within the implementation) refers to an item&apos;s
+position in an array, and &quot;offset&quot; refers to it&apos;s position in the query
+result set. For example, an item might be at index 20 in the _ids array, but
+at offset 120 in the result.
+*/
+export default class QueryResultSet {
+
+  static setByApplyingModels(set, models) {
+    if (models instanceof Array) {
+      throw new Error(&quot;setByApplyingModels: A hash of models is required.&quot;);
+    }
+    const out = set.clone();
+    out._modelsHash = models;
+    out._idToIndexHash = null;
+    return out;
+  }
+
+  constructor(other = {}) {
+    this._offset = (other._offset !== undefined) ? other._offset : null;
+    this._query = (other._query !== undefined) ? other._query : null;
+    this._idToIndexHash = (other._idToIndexHash !== undefined) ? other._idToIndexHash : null;
+    // Clone, since the others may be frozen
+    this._modelsHash = Object.assign({}, other._modelsHash || {})
+    this._ids = [].concat(other._ids || []);
+  }
+
+  clone() {
+    return new this.constructor({
+      _ids: [].concat(this._ids),
+      _modelsHash: Object.assign({}, this._modelsHash),
+      _idToIndexHash: Object.assign({}, this._idToIndexHash),
+      _query: this._query,
+      _offset: this._offset,
+    });
+  }
+
+  /**
+  @returns {Boolean} - True if every model in the result set is available, false
+    if part of the set is still being loaded. (Usually following range changes.)
+  */
+  isComplete() {
+    return this._ids.every((id) =&gt; this._modelsHash[id]);
+  }
+
+  /**
+  @returns {QueryRange} - The represented range.
+  */
+  range() {
+    return new QueryRange({offset: this._offset, limit: this._ids.length});
+  }
+
+  /**
+  @returns {Query} - The represented query.
+  */
+  query() {
+    return this._query;
+  }
+
+  /**
+  @returns {QueryRange} - The number of items in the represented range. Note
+  that a range (`LIMIT 10 OFFSET 0`) may return fewer than the maximum number
+  of items if none match the query.
+  */
+  count() {
+    return this._ids.length;
+  }
+
+  /**
+  @returns {Boolean} - True if the result set is empty, false otherwise.
+  */
+  empty() {
+    return this.count() === 0;
+  }
+
+  /**
+  @returns {Array} - the model IDs in the represented result.
+  */
+  ids() {
+    return this._ids;
+  }
+
+  /**
+  @param {Number} offset - The desired offset.
+  @returns {Array} - the model ID available at the requested offset, or undefined.
+  */
+  idAtOffset(offset) {
+    return this._ids[offset - this._offset];
+  }
+
+  /**
+  @returns {Array} - An array of model objects. If the result is not yet complete,
+  this array may contain `undefined` values.
+  */
+  models() {
+    return this._ids.map((id) =&gt; this._modelsHash[id]);
+  }
+
+  /**
+  @protected
+  */
+  modelCacheCount() {
+    return Object.keys(this._modelsHash).length;
+  }
+
+  /**
+  @param {Number} offset - The desired offset.
+  @returns {Model} - the model at the requested offset.
+  */
+  modelAtOffset(offset) {
+    if (!Number.isInteger(offset)) {
+      throw new Error(&quot;QueryResultSet.modelAtOffset() takes a numeric index. Maybe you meant modelWithId()?&quot;);
+    }
+    return this._modelsHash[this._ids[offset - this._offset]];
+  }
+
+  /**
+  @param {String} id - The desired ID.
+  @returns {Model} - the model with the requested ID, or undefined.
+  */
+  modelWithId(id) {
+    return this._modelsHash[id];
+  }
+
+  _buildIdToIndexHash() {
+    this._idToIndexHash = {}
+    this._ids.forEach((id, idx) =&gt; {
+      this._idToIndexHash[id] = idx;
+      const model = this._modelsHash[id];
+      if (model) {
+        this._idToIndexHash[model.id] = idx;
+      }
+    });
+  }
+
+  /**
+  @param {String} id - The desired ID.
+  @returns {Number} - the offset of `ID`, relative to all of the query results.
+  */
+  offsetOfId(id) {
+    if (this._idToIndexHash === null) {
+      this._buildIdToIndexHash();
+    }
+
+    if (this._idToIndexHash[id] === undefined) {
+      return -1;
+    }
+    return this._idToIndexHash[id] + this._offset
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

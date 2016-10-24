@@ -1,0 +1,331 @@
+{
+  "coverage": "34.14%",
+  "expectCount": 246,
+  "actualCount": 84,
+  "files": {
+    "lib/attributes/attribute.js": {
+      "expectCount": 12,
+      "actualCount": 6,
+      "undocumentLines": [
+        11,
+        78,
+        13,
+        12,
+        14,
+        74
+      ]
+    },
+    "lib/attributes/attribute-boolean.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        16,
+        13,
+        10
+      ]
+    },
+    "lib/attributes/attribute-collection.js": {
+      "expectCount": 9,
+      "actualCount": 2,
+      "undocumentLines": [
+        35,
+        33,
+        103,
+        63,
+        36,
+        37,
+        40
+      ]
+    },
+    "lib/attributes/attribute-datetime.js": {
+      "expectCount": 8,
+      "actualCount": 5,
+      "undocumentLines": [
+        22,
+        18,
+        8
+      ]
+    },
+    "lib/attributes/attribute-joined-data.js": {
+      "expectCount": 7,
+      "actualCount": 1,
+      "undocumentLines": [
+        36,
+        45,
+        55,
+        38,
+        49,
+        41
+      ]
+    },
+    "lib/attributes/attribute-number.js": {
+      "expectCount": 8,
+      "actualCount": 1,
+      "undocumentLines": [
+        16,
+        12,
+        21,
+        33,
+        27,
+        39,
+        8
+      ]
+    },
+    "lib/attributes/attribute-object.js": {
+      "expectCount": 5,
+      "actualCount": 1,
+      "undocumentLines": [
+        9,
+        7,
+        16,
+        12
+      ]
+    },
+    "lib/attributes/attribute-string.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        24,
+        15,
+        28,
+        20,
+        11
+      ]
+    },
+    "lib/browser/coordinator.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        50,
+        60,
+        18,
+        29,
+        22
+      ]
+    },
+    "lib/database-change-record.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        41,
+        37,
+        14,
+        15,
+        62
+      ]
+    },
+    "lib/database-change-record-debouncer.js": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        42,
+        9
+      ]
+    },
+    "lib/database-object-registry.js": {
+      "expectCount": 11,
+      "actualCount": 1,
+      "undocumentLines": [
+        19,
+        39,
+        23,
+        27,
+        35,
+        57,
+        86,
+        76,
+        68,
+        61
+      ]
+    },
+    "lib/database-store.js": {
+      "expectCount": 28,
+      "actualCount": 25,
+      "undocumentLines": [
+        50,
+        478,
+        136
+      ]
+    },
+    "lib/database-transaction.js": {
+      "expectCount": 14,
+      "actualCount": 5,
+      "undocumentLines": [
+        22,
+        35,
+        23,
+        38,
+        33,
+        32,
+        36,
+        34,
+        59
+      ]
+    },
+    "lib/json-blob.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        31,
+        26,
+        30
+      ]
+    },
+    "lib/attributes/matcher.js": {
+      "expectCount": 12,
+      "actualCount": 1,
+      "undocumentLines": [
+        45,
+        53,
+        46,
+        44,
+        61,
+        111,
+        107,
+        49,
+        47,
+        57,
+        124
+      ]
+    },
+    "lib/model.js": {
+      "expectCount": 10,
+      "actualCount": 1,
+      "undocumentLines": [
+        43,
+        37,
+        30,
+        54,
+        34,
+        103,
+        26,
+        76,
+        93
+      ]
+    },
+    "lib/query.js": {
+      "expectCount": 29,
+      "actualCount": 15,
+      "undocumentLines": [
+        77,
+        438,
+        300,
+        244,
+        270,
+        505,
+        483,
+        487,
+        518,
+        467,
+        514,
+        510,
+        127,
+        121
+      ]
+    },
+    "lib/mutable-query-result-set.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        45,
+        40,
+        19,
+        7,
+        99,
+        106,
+        77
+      ]
+    },
+    "lib/mutable-query-subscription.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "lib/query-range.js": {
+      "expectCount": 14,
+      "actualCount": 1,
+      "undocumentLines": [
+        71,
+        52,
+        48,
+        7,
+        86,
+        80,
+        76,
+        53,
+        54,
+        11,
+        25,
+        44,
+        93
+      ]
+    },
+    "lib/query-result-set.js": {
+      "expectCount": 16,
+      "actualCount": 13,
+      "undocumentLines": [
+        42,
+        33,
+        23
+      ]
+    },
+    "lib/query-subscription.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        68,
+        58,
+        171
+      ]
+    },
+    "lib/query-subscription-pool.js": {
+      "expectCount": 5,
+      "actualCount": 1,
+      "undocumentLines": [
+        19,
+        39,
+        12,
+        48
+      ]
+    },
+    "lib/attributes/sort-order.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        18,
+        26,
+        17,
+        19,
+        22
+      ]
+    },
+    "lib/utils.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        36,
+        41,
+        26,
+        16,
+        3,
+        46
+      ]
+    },
+    "lib/console-utils.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        2
+      ]
+    }
+  }
+}

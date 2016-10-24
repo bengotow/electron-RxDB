@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/attributes/matcher.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/attributes/matcher.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {tableNameForJoin} from &apos;../utils&apos;;
+
+// https://www.sqlite.org/faq.html#q14
+// That&apos;s right. Two single quotes in a row&#x2026;
+const singleQuoteEscapeSequence = &quot;&apos;&apos;&quot;;
+
+// https://www.sqlite.org/fts5.html#section_3
+const doubleQuoteEscapeSequence = &apos;&quot;&quot;&apos;;
+
+
+/**
+The Matcher class encapsulates a particular comparison clause on an {@link Attribute}.
+Matchers can evaluate whether or not an object matches them, and also compose
+SQL clauses for the {@link DatabaseStore}. Each matcher has a reference to a model
+attribute, a comparator and a value. This class is heavily inspired by
+NSPredicate on Mac OS X / CoreData.
+
+```js
+
+// Retrieving Matchers
+
+const isUnread = Thread.attributes.unread.equal(true);
+
+const hasLabel = Thread.attributes.categories.contains(&apos;label-id-123&apos;);
+
+// Using Matchers in Database Queries
+
+const db.findAll(Thread).where(isUnread)...
+
+// Using Matchers to test Models
+
+const threadA = new Thread({unread: true})
+const threadB = new Thread({unread: false})
+
+isUnread.evaluate(threadA)
+// =&gt; true
+
+isUnread.evaluate(threadB)
+// =&gt; false
+
+```
+*/
+class Matcher {
+  constructor(attr, comparator, val) {
+    this.attr = attr;
+    this.comparator = comparator;
+    this.val = val;
+
+    this.muid = Matcher.muid;
+    Matcher.muid = (Matcher.muid + 1) % 50;
+  }
+
+  attribute() {
+    return this.attr;
+  }
+
+  value() {
+    return this.val;
+  }
+
+  evaluate(model) {
+    let modelValue = model[this.attr.modelKey];
+    if (modelValue instanceof Function) {
+      modelValue = modelValue()
+    }
+    const matcherValue = this.val;
+
+    // Given an array of strings or models, and a string or model search value,
+    // will find if a match exists.
+    const modelArrayContainsValue = (array, searchItem) =&gt; {
+      const asId = (v) =&gt; ((v &amp;&amp; v.id) ? v.id : v);
+      const search = asId(searchItem)
+      for (const item of array) {
+        if (asId(item) === search) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    switch (this.comparator) {
+      case &apos;=&apos;:
+        return modelValue === matcherValue
+      case &apos;&lt;&apos;:
+        return modelValue &lt; matcherValue
+      case &apos;&gt;&apos;:
+        return modelValue &gt; matcherValue
+      case &apos;&lt;=&apos;:
+        return modelValue &lt;= matcherValue
+      case &apos;&gt;=&apos;:
+        return modelValue &gt;= matcherValue
+      case &apos;in&apos;:
+        return matcherValue.includes(modelValue)
+      case &apos;contains&apos;:
+        return modelArrayContainsValue(modelValue, matcherValue)
+      case &apos;containsAny&apos;:
+        return !!matcherValue.find((submatcherValue) =&gt; modelArrayContainsValue(modelValue, submatcherValue))
+      case &apos;startsWith&apos;:
+        return modelValue.startsWith(matcherValue)
+      case &apos;like&apos;:
+        return modelValue.search(new RegExp(`.*${matcherValue}.*`, &quot;gi&quot;)) &gt;= 0
+      default:
+        throw new Error(`Matcher.evaulate() not sure how to evaluate ${this.attr.modelKey} with comparator ${this.comparator}`)
+    }
+  }
+
+  joinTableRef() {
+    return `M${this.muid}`;
+  }
+
+  joinSQL(klass) {
+    switch (this.comparator) {
+      case &apos;contains&apos;:
+      case &apos;containsAny&apos;: {
+        const joinTable = tableNameForJoin(klass, this.attr.itemClass);
+        const joinTableRef = this.joinTableRef();
+        return `INNER JOIN \`${joinTable}\` AS \`${joinTableRef}\` ON \`${joinTableRef}\`.\`id\` = \`${klass.name}\`.\`id\``;
+      }
+      default:
+        return false;
+    }
+  }
+
+  whereSQL(klass) {
+    const val = (this.comparator === &quot;like&quot;) ? `%${this.val}%` : this.val;
+    let escaped = null;
+
+    if (typeof val === &apos;string&apos;) {
+      escaped = `&apos;${val.replace(/&apos;/g, singleQuoteEscapeSequence)}&apos;`;
+    } else if (val === true) {
+      escaped = 1
+    } else if (val === false) {
+      escaped = 0
+    } else if (val instanceof Date) {
+      escaped = val.getTime() / 1000
+    } else if (val instanceof Array) {
+      const escapedVals = []
+      for (const v of val) {
+        if (typeof v !== &apos;string&apos;) {
+          throw new Error(`${this.attr.jsonKey} value ${v} must be a string.`);
+        }
+        escapedVals.push(`&apos;${v.replace(/&apos;/g, singleQuoteEscapeSequence)}&apos;`);
+      }
+      escaped = `(${escapedVals.join(&apos;,&apos;)})`;
+    } else {
+      escaped = val;
+    }
+
+    switch (this.comparator) {
+      case &apos;startsWith&apos;:
+        return &quot; RAISE `TODO`; &quot;;
+      case &apos;contains&apos;:
+        return `\`${this.joinTableRef()}\`.\`value\` = ${escaped}`;
+      case &apos;containsAny&apos;:
+        return `\`${this.joinTableRef()}\`.\`value\` IN ${escaped}`;
+      default:
+        return `\`${klass.name}\`.\`${this.attr.jsonKey}\` ${this.comparator} ${escaped}`;
+    }
+  }
+}
+
+Matcher.muid = 0
+
+/**
+This subclass is publicly exposed as Matcher.Or.
+@private
+*/
+class OrCompositeMatcher extends Matcher {
+  constructor(children) {
+    super();
+    this.children = children;
+  }
+
+  attribute() {
+    return null;
+  }
+
+  value() {
+    return null;
+  }
+
+  evaluate(model) {
+    return this.children.some((matcher) =&gt; matcher.evaluate(model));
+  }
+
+  joinSQL(klass) {
+    const joins = []
+    for (const matcher of this.children) {
+      const join = matcher.joinSQL(klass);
+      if (join) {
+        joins.push(join);
+      }
+    }
+    return (joins.length) ? joins.join(&quot; &quot;) : false;
+  }
+
+  whereSQL(klass) {
+    const wheres = this.children.map((matcher) =&gt; matcher.whereSQL(klass));
+    return `(${wheres.join(&quot; OR &quot;)})`;
+  }
+}
+
+/**
+This subclass is publicly exposed as Matcher.And.
+@private
+*/
+class AndCompositeMatcher extends Matcher {
+  constructor(children) {
+    super();
+    this.children = children;
+  }
+
+  attribute() {
+    return null;
+  }
+
+  value() {
+    return null;
+  }
+
+  evaluate(model) {
+    return this.children.every((m) =&gt; m.evaluate(model));
+  }
+
+  joinSQL(klass) {
+    const joins = []
+    for (const matcher of this.children) {
+      const join = matcher.joinSQL(klass);
+      if (join) {
+        joins.push(join);
+      }
+    }
+    return joins;
+  }
+
+  whereSQL(klass) {
+    const wheres = this.children.map((m) =&gt; m.whereSQL(klass));
+    return `(${wheres.join(&quot; AND &quot;)})`;
+  }
+}
+
+/**
+This subclass is publicly exposed as Matcher.Not.
+@private
+*/
+class NotCompositeMatcher extends AndCompositeMatcher {
+  whereSQL(klass) {
+    return `NOT (${super.whereSQL(klass)})`;
+  }
+}
+
+class SearchMatcher extends Matcher {
+  constructor(searchQuery) {
+    super(null, null, null);
+    this.searchQuery = (
+      searchQuery.trim()
+      .replace(/^[&apos;&quot;]/, &quot;&quot;)
+      .replace(/[&apos;&quot;]$/, &quot;&quot;)
+      .replace(/&apos;/g, singleQuoteEscapeSequence)
+      .replace(/&quot;/g, doubleQuoteEscapeSequence)
+    )
+  }
+
+  attribute() {
+    return null;
+  }
+
+  value() {
+    return null
+  }
+
+  // The only way to truly check if a model matches this matcher is to run the query
+  // again and check if the model is in the results. This is too expensive, so we
+  // will always return true so models aren&apos;t excluded from the
+  // SearchQuerySubscription result set
+  evaluate() {
+    return true;
+  }
+
+  joinSQL(klass) {
+    const searchTable = `${klass.name}Search`
+    const joinTableRef = this.joinTableRef()
+    return `INNER JOIN \`${searchTable}\` AS \`${joinTableRef}\` ON \`${joinTableRef}\`.\`content_id\` = \`${klass.name}\`.\`id\``;
+  }
+
+  whereSQL(klass) {
+    const searchTable = `${klass.name}Search`
+    return `\`${searchTable}\` MATCH &apos;&quot;${this.searchQuery}&quot;*&apos;`;
+  }
+}
+
+Matcher.Or = OrCompositeMatcher
+Matcher.And = AndCompositeMatcher
+Matcher.Not = NotCompositeMatcher
+Matcher.Search = SearchMatcher
+
+export default Matcher;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

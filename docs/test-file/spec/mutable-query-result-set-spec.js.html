@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/mutable-query-result-set-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/mutable-query-result-set-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint quote-props: 0 */
+import MutableQueryResultSet from &apos;../lib/mutable-query-result-set&apos;;
+import QueryRange from &apos;../lib/query-range&apos;;
+
+describe(&quot;MutableQueryResultSet&quot;, function MutableQueryResultSetSpecs() {
+  describe(&quot;clipToRange&quot;, () =&gt; {
+    it(&quot;should do nothing if the clipping range is infinite&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({_ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;], _offset: 5});
+      const beforeRange = set.range();
+      set.clipToRange(QueryRange.infinite());
+      const afterRange = set.range();
+
+      expect(beforeRange.isEqual(afterRange)).toBe(true);
+    });
+
+    it(&quot;should correctly trim the result set 5-10 to the clipping range 2-9&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({_ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;], _offset: 5});
+      expect(set.range().isEqual(new QueryRange({offset: 5, limit: 5}))).toBe(true);
+      set.clipToRange(new QueryRange({offset: 2, limit: 7}));
+      expect(set.range().isEqual(new QueryRange({offset: 5, limit: 4}))).toBe(true);
+      expect(set.ids()).toEqual([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;]);
+    });
+
+    it(&quot;should correctly trim the result set 5-10 to the clipping range 5-10&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({_ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;], _offset: 5});
+      set.clipToRange(new QueryRange({start: 5, end: 10}));
+      expect(set.range().isEqual(new QueryRange({start: 5, end: 10}))).toBe(true);
+      expect(set.ids()).toEqual([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;]);
+    });
+
+    it(&quot;should correctly trim the result set 5-10 to the clipping range 6&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({_ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;], _offset: 5});
+      set.clipToRange(new QueryRange({offset: 6, limit: 1}));
+      expect(set.range().isEqual(new QueryRange({offset: 6, limit: 1}))).toBe(true);
+      expect(set.ids()).toEqual([&apos;B&apos;]);
+    });
+
+    it(&quot;should correctly trim the result set 5-10 to the clipping range 100-200&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({_ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;], _offset: 5});
+      set.clipToRange(new QueryRange({start: 100, end: 200}));
+      expect(set.range().isEqual(new QueryRange({start: 100, end: 100}))).toBe(true);
+      expect(set.ids()).toEqual([]);
+    });
+
+    it(&quot;should correctly trim the result set 5-10 to the clipping range 0-2&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({_ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;], _offset: 5});
+      set.clipToRange(new QueryRange({offset: 0, limit: 2}));
+      expect(set.range().isEqual(new QueryRange({offset: 5, limit: 0}))).toBe(true);
+      expect(set.ids()).toEqual([]);
+    });
+
+    it(&quot;should trim the models cache to remove models no longer needed&quot;, () =&gt; {
+      const set = new MutableQueryResultSet({
+        _ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;],
+        _offset: 5,
+        _modelsHash: {
+          &apos;A&apos;: {id: &apos;A&apos;},
+          &apos;B&apos;: {id: &apos;B&apos;},
+          &apos;C&apos;: {id: &apos;C&apos;},
+          &apos;D&apos;: {id: &apos;D&apos;},
+          &apos;E&apos;: {id: &apos;E&apos;},
+        }});
+
+      set.clipToRange(new QueryRange({start: 5, end: 8}));
+      expect(set._modelsHash).toEqual({
+        &apos;A&apos;: {id: &apos;A&apos;},
+        &apos;B&apos;: {id: &apos;B&apos;},
+        &apos;C&apos;: {id: &apos;C&apos;},
+      });
+    });
+  });
+
+  describe(&quot;addIdsInRange&quot;, () =&gt; {
+    describe(&quot;when the set is currently empty&quot;, () =&gt;
+      it(&quot;should set the result set to the provided one&quot;, () =&gt; {
+        this.set = new MutableQueryResultSet();
+        this.set.addIdsInRange([&apos;B&apos;, &apos;C&apos;, &apos;D&apos;], new QueryRange({start: 1, end: 4}));
+        expect(this.set.ids()).toEqual([&apos;B&apos;, &apos;C&apos;, &apos;D&apos;]);
+        expect(this.set.range().isEqual(new QueryRange({start: 1, end: 4}))).toBe(true);
+      })
+
+    );
+
+    describe(&quot;when the set has existing values&quot;, () =&gt; {
+      beforeEach(() =&gt; {
+        this.set = new MutableQueryResultSet({
+          _ids: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;],
+          _offset: 5,
+          _modelsHash: {&apos;A&apos;: {id: &apos;A&apos;}, &apos;B&apos;: {id: &apos;B&apos;}, &apos;C&apos;: {id: &apos;C&apos;}, &apos;D&apos;: {id: &apos;D&apos;}, &apos;E&apos;: {id: &apos;E&apos;}},
+        });
+      });
+
+      it(&quot;should throw an exception if the range provided doesn&apos;t intersect (trailing)&quot;, () =&gt; {
+        expect(() =&gt; {
+          this.set.addIdsInRange([&apos;G&apos;, &apos;H&apos;, &apos;I&apos;], new QueryRange({offset: 11, limit: 3}));
+        }).toThrow();
+
+        expect(() =&gt; {
+          this.set.addIdsInRange([&apos;F&apos;, &apos;G&apos;, &apos;H&apos;], new QueryRange({offset: 10, limit: 3}));
+        }).not.toThrow();
+      });
+
+      it(&quot;should throw an exception if the range provided doesn&apos;t intersect (leading)&quot;, () =&gt; {
+        expect(() =&gt; {
+          this.set.addIdsInRange([&apos;0&apos;, &apos;1&apos;, &apos;2&apos;], new QueryRange({offset: 1, limit: 3}));
+        }).toThrow();
+
+        expect(() =&gt; {
+          this.set.addIdsInRange([&apos;0&apos;, &apos;1&apos;, &apos;2&apos;], new QueryRange({offset: 2, limit: 3}));
+        }).not.toThrow();
+      });
+
+      it(&quot;should work if the IDs array is shorter than the result range they represent (addition)&quot;, () =&gt; {
+        this.set.addIdsInRange([&apos;F&apos;, &apos;G&apos;, &apos;H&apos;], new QueryRange({offset: 10, limit: 5}));
+        expect(this.set.ids()).toEqual([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;]);
+      });
+
+      it(&quot;should work if the IDs array is shorter than the result range they represent (replacement)&quot;, () =&gt; {
+        this.set.addIdsInRange([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;], new QueryRange({offset: 5, limit: 5}));
+        expect(this.set.ids()).toEqual([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]);
+      });
+
+      it(&quot;should correctly add ids (trailing) and update the offset&quot;, () =&gt; {
+        this.set.addIdsInRange([&apos;F&apos;, &apos;G&apos;, &apos;H&apos;], new QueryRange({offset: 10, limit: 3}));
+        expect(this.set.ids()).toEqual([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;]);
+        expect(this.set.range().offset).toEqual(5);
+      });
+
+      it(&quot;should correctly add ids (leading) and update the offset&quot;, () =&gt; {
+        this.set.addIdsInRange([&apos;0&apos;, &apos;1&apos;, &apos;2&apos;], new QueryRange({offset: 2, limit: 3}));
+        expect(this.set.ids()).toEqual([&apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;]);
+        expect(this.set.range().offset).toEqual(2);
+      });
+
+      it(&quot;should correctly add ids (middle) and update the offset&quot;, () =&gt; {
+        this.set.addIdsInRange([&apos;B-new&apos;, &apos;C-new&apos;, &apos;D-new&apos;], new QueryRange({offset: 6, limit: 3}));
+        expect(this.set.ids()).toEqual([&apos;A&apos;, &apos;B-new&apos;, &apos;C-new&apos;, &apos;D-new&apos;, &apos;E&apos;]);
+        expect(this.set.range().offset).toEqual(5);
+      });
+
+      it(&quot;should correctly add ids (middle+trailing) and update the offset&quot;, () =&gt; {
+        this.set.addIdsInRange([&apos;D-new&apos;, &apos;E-new&apos;, &apos;F-new&apos;], new QueryRange({offset: 8, limit: 3}));
+        expect(this.set.ids()).toEqual([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D-new&apos;, &apos;E-new&apos;, &apos;F-new&apos;]);
+        expect(this.set.range().offset).toEqual(5);
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

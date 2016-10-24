@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/database-transaction-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/database-transaction-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint dot-notation:0 */
+import TestModel from &apos;./fixtures/db-test-model&apos;;
+import Category from &apos;./fixtures/category&apos;;
+import DatabaseTransaction from &apos;../lib/database-transaction&apos;;
+import DatabaseChangeRecord from &apos;../lib/database-change-record&apos;;
+
+const testModelInstance = new TestModel({id: &quot;1234&quot;});
+const testModelInstanceA = new TestModel({id: &quot;AAA&quot;});
+const testModelInstanceB = new TestModel({id: &quot;BBB&quot;});
+
+function __range__(left, right, inclusive) {
+  const range = [];
+  const ascending = left &lt; right;
+  const incr = ascending ? right + 1 : right - 1;
+  const end = !inclusive ? right : incr;
+  for (let i = left; ascending ? i &lt; end : i &gt; end; ascending ? i++ : i--) {
+    range.push(i);
+  }
+  return range;
+}
+
+describe(&quot;DatabaseTransaction&quot;, function DatabaseTransactionSpecs() {
+  beforeEach(() =&gt; {
+    this.databaseMutationHooks = [];
+    this.performed = [];
+    this.database = {
+      _query: jasmine.createSpy(&apos;database._query&apos;).and.callFake((query, values = []) =&gt; {
+        this.performed.push({query, values});
+        return Promise.resolve([]);
+      }),
+      transactionDidCommitChanges: jasmine.createSpy(&apos;database.transactionDidCommitChanges&apos;),
+      mutationHooks: () =&gt; this.databaseMutationHooks,
+    };
+
+    this.transaction = new DatabaseTransaction(this.database);
+
+    jasmine.clock().install();
+  });
+
+  afterEach(() =&gt; {
+    jasmine.clock().uninstall();
+  });
+
+  describe(&quot;execute&quot;, () =&gt; {});
+
+  describe(&quot;persistModel&quot;, () =&gt; {
+    it(&quot;should throw an exception if the model is not a subclass of Model&quot;, () =&gt;
+      expect(() =&gt; this.transaction.persistModel({id: &apos;asd&apos;, subject: &apos;bla&apos;})).toThrow()
+    );
+
+    it(&quot;should call through to persistModels&quot;, () =&gt; {
+      spyOn(this.transaction, &apos;persistModels&apos;).and.returnValue(Promise.resolve());
+      this.transaction.persistModel(testModelInstance);
+      jasmine.clock().tick();
+      expect(this.transaction.persistModels.calls.count()).toBe(1);
+    });
+  });
+
+  describe(&quot;persistModels&quot;, () =&gt; {
+    it(&quot;should call transactionDidCommitChanges with a change that contains the models&quot;, (done) =&gt; {
+      this.transaction.execute(t =&gt; {
+        return t.persistModels([testModelInstanceA, testModelInstanceB]);
+      });
+
+      jasmine.waitFor(() =&gt;
+        this.database.transactionDidCommitChanges.calls.count() &gt; 0
+      )
+      .then(() =&gt; {
+        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord({
+          objectClass: TestModel.name,
+          objectIds: [testModelInstanceA.id, testModelInstanceB.id],
+          objects: [testModelInstanceA, testModelInstanceB],
+          type: &apos;persist&apos;,
+        })]);
+        done();
+      });
+    });
+
+    it(&quot;should call through to _writeModels after checking them&quot;, (done) =&gt; {
+      spyOn(this.transaction, &apos;_writeModels&apos;).and.returnValue(Promise.resolve());
+      this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
+      jasmine.waitFor(() =&gt; this.transaction._writeModels.calls.count() &gt; 0).then(() =&gt; {
+        expect(this.transaction._writeModels.calls.count()).toBe(1)
+        done()
+      });
+    });
+
+    it(&quot;should throw an exception if the models are not the same class, since it cannot be specified by the trigger payload&quot;, () =&gt;
+      expect(() =&gt; this.transaction.persistModels([testModelInstanceA, new Category()])).toThrow()
+    );
+
+    it(&quot;should throw an exception if the models are not a subclass of Model&quot;, () =&gt;
+      expect(() =&gt; this.transaction.persistModels([{id: &apos;asd&apos;, subject: &apos;bla&apos;}])).toThrow()
+    );
+
+    describe(&quot;mutationHooks&quot;, () =&gt; {
+      beforeEach(() =&gt; {
+        this.beforeShouldThrow = false;
+        this.beforeShouldReject = false;
+
+        this.hook = {
+          beforeDatabaseChange: jasmine.createSpy(&apos;beforeDatabaseChange&apos;).and.callFake(() =&gt; {
+            if (this.beforeShouldThrow) { throw new Error(&quot;beforeShouldThrow&quot;); }
+            return new Promise((resolve) =&gt; {
+              setTimeout(() =&gt; {
+                if (this.beforeShouldReject) { resolve(new Error(&quot;beforeShouldReject&quot;)); }
+                resolve(&quot;value&quot;);
+              }
+              , 1000);
+            });
+          }),
+          afterDatabaseChange: jasmine.createSpy(&apos;afterDatabaseChange&apos;).and.callFake(() =&gt; {
+            return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(), 1000));
+          }),
+        };
+
+        this.databaseMutationHooks.push(this.hook);
+
+        this.writeModelsResolve = null;
+        spyOn(this.transaction, &apos;_writeModels&apos;).and.callFake(() =&gt; {
+          return new Promise((resolve) =&gt; {
+            this.writeModelsResolve = resolve;
+          });
+        });
+      });
+
+      it(&quot;should run pre-mutation hooks, wait to write models, and then run post-mutation hooks&quot;, (done) =&gt; {
+        this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
+
+        expect(this.hook.beforeDatabaseChange).toHaveBeenCalledWith(
+          this.transaction._query,
+          {
+            objects: [testModelInstanceA, testModelInstanceB],
+            objectIds: [testModelInstanceA.id, testModelInstanceB.id],
+            objectClass: testModelInstanceA.constructor.name,
+            type: &apos;persist&apos;,
+          },
+          undefined
+        );
+        expect(this.transaction._writeModels).not.toHaveBeenCalled();
+        jasmine.clock().tick(1000);
+        jasmine.waitFor(() =&gt; this.transaction._writeModels.calls.count() &gt; 0).then(() =&gt; {
+          expect(this.hook.afterDatabaseChange).not.toHaveBeenCalled();
+          this.writeModelsResolve();
+
+          jasmine.waitFor(() =&gt; this.hook.afterDatabaseChange.calls.count() &gt; 0).then(() =&gt; {
+            expect(this.hook.afterDatabaseChange).toHaveBeenCalledWith(
+              this.transaction._query,
+              {
+                objects: [testModelInstanceA, testModelInstanceB],
+                objectIds: [testModelInstanceA.id, testModelInstanceB.id],
+                objectClass: testModelInstanceA.constructor.name,
+                type: &apos;persist&apos;,
+              },
+              &quot;value&quot;
+            );
+            done();
+          });
+        });
+      });
+
+      it(&quot;should carry on if a pre-mutation hook throws&quot;, (done) =&gt; {
+        this.beforeShouldThrow = true;
+        this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
+        jasmine.clock().tick(1000);
+        expect(this.hook.beforeDatabaseChange).toHaveBeenCalled();
+        jasmine.waitFor(() =&gt; this.transaction._writeModels.calls.count() &gt; 0).then(done);
+      });
+
+      it(&quot;should carry on if a pre-mutation hook rejects&quot;, (done) =&gt; {
+        this.beforeShouldReject = true;
+        this.transaction.persistModels([testModelInstanceA, testModelInstanceB]);
+        jasmine.clock().tick(1000);
+        expect(this.hook.beforeDatabaseChange).toHaveBeenCalled();
+        jasmine.waitFor(() =&gt; this.transaction._writeModels.calls.count() &gt; 0).then(done);
+      });
+    });
+  });
+
+  describe(&quot;unpersistModel&quot;, () =&gt; {
+    it(&quot;should delete the model by id&quot;, (done) =&gt;
+      this.transaction.execute(() =&gt; {
+        return this.transaction.unpersistModel(testModelInstance);
+      })
+      .then(() =&gt; {
+        expect(this.performed.length).toBe(3);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;DELETE FROM `TestModel` WHERE `id` = ?&quot;);
+        expect(this.performed[1].values[0]).toBe(&apos;1234&apos;);
+        expect(this.performed[2].query).toBe(&quot;COMMIT&quot;);
+        done();
+      })
+    );
+
+    it(&quot;should call transactionDidCommitChanges with a change that contains the model&quot;, (done) =&gt; {
+      this.transaction.execute(() =&gt; {
+        return this.transaction.unpersistModel(testModelInstance);
+      });
+      jasmine.waitFor(() =&gt;
+        this.database.transactionDidCommitChanges.calls.count() &gt; 0
+      ).then(() =&gt; {
+        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord({
+          objectClass: TestModel.name,
+          objectIds: [testModelInstance.id],
+          objects: [testModelInstance],
+          type: &apos;unpersist&apos;,
+        })]);
+        done();
+      });
+    });
+
+    describe(&quot;when the model has collection attributes&quot;, () =&gt;
+      it(&quot;should delete all of the elements in the join tables&quot;, (done) =&gt; {
+        TestModel.configureWithCollectionAttribute();
+        this.transaction.execute(t =&gt; {
+          return t.unpersistModel(testModelInstance);
+        })
+        .then(() =&gt; {
+          expect(this.performed.length).toBe(4);
+          expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+          expect(this.performed[2].query).toBe(&quot;DELETE FROM `TestModelCategory` WHERE `id` = ?&quot;);
+          expect(this.performed[2].values[0]).toBe(&apos;1234&apos;);
+          expect(this.performed[3].query).toBe(&quot;COMMIT&quot;);
+          done();
+        });
+      })
+
+    );
+
+    describe(&quot;when the model has joined data attributes&quot;, () =&gt;
+      it(&quot;should delete the element in the joined data table&quot;, (done) =&gt; {
+        TestModel.configureWithJoinedDataAttribute();
+        this.transaction.execute(t =&gt; {
+          return t.unpersistModel(testModelInstance);
+        })
+        .then(() =&gt; {
+          expect(this.performed.length).toBe(4);
+          expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+          expect(this.performed[2].query).toBe(&quot;DELETE FROM `TestModelBody` WHERE `id` = ?&quot;);
+          expect(this.performed[2].values[0]).toBe(&apos;1234&apos;);
+          expect(this.performed[3].query).toBe(&quot;COMMIT&quot;);
+          done();
+        });
+      })
+
+    );
+  });
+
+  describe(&quot;_writeModels&quot;, () =&gt; {
+    it(&quot;should compose a REPLACE INTO query to save the model&quot;, () =&gt; {
+      TestModel.configureWithCollectionAttribute();
+      this.transaction._writeModels([testModelInstance]);
+      expect(this.performed[0].query).toBe(&quot;REPLACE INTO `TestModel` (id,data,other) VALUES (?,?,?)&quot;);
+    });
+
+    it(&quot;should save the model JSON into the data column&quot;, () =&gt; {
+      this.transaction._writeModels([testModelInstance]);
+      expect(this.performed[0].values[1]).toEqual(JSON.stringify(testModelInstance));
+    });
+
+    describe(&quot;when the model defines additional queryable attributes&quot;, () =&gt; {
+      beforeEach(() =&gt; {
+        TestModel.configureWithAllAttributes();
+        this.m = new TestModel({
+          id: &apos;local-6806434c-b0cd&apos;,
+          datetime: new Date(),
+          string: &apos;hello world&apos;,
+          boolean: true,
+          number: 15,
+        });
+      });
+
+      it(&quot;should populate additional columns defined by the attributes&quot;, () =&gt; {
+        this.transaction._writeModels([this.m]);
+        expect(this.performed[0].query).toBe(&quot;REPLACE INTO `TestModel` (id,data,datetime,string-json-key,boolean,number) VALUES (?,?,?,?,?,?)&quot;);
+      });
+
+      it(&quot;should use the JSON-form values of the queryable attributes&quot;, () =&gt; {
+        const json = this.m.toJSON();
+        this.transaction._writeModels([this.m]);
+
+        const { values } = this.performed[0];
+        expect(values[2]).toEqual(json[&apos;datetime&apos;]);
+        expect(values[3]).toEqual(json[&apos;string-json-key&apos;]);
+        expect(values[4]).toEqual(json[&apos;boolean&apos;]);
+        expect(values[5]).toEqual(json[&apos;number&apos;]);
+      });
+    });
+
+    describe(&quot;when the model has collection attributes&quot;, () =&gt; {
+      beforeEach(() =&gt; {
+        TestModel.configureWithCollectionAttribute();
+        this.m = new TestModel({id: &apos;local-6806434c-b0cd&apos;, other: &apos;other&apos;});
+        this.m.categories = [new Category({id: &apos;a&apos;}), new Category({id: &apos;b&apos;})];
+        this.transaction._writeModels([this.m]);
+      });
+
+      it(&quot;should delete all association records for the model from join tables&quot;, () =&gt; {
+        expect(this.performed[1].query).toBe(&apos;DELETE FROM `TestModelCategory` WHERE `id` IN (\&apos;local-6806434c-b0cd\&apos;)&apos;);
+      });
+
+      it(&quot;should insert new association records into join tables in a single query, and include queryableBy columns&quot;, () =&gt; {
+        expect(this.performed[2].query).toBe(&apos;INSERT OR IGNORE INTO `TestModelCategory` (`id`,`value`,`other`) VALUES (?,?,?),(?,?,?)&apos;);
+        expect(this.performed[2].values).toEqual([&apos;local-6806434c-b0cd&apos;, &apos;a&apos;, &apos;other&apos;, &apos;local-6806434c-b0cd&apos;, &apos;b&apos;, &apos;other&apos;]);
+      });
+    });
+
+    describe(&quot;model collection attributes query building&quot;, () =&gt; {
+      beforeEach(() =&gt; {
+        TestModel.configureWithCollectionAttribute();
+        this.m = new TestModel({id: &apos;local-6806434c-b0cd&apos;, other: &apos;other&apos;});
+        this.m.categories = [];
+      });
+
+      it(&quot;should page association records into multiple queries correctly&quot;, () =&gt; {
+        const iterable = __range__(0, 199, true);
+        for (let j = 0; j &lt; iterable.length; j++) {
+          const i = iterable[j];
+          this.m.categories.push(new Category({id: `id-${i}`}));
+        }
+        this.transaction._writeModels([this.m]);
+
+        const collectionAttributeQueries = this.performed.filter(i =&gt; i.query.indexOf(&apos;INSERT OR IGNORE INTO `TestModelCategory`&apos;) === 0
+        );
+
+        expect(collectionAttributeQueries.length).toBe(1);
+        expect(collectionAttributeQueries[0].values[(200 * 3) - 2]).toEqual(&apos;id-199&apos;);
+      });
+
+      it(&quot;should page association records into multiple queries correctly&quot;, () =&gt; {
+        const iterable = __range__(0, 200, true);
+        for (let j = 0; j &lt; iterable.length; j++) {
+          const i = iterable[j];
+          this.m.categories.push(new Category({id: `id-${i}`}));
+        }
+        this.transaction._writeModels([this.m]);
+
+        const collectionAttributeQueries = this.performed.filter(i =&gt; i.query.indexOf(&apos;INSERT OR IGNORE INTO `TestModelCategory`&apos;) === 0
+        );
+
+        expect(collectionAttributeQueries.length).toBe(2);
+        expect(collectionAttributeQueries[0].values[(200 * 3) - 2]).toEqual(&apos;id-199&apos;);
+        expect(collectionAttributeQueries[1].values[1]).toEqual(&apos;id-200&apos;);
+      });
+
+      it(&quot;should page association records into multiple queries correctly&quot;, () =&gt; {
+        const iterable = __range__(0, 201, true);
+        for (let j = 0; j &lt; iterable.length; j++) {
+          const i = iterable[j];
+          this.m.categories.push(new Category({id: `id-${i}`}));
+        }
+        this.transaction._writeModels([this.m]);
+
+        const collectionAttributeQueries = this.performed.filter(i =&gt; i.query.indexOf(&apos;INSERT OR IGNORE INTO `TestModelCategory`&apos;) === 0
+        );
+
+        expect(collectionAttributeQueries.length).toBe(2);
+        expect(collectionAttributeQueries[0].values[(200 * 3) - 2]).toEqual(&apos;id-199&apos;);
+        expect(collectionAttributeQueries[1].values[1]).toEqual(&apos;id-200&apos;);
+        expect(collectionAttributeQueries[1].values[4]).toEqual(&apos;id-201&apos;);
+      });
+    });
+
+    describe(&quot;when the model has joined data attributes&quot;, () =&gt; {
+      beforeEach(() =&gt; TestModel.configureWithJoinedDataAttribute());
+
+      it(&quot;should not include the value to the joined attribute in the JSON written to the main model table&quot;, () =&gt; {
+        this.m = new TestModel({id: &apos;local-6806434c-b0cd&apos;, body: &apos;hello world&apos;});
+        this.transaction._writeModels([this.m]);
+        expect(this.performed[0].values).toEqual([&apos;local-6806434c-b0cd&apos;, &apos;{&quot;id&quot;:&quot;local-6806434c-b0cd&quot;}&apos;]);
+      });
+
+      it(&quot;should write the value to the joined table if it is defined&quot;, () =&gt; {
+        this.m = new TestModel({id: &apos;local-6806434c-b0cd&apos;, body: &apos;hello world&apos;});
+        this.transaction._writeModels([this.m]);
+        expect(this.performed[1].query).toBe(&apos;REPLACE INTO `TestModelBody` (`id`, `value`) VALUES (?, ?)&apos;);
+        expect(this.performed[1].values).toEqual([this.m.id, this.m.body]);
+      });
+
+      it(&quot;should not write the value to the joined table if it undefined&quot;, () =&gt; {
+        this.m = new TestModel({id: &apos;local-6806434c-b0cd&apos;});
+        this.transaction._writeModels([this.m]);
+        expect(this.performed.length).toBe(1);
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

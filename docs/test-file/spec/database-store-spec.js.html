@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/database-store-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/database-store-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint quote-props: 0 */
+import TestModel from &apos;./fixtures/db-test-model&apos;;
+import Thread from &apos;./fixtures/thread&apos;;
+import ModelQuery from &apos;../lib/query&apos;;
+import {Database} from &apos;./fixtures&apos;;
+
+const testMatchers = {&apos;id&apos;: &apos;b&apos;};
+
+describe(&quot;Database&quot;, function DatabaseSpecs() {
+  beforeEach(() =&gt; {
+    TestModel.configureBasic();
+    jasmine.clock().install();
+
+    Database._atomicallyQueue = undefined;
+    Database._mutationQueue = undefined;
+    Database._inTransaction = false;
+
+    spyOn(ModelQuery.prototype, &apos;where&apos;).and.callThrough();
+    spyOn(Database, &apos;transactionDidCommitChanges&apos;).and.callFake(() =&gt; Promise.resolve());
+
+    this.performed = [];
+
+    // Note: We spy on _query and test all of the convenience methods that sit above
+    // it. None of these tests evaluate whether _query works!
+    spyOn(Database, &quot;_query&quot;).and.callFake((query, values = []) =&gt; {
+      this.performed.push({query, values});
+      return Promise.resolve([]);
+    });
+  });
+
+  afterEach(() =&gt; {
+    jasmine.clock().uninstall();
+  });
+
+  describe(&quot;find&quot;, () =&gt;
+    it(&quot;should return a ModelQuery for retrieving a single item by Id&quot;, () =&gt; {
+      const q = Database.find(TestModel, &quot;4&quot;);
+      expect(q.sql()).toBe(&quot;SELECT `TestModel`.`data` FROM `TestModel`  WHERE `TestModel`.`id` = &apos;4&apos;  LIMIT 1&quot;);
+    })
+  );
+
+  describe(&quot;findBy&quot;, () =&gt; {
+    it(&quot;should pass the provided predicates on to the ModelQuery&quot;, () =&gt; {
+      Database.findBy(TestModel, testMatchers);
+      expect(ModelQuery.prototype.where).toHaveBeenCalledWith(testMatchers);
+    });
+
+    it(&quot;should return a ModelQuery ready to be executed&quot;, () =&gt; {
+      const q = Database.findBy(TestModel, testMatchers);
+      expect(q.sql()).toBe(&quot;SELECT `TestModel`.`data` FROM `TestModel`  WHERE `TestModel`.`id` = &apos;b&apos;  LIMIT 1&quot;);
+    });
+  });
+
+  describe(&quot;findAll&quot;, () =&gt; {
+    it(&quot;should pass the provided predicates on to the ModelQuery&quot;, () =&gt; {
+      Database.findAll(TestModel, testMatchers);
+      expect(ModelQuery.prototype.where).toHaveBeenCalledWith(testMatchers);
+    });
+
+    it(&quot;should return a ModelQuery ready to be executed&quot;, () =&gt; {
+      const q = Database.findAll(TestModel, testMatchers);
+      expect(q.sql()).toBe(&quot;SELECT `TestModel`.`data` FROM `TestModel`  WHERE `TestModel`.`id` = &apos;b&apos;  &quot;);
+    });
+  });
+
+  describe(&quot;modelify&quot;, () =&gt; {
+    beforeEach(() =&gt; {
+      this.models = [
+        new Thread({id: &apos;local-A&apos;}),
+        new Thread({id: &apos;local-B&apos;}),
+        new Thread({id: &apos;local-C&apos;}),
+        new Thread({id: &apos;local-D&apos;}),
+      ];
+      // Actually returns correct sets for queries, since matchers can evaluate
+      // themselves against models in memory
+      spyOn(Database, &apos;run&apos;).and.callFake(query =&gt; {
+        const results = this.models.filter(model =&gt;
+          query._matchers.every(matcher =&gt; matcher.evaluate(model))
+        );
+        return Promise.resolve(results);
+      });
+    });
+
+    describe(&quot;when given an array or input that is not an array&quot;, () =&gt;
+      it(&quot;resolves immediately with an empty array&quot;, (done) =&gt; {
+        Database.modelify(Thread, null).then(output =&gt; {
+          expect(output).toEqual([]);
+          done();
+        });
+      })
+    );
+
+    describe(&quot;when given an array of mixed ids and models&quot;, () =&gt;
+      it(&quot;resolves with an array of models&quot;, (done) =&gt; {
+        const input = [&apos;local-B&apos;, &apos;local-C&apos;, this.models[0]];
+        const expectedOutput = [this.models[1], this.models[2], this.models[0]];
+        Database.modelify(Thread, input).then(output =&gt; {
+          expect(output).toEqual(expectedOutput);
+          done();
+        });
+      })
+
+    );
+
+    describe(&quot;when the input is only IDs&quot;, () =&gt;
+      it(&quot;resolves with an array of models&quot;, (done) =&gt; {
+        const input = [&apos;local-B&apos;, &apos;local-C&apos;, &apos;local-D&apos;];
+        const expectedOutput = [this.models[1], this.models[2], this.models[3]];
+        Database.modelify(Thread, input).then(output =&gt; {
+          expect(output).toEqual(expectedOutput);
+          done();
+        });
+      })
+
+    );
+
+    describe(&quot;when the input is all models&quot;, () =&gt;
+      it(&quot;resolves with an array of models&quot;, (done) =&gt; {
+        const input = [this.models[0], this.models[1], this.models[2], this.models[3]];
+        const expectedOutput = [this.models[0], this.models[1], this.models[2], this.models[3]];
+        Database.modelify(Thread, input).then(output =&gt; {
+          expect(output).toEqual(expectedOutput);
+          done();
+        });
+      })
+
+    );
+  });
+
+  describe(&quot;count&quot;, () =&gt; {
+    it(&quot;should pass the provided predicates on to the ModelQuery&quot;, () =&gt; {
+      Database.findAll(TestModel, testMatchers);
+      expect(ModelQuery.prototype.where).toHaveBeenCalledWith(testMatchers);
+    });
+
+    it(&quot;should return a ModelQuery configured for COUNT ready to be executed&quot;, () =&gt; {
+      const q = Database.findAll(TestModel, testMatchers);
+      expect(q.sql()).toBe(&quot;SELECT `TestModel`.`data` FROM `TestModel`  WHERE `TestModel`.`id` = &apos;b&apos;  &quot;);
+    });
+  });
+
+  describe(&quot;inTransaction&quot;, () =&gt; {
+    it(&quot;calls the provided function inside an exclusive transaction&quot;, (done) =&gt;
+      Database.inTransaction(() =&gt; {
+        return Database._query(&quot;TEST&quot;);
+      }).then(() =&gt; {
+        expect(this.performed.length).toBe(3);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;TEST&quot;);
+        expect(this.performed[2].query).toBe(&quot;COMMIT&quot;);
+        done();
+      })
+    );
+
+    it(&quot;preserves resolved values&quot;, (done) =&gt;
+      Database.inTransaction(() =&gt; {
+        Database._query(&quot;TEST&quot;);
+        return Promise.resolve(&quot;myValue&quot;);
+      }).then(myValue =&gt; {
+        expect(myValue).toBe(&quot;myValue&quot;);
+        done();
+      })
+    );
+
+    it(&quot;always fires a COMMIT, even if the body function fails&quot;, (done) =&gt;
+      Database.inTransaction(() =&gt; {
+        throw new Error(&quot;BOOO&quot;);
+      }).catch(() =&gt; {
+        expect(this.performed.length).toBe(2);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;COMMIT&quot;);
+        done();
+      })
+
+    );
+
+    it(&quot;can be called multiple times and get queued&quot;, (done) =&gt;
+      Promise.all([
+        Database.inTransaction(() =&gt; { }),
+        Database.inTransaction(() =&gt; { }),
+        Database.inTransaction(() =&gt; { }),
+      ]).then(() =&gt; {
+        expect(this.performed.length).toBe(6);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;COMMIT&quot;);
+        expect(this.performed[2].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[3].query).toBe(&quot;COMMIT&quot;);
+        expect(this.performed[4].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[5].query).toBe(&quot;COMMIT&quot;);
+        done();
+      })
+
+    );
+
+    it(&quot;carries on if one of them fails, but still calls the COMMIT for the failed block&quot;, (done) =&gt; {
+      let caughtError = false;
+      Promise.all([
+        Database.inTransaction(() =&gt; Database._query(&quot;ONE&quot;)),
+        Database.inTransaction(() =&gt; { throw new Error(&quot;fail&quot;); }).catch(() =&gt; { caughtError = true }),
+        Database.inTransaction(() =&gt; Database._query(&quot;THREE&quot;)),
+      ]).then(() =&gt; {
+        expect(this.performed.length).toBe(8);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;ONE&quot;);
+        expect(this.performed[2].query).toBe(&quot;COMMIT&quot;);
+        expect(this.performed[3].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[4].query).toBe(&quot;COMMIT&quot;);
+        expect(this.performed[5].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[6].query).toBe(&quot;THREE&quot;);
+        expect(this.performed[7].query).toBe(&quot;COMMIT&quot;);
+        expect(caughtError).toBe(true);
+        done();
+      });
+    });
+
+    it(&quot;is actually running in series and blocks on never-finishing specs&quot;, (done) =&gt; {
+      let resolver = null;
+      let blockedPromiseDone = false;
+      Database.inTransaction(() =&gt; { }).then(() =&gt; {
+        expect(this.performed.length).toBe(2);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;COMMIT&quot;);
+      })
+      .then(() =&gt; {
+        Database.inTransaction(() =&gt; new Promise((resolve) =&gt; {
+          resolver = resolve;
+        }))
+        Database.inTransaction(() =&gt; { }).then(() =&gt; {
+          blockedPromiseDone = true;
+        })
+
+        jasmine.waitFor(() =&gt; resolver).then(() =&gt; {
+          expect(this.performed.length).toBe(3);
+          expect(this.performed[2].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+          expect(blockedPromiseDone).toBe(false);
+
+          // Now that we&apos;ve made our assertion about blocking, we need to clean up
+          // our test and actually resolve that blocked promise now, otherwise
+          // remaining tests won&apos;t run properly.
+          resolver();
+
+          jasmine.waitFor(() =&gt; blockedPromiseDone).then(() =&gt; {
+            expect(blockedPromiseDone).toBe(true);
+            done();
+          });
+        });
+      });
+    });
+
+    it(&quot;can be called multiple times and preserve return values&quot;, (done) =&gt; {
+      let v1 = null;
+      let v2 = null;
+      let v3 = null;
+      Promise.all([
+        Database.inTransaction(() =&gt; &quot;a&quot;).then(val =&gt; { v1 = val }),
+        Database.inTransaction(() =&gt; &quot;b&quot;).then(val =&gt; { v2 = val }),
+        Database.inTransaction(() =&gt; &quot;c&quot;).then(val =&gt; { v3 = val }),
+      ]).then(() =&gt; {
+        expect(v1).toBe(&quot;a&quot;);
+        expect(v2).toBe(&quot;b&quot;);
+        expect(v3).toBe(&quot;c&quot;);
+        done();
+      });
+    });
+
+    it(&quot;can be called multiple times and get queued&quot;, (done) =&gt;
+      Database.inTransaction(() =&gt; { })
+      .then(() =&gt; Database.inTransaction(() =&gt; { }))
+      .then(() =&gt; Database.inTransaction(() =&gt; { }))
+      .then(() =&gt; {
+        expect(this.performed.length).toBe(6);
+        expect(this.performed[0].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[1].query).toBe(&quot;COMMIT&quot;);
+        expect(this.performed[2].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[3].query).toBe(&quot;COMMIT&quot;);
+        expect(this.performed[4].query).toBe(&quot;BEGIN IMMEDIATE TRANSACTION&quot;);
+        expect(this.performed[5].query).toBe(&quot;COMMIT&quot;);
+        done();
+      })
+    );
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

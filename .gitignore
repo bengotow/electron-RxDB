@@ -7,5 +7,4 @@
 /sqlite-test.db-shm
 /sqlite-test.db
 /npm-debug.log
-/docs
-/esdoc
+/docs/ast

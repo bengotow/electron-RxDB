@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">spec/query-subscription-spec.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/query-subscription-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import QueryRange from &apos;../lib/query-range&apos;;
+import MutableQueryResultSet from &apos;../lib/mutable-query-result-set&apos;;
+import QuerySubscription from &apos;../lib/query-subscription&apos;;
+import * as Utils from &apos;../lib/utils&apos;;
+
+import {Database, Thread} from &apos;./fixtures&apos;;
+
+describe(&quot;QuerySubscription&quot;, function QuerySubscriptionSpecs() {
+  beforeEach(() =&gt; {
+    jasmine.clock().install();
+  });
+
+  afterEach(() =&gt; {
+    jasmine.clock().uninstall();
+  });
+
+  describe(&quot;constructor&quot;, () =&gt;
+    describe(&quot;when a query is provided&quot;, () =&gt; {
+      it(&quot;should finalize the query&quot;, () =&gt; {
+        const query = Database.findAll(Thread);
+        const subscription = new QuerySubscription(query);
+        expect(subscription).toBeDefined();
+        expect(query._finalized).toBe(true);
+      });
+
+      it(&quot;should throw an exception if the query is a count query, which cannot be observed&quot;, () =&gt; {
+        const query = Database.count(Thread);
+        expect(() =&gt; {
+          const subscription = new QuerySubscription(query);
+          return subscription;
+        })
+        .toThrow();
+      });
+
+      it(&quot;should call `update` to initialize the result set&quot;, () =&gt; {
+        const query = Database.findAll(Thread);
+        spyOn(QuerySubscription.prototype, &apos;update&apos;);
+        const subscription = new QuerySubscription(query);
+        expect(subscription).toBeDefined();
+        expect(QuerySubscription.prototype.update).toHaveBeenCalled();
+      });
+
+      describe(&quot;when initialModels are provided&quot;, () =&gt;
+        it(&quot;should apply the models and trigger&quot;, () =&gt; {
+          const query = Database.findAll(Thread);
+          const threads = [1, 2, 3, 4, 5].map(i =&gt; new Thread({id: i}));
+          const subscription = new QuerySubscription(query, {initialModels: threads});
+          expect(subscription._set).not.toBe(null);
+        })
+
+      );
+    })
+
+  );
+
+  describe(&quot;query&quot;, () =&gt;
+    it(&quot;should return the query&quot;, () =&gt; {
+      const query = Database.findAll(Thread);
+      const subscription = new QuerySubscription(query);
+      expect(subscription.query()).toBe(query);
+    })
+
+  );
+
+  describe(&quot;addCallback&quot;, () =&gt;
+    it(&quot;should emit the last result to the new callback if one is available&quot;, (done) =&gt; {
+      const cb = jasmine.createSpy(&apos;callback&apos;);
+      spyOn(QuerySubscription.prototype, &apos;update&apos;).and.returnValue();
+      const subscription = new QuerySubscription(Database.findAll(Thread));
+      subscription._lastResult = &apos;something&apos;;
+
+      subscription.addCallback(cb);
+      jasmine.waitFor(() =&gt; cb.calls.count() &gt; 0).then(() =&gt; {
+        expect(cb).toHaveBeenCalledWith(&apos;something&apos;);
+        done();
+      });
+    })
+  );
+
+  describe(&quot;applyChangeRecord&quot;, () =&gt; {
+    const scenarios = [{
+      name: &quot;query with full set of objects (4)&quot;,
+      query: Database.findAll(Thread).where(Thread.attributes.accountId.equal(&apos;a&apos;)).limit(4).offset(2),
+      lastModels: [
+        new Thread({accountId: &apos;a&apos;, id: &apos;4&apos;, lastMessageReceivedTimestamp: 4}),
+        new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 3}),
+        new Thread({accountId: &apos;a&apos;, id: &apos;2&apos;, lastMessageReceivedTimestamp: 2}),
+        new Thread({accountId: &apos;a&apos;, id: &apos;1&apos;, lastMessageReceivedTimestamp: 1}),
+      ],
+      tests: [{
+        name: &apos;Item in set saved - new values, same sort value&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;a&apos;, id: &apos;4&apos;, lastMessageReceivedTimestamp: 4, subject: &apos;hello&apos;})],
+          type: &apos;persist&apos;,
+        },
+        nextModels: [
+          new Thread({accountId: &apos;a&apos;, id: &apos;4&apos;, lastMessageReceivedTimestamp: 4, subject: &apos;hello&apos;}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;2&apos;, lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;1&apos;, lastMessageReceivedTimestamp: 1}),
+        ],
+        mustUpdate: false,
+        mustTrigger: true,
+      }, {
+        name: &apos;Item in set saved - new sort value&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;a&apos;, id: &apos;5&apos;, lastMessageReceivedTimestamp: 3.5})],
+          type: &apos;persist&apos;,
+        },
+        nextModels: [
+          new Thread({accountId: &apos;a&apos;, id: &apos;4&apos;, lastMessageReceivedTimestamp: 4}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;5&apos;, lastMessageReceivedTimestamp: 3.5}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;2&apos;, lastMessageReceivedTimestamp: 2}),
+        ],
+        mustUpdate: true,
+        mustTrigger: true,
+      }, {
+        name: &apos;Item saved - does not match query clauses, offset &gt; 0&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;b&apos;, id: &apos;5&apos;, lastMessageReceivedTimestamp: 5})],
+          type: &apos;persist&apos;,
+        },
+        nextModels: &apos;unchanged&apos;,
+        mustUpdate: true,
+      }, {
+        name: &apos;Item saved - matches query clauses&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;a&apos;, id: &apos;5&apos;, lastMessageReceivedTimestamp: -2})],
+          type: &apos;persist&apos;,
+        },
+        mustUpdate: true,
+      }, {
+        name: &apos;Item in set saved - no longer matches query clauses&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;b&apos;, id: &apos;4&apos;, lastMessageReceivedTimestamp: 4})],
+          type: &apos;persist&apos;,
+        },
+        nextModels: [
+          new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;2&apos;, lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;1&apos;, lastMessageReceivedTimestamp: 1}),
+        ],
+        mustUpdate: true,
+      }, {
+        name: &apos;Item in set deleted&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;a&apos;, id: &apos;4&apos;})],
+          type: &apos;unpersist&apos;,
+        },
+        nextModels: [
+          new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 3}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;2&apos;, lastMessageReceivedTimestamp: 2}),
+          new Thread({accountId: &apos;a&apos;, id: &apos;1&apos;, lastMessageReceivedTimestamp: 1}),
+        ],
+        mustUpdate: true,
+      }, {
+        name: &apos;Item not in set deleted&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;a&apos;, id: &apos;5&apos;})],
+          type: &apos;unpersist&apos;,
+        },
+        nextModels: &apos;unchanged&apos;,
+        mustUpdate: false,
+      }],
+    }, {
+      name: &quot;query with multiple sort orders&quot;,
+      query: Database.findAll(Thread).where(Thread.attributes.accountId.equal(&apos;a&apos;)).limit(4).offset(2).order([
+        Thread.attributes.lastMessageReceivedTimestamp.ascending(),
+        Thread.attributes.unread.descending(),
+      ]),
+      lastModels: [
+        new Thread({accountId: &apos;a&apos;, id: &apos;1&apos;, lastMessageReceivedTimestamp: 1, unread: true}),
+        new Thread({accountId: &apos;a&apos;, id: &apos;2&apos;, lastMessageReceivedTimestamp: 1, unread: false}),
+        new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 1, unread: false}),
+        new Thread({accountId: &apos;a&apos;, id: &apos;4&apos;, lastMessageReceivedTimestamp: 2, unread: true}),
+      ],
+      tests: [{
+        name: &apos;Item in set saved, secondary sort order changed&apos;,
+        change: {
+          objectClass: Thread.name,
+          objects: [new Thread({accountId: &apos;a&apos;, id: &apos;3&apos;, lastMessageReceivedTimestamp: 1, unread: true})],
+          type: &apos;persist&apos;,
+        },
+        mustUpdate: true,
+      }],
+    }];
+
+    describe(&quot;scenarios&quot;, () =&gt;
+      scenarios.forEach(scenario =&gt; {
+        scenario.tests.forEach(test =&gt; {
+          it(`with ${scenario.name}, should correctly apply ${test.name}`, () =&gt; {
+            spyOn(Utils, &apos;generateTempId&apos;).and.callFake(() =&gt; undefined);
+
+            const subscription = new QuerySubscription(scenario.query);
+            subscription._set = new MutableQueryResultSet();
+            subscription._set.addModelsInRange(scenario.lastModels, new QueryRange({start: 0, end: scenario.lastModels.length}));
+
+            spyOn(subscription, &apos;update&apos;);
+            spyOn(subscription, &apos;_createResultAndTrigger&apos;);
+            subscription._updateInFlight = false;
+            subscription.applyChangeRecord(test.change);
+
+            if (test.mustUpdate) {
+              expect(subscription.update).toHaveBeenCalledWith({mustRefetchEntireRange: true});
+            } else {
+              if (test.nextModels === &apos;unchanged&apos;) {
+                expect(subscription._set.models()).toEqual(scenario.lastModels);
+              } else {
+                expect(subscription._set.models()).toEqual(test.nextModels);
+              }
+            }
+
+            if (test.mustTriger) {
+              expect(subscription._createResultAndTrigger).toHaveBeenCalled();
+            }
+          });
+        });
+      })
+
+    );
+  });
+
+  describe(&quot;update&quot;, () =&gt; {
+    beforeEach(() =&gt;
+      spyOn(QuerySubscription.prototype, &apos;_fetchRange&apos;).and.callFake(() =&gt; {
+        if (this._set == null) { this._set = new MutableQueryResultSet(); }
+        return Promise.resolve();
+      })
+    );
+
+    describe(&quot;when the query has an infinite range&quot;, () =&gt; {
+      it(&quot;should call _fetchRange for the entire range&quot;, () =&gt; {
+        const subscription = new QuerySubscription(Database.findAll(Thread));
+        subscription.update();
+        jasmine.clock().tick();
+        expect(subscription._fetchRange).toHaveBeenCalledWith(QueryRange.infinite(), {fetchEntireModels: true, version: 1});
+      });
+
+      it(&quot;should fetch full full models only when the previous set is empty&quot;, () =&gt; {
+        const subscription = new QuerySubscription(Database.findAll(Thread));
+        subscription._set = new MutableQueryResultSet();
+        subscription._set.addModelsInRange([new Thread()], new QueryRange({start: 0, end: 1}));
+        subscription.update();
+        jasmine.clock().tick();
+        expect(subscription._fetchRange).toHaveBeenCalledWith(QueryRange.infinite(), {fetchEntireModels: false, version: 1});
+      });
+    });
+
+    describe(&quot;when the query has a range&quot;, () =&gt; {
+      beforeEach(() =&gt; {
+        this.query = Database.findAll(Thread).limit(10);
+      });
+
+      describe(&quot;when we have no current range&quot;, () =&gt;
+        it(&quot;should call _fetchRange for the entire range and fetch full models&quot;, () =&gt; {
+          const subscription = new QuerySubscription(this.query);
+          subscription._set = null;
+          subscription.update();
+          jasmine.clock().tick();
+          expect(subscription._fetchRange).toHaveBeenCalledWith(this.query.range(), {fetchEntireModels: true, version: 1});
+        })
+      );
+
+      describe(&quot;when we have a previous range&quot;, () =&gt; {
+        it(&quot;should call _fetchRange with the missingRange&quot;, () =&gt; {
+          const customRange = jasmine.createSpy(&apos;customRange1&apos;);
+          spyOn(QueryRange, &apos;rangesBySubtracting&apos;).and.returnValue([customRange]);
+          const subscription = new QuerySubscription(this.query);
+          subscription._set = new MutableQueryResultSet();
+          subscription._set.addModelsInRange([new Thread()], new QueryRange({start: 0, end: 1}));
+
+          jasmine.clock().tick();
+          QuerySubscription.prototype._fetchRange.calls.reset();
+          subscription._updateInFlight = false;
+          subscription.update();
+          jasmine.clock().tick();
+          expect(subscription._fetchRange.calls.count()).toBe(1);
+          expect(subscription._fetchRange.calls.first().args).toEqual([customRange, {fetchEntireModels: true, version: 1}]);
+        });
+
+        it(&quot;should call _fetchRange for the entire query range when the missing range encompasses more than one range&quot;, () =&gt; {
+          const customRange1 = jasmine.createSpy(&apos;customRange1&apos;);
+          const customRange2 = jasmine.createSpy(&apos;customRange2&apos;);
+          spyOn(QueryRange, &apos;rangesBySubtracting&apos;).and.returnValue([customRange1, customRange2]);
+
+          const range = new QueryRange({start: 0, end: 1});
+          const subscription = new QuerySubscription(this.query);
+          subscription._set = new MutableQueryResultSet();
+          subscription._set.addModelsInRange([new Thread()], range);
+
+          jasmine.clock().tick();
+          QuerySubscription.prototype._fetchRange.calls.reset();
+          subscription._updateInFlight = false;
+          subscription.update();
+          jasmine.clock().tick();
+          expect(subscription._fetchRange.calls.count()).toBe(1);
+          expect(subscription._fetchRange.calls.first().args).toEqual([this.query.range(), {fetchEntireModels: true, version: 1}]);
+        });
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

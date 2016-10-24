@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/query-subscription.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record-debouncer.js~DatabaseChangeRecordDebouncer.html">DatabaseChangeRecordDebouncer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-object-registry.js~DatabaseObjectRegistry.html">DatabaseObjectRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription-pool.js~QuerySubscriptionPool.html">QuerySubscriptionPool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/query-subscription.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import QueryRange from &apos;./query-range&apos;;
+import MutableQueryResultSet from &apos;./mutable-query-result-set&apos;;
+
+export default class QuerySubscription {
+  constructor(query, options = {}) {
+    this._query = query;
+    this._options = options;
+
+    this._set = null;
+    this._callbacks = [];
+    this._lastResult = null;
+    this._updateInFlight = false;
+    this._queuedChangeRecords = [];
+    this._queryVersion = 1;
+
+    if (this._query) {
+      if (this._query._count) {
+        throw new Error(&quot;QuerySubscription::constructor - You cannot listen to count queries.&quot;)
+      }
+
+      this._query.finalize();
+
+      if (this._options.initialModels) {
+        this._set = new MutableQueryResultSet();
+        this._set.addModelsInRange(this._options.initialModels, new QueryRange({
+          limit: this._options.initialModels.length,
+          offset: 0,
+        }));
+        this._createResultAndTrigger();
+      } else {
+        this.update();
+      }
+    }
+  }
+
+  query = () =&gt; {
+    return this._query;
+  }
+
+  addCallback = (callback) =&gt; {
+    if (!(callback instanceof Function)) {
+      throw new Error(`QuerySubscription:addCallback - expects a function, received ${callback}`);
+    }
+    this._callbacks.push(callback);
+
+    if (this._lastResult) {
+      process.nextTick(() =&gt; {
+        if (!this._lastResult) { return; }
+        callback(this._lastResult);
+      });
+    }
+  }
+
+  hasCallback = (callback) =&gt; {
+    return (this._callbacks.indexOf(callback) !== -1);
+  }
+
+  removeCallback(callback) {
+    if (!(callback instanceof Function)) {
+      throw new Error(`QuerySubscription:removeCallback - expects a function, received ${callback}`)
+    }
+    this._callbacks = this._callbacks.filter(c =&gt; c !== callback);
+    if (this.callbackCount() === 0) {
+      this.onLastCallbackRemoved()
+    }
+  }
+
+  onLastCallbackRemoved() {
+
+  }
+
+  callbackCount = () =&gt; {
+    return this._callbacks.length;
+  }
+
+  applyChangeRecord = (record) =&gt; {
+    if (!this._query || record.objectClass !== this._query.objectClass()) {
+      return;
+    }
+    if (record.objects.length === 0) {
+      return;
+    }
+
+    this._queuedChangeRecords.push(record);
+    if (!this._updateInFlight) {
+      this._processChangeRecords();
+    }
+  }
+
+  cancelPendingUpdate = () =&gt; {
+    this._queryVersion += 1;
+    this._updateInFlight = false;
+  }
+
+  // Scan through change records and apply them to the last result set.
+  _processChangeRecords = () =&gt; {
+    if (this._queuedChangeRecords.length === 0) {
+      return;
+    }
+    if (!this._set) {
+      this.update();
+      return;
+    }
+
+    let knownImpacts = 0;
+    let unknownImpacts = 0;
+
+    this._queuedChangeRecords.forEach((record) =&gt; {
+      if (record.type === &apos;unpersist&apos;) {
+        for (const item of record.objects) {
+          const offset = this._set.offsetOfId(item.id)
+          if (offset !== -1) {
+            this._set.removeModelAtOffset(item, offset);
+            unknownImpacts += 1;
+          }
+        }
+      } else if (record.type === &apos;persist&apos;) {
+        for (const item of record.objects) {
+          const offset = this._set.offsetOfId(item.id);
+          const itemIsInSet = offset !== -1;
+          const itemShouldBeInSet = item.matches(this._query.matchers());
+
+          if (itemIsInSet &amp;&amp; !itemShouldBeInSet) {
+            this._set.removeModelAtOffset(item, offset)
+            unknownImpacts += 1
+          } else if (itemShouldBeInSet &amp;&amp; !itemIsInSet) {
+            this._set.updateModel(item)
+            unknownImpacts += 1;
+          } else if (itemIsInSet) {
+            const oldItem = this._set.modelWithId(item.id);
+            this._set.updateModel(item);
+
+            if (this._itemSortOrderHasChanged(oldItem, item)) {
+              unknownImpacts += 1
+            } else {
+              knownImpacts += 1
+            }
+          }
+        }
+        // If we&apos;re not at the top of the result set, we can&apos;t be sure whether an
+        // item previously matched the set and doesn&apos;t anymore, impacting the items
+        // in the query range. We need to refetch IDs to be sure our set === correct.
+        if ((this._query.range().offset &gt; 0) &amp;&amp; (unknownImpacts + knownImpacts) &lt; record.objects.length) {
+          unknownImpacts += 1
+        }
+      }
+    });
+
+    this._queuedChangeRecords = [];
+
+    if (unknownImpacts &gt; 0) {
+      this.update({mustRefetchEntireRange: true});
+    } else if (knownImpacts &gt; 0) {
+      this._createResultAndTrigger();
+    }
+  }
+
+  _itemSortOrderHasChanged(old, updated) {
+    for (const descriptor of this._query.orderSortDescriptors()) {
+      const oldSortValue = old[descriptor.attr.modelKey];
+      const updatedSortValue = updated[descriptor.attr.modelKey];
+
+      // http://stackoverflow.com/questions/4587060/determining-date-equality-in-javascript
+      if (!(oldSortValue &gt;= updatedSortValue &amp;&amp; oldSortValue &lt;= updatedSortValue)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  update({mustRefetchEntireRange} = {}) {
+    this._updateInFlight = true;
+
+    const desiredRange = this._query.range();
+    const currentRange = this._set ? this._set.range() : null;
+    const hasNonInfiniteRange = currentRange &amp;&amp; !currentRange.isInfinite() &amp;&amp; !desiredRange.isInfinite();
+
+    // If we have a limited range, and changes don&apos;t require that we refetch
+    // the entire range, just fetch the missing items. This is the path typically
+    // used while scrolling.
+    if (hasNonInfiniteRange &amp;&amp; !mustRefetchEntireRange) {
+      const missingRange = this._getMissingRange(desiredRange, currentRange);
+      this._fetchRange(missingRange, {
+        version: this._queryVersion,
+        fetchEntireModels: true,
+      });
+    } else {
+      const haveNoModels = !this._set || this._set.modelCacheCount() === 0;
+      this._fetchRange(desiredRange, {
+        version: this._queryVersion,
+        fetchEntireModels: haveNoModels,
+      });
+    }
+  }
+
+  _getMissingRange = (desiredRange, currentRange) =&gt; {
+    if (currentRange &amp;&amp; !currentRange.isInfinite() &amp;&amp; !desiredRange.isInfinite()) {
+      const ranges = QueryRange.rangesBySubtracting(desiredRange, currentRange);
+      return (ranges.length === 1) ? ranges[0] : desiredRange;
+    }
+    return desiredRange;
+  }
+
+  _getQueryForRange = (range, fetchEntireModels) =&gt; {
+    let rangeQuery = null;
+    if (!range.isInfinite()) {
+      rangeQuery = rangeQuery || this._query.clone();
+      rangeQuery.offset(range.offset).limit(range.limit);
+    }
+    if (!fetchEntireModels) {
+      rangeQuery = rangeQuery || this._query.clone();
+      rangeQuery.idsOnly();
+    }
+    rangeQuery = rangeQuery || this._query;
+    return rangeQuery;
+  }
+
+  _fetchRange(range, {version, fetchEntireModels}) {
+    const rangeQuery = this._getQueryForRange(range, fetchEntireModels);
+
+    this._query._database.run(rangeQuery, {format: false}).then((results) =&gt; {
+      if (this._queryVersion !== version) {
+        return;
+      }
+
+      if (this._set &amp;&amp; !this._set.range().isContiguousWith(range)) {
+        this._set = null;
+      }
+      this._set = this._set || new MutableQueryResultSet();
+
+      if (fetchEntireModels) {
+        this._set.addModelsInRange(results, range);
+      } else {
+        this._set.addIdsInRange(results, range);
+      }
+
+      this._set.clipToRange(this._query.range());
+
+      this._fetchMissingModels().then((models) =&gt; {
+        if (this._queryVersion !== version) {
+          return;
+        }
+        for (const m of models) {
+          this._set.updateModel(m);
+        }
+        this._createResultAndTrigger();
+      });
+    });
+  }
+
+  _fetchMissingModels() {
+    const missingIds = this._set.ids().filter(id =&gt; !this._set.modelWithId(id));
+    if (missingIds.length === 0) {
+      return Promise.resolve([]);
+    }
+    return this._query._database.findAll(this._query._klass, {id: missingIds});
+  }
+
+  _createResultAndTrigger = () =&gt; {
+    const allCompleteModels = this._set.isComplete()
+    const uniqueSeen = {};
+    let uniqueCount = 0;
+    for (const i of this._set.ids()) {
+      if (!uniqueSeen[i]) {
+        uniqueCount += 1;
+      }
+      uniqueSeen[i] = true;
+    }
+
+    const allUniqueIds = uniqueCount === this._set.ids().length
+
+    let error = null;
+    if (!allCompleteModels) {
+      error = new Error(&quot;QuerySubscription: Applied all changes and result set is missing models.&quot;);
+    }
+    if (!allUniqueIds) {
+      error = new Error(&quot;QuerySubscription: Applied all changes and result set contains duplicate IDs.&quot;);
+    }
+
+    if (error) {
+      // TODO NylasEnv.reportError(error);
+      this._set = null;
+      this.update();
+      return;
+    }
+
+    if (this._options.emitResultSet) {
+      this._set.setQuery(this._query);
+      this._lastResult = this._set.immutableClone();
+    } else {
+      this._lastResult = this._query.formatResult(this._set.models());
+    }
+
+    this._callbacks.forEach((callback) =&gt; callback(this._lastResult));
+
+    // process any additional change records that have arrived
+    if (this._updateInFlight) {
+      this._updateInFlight = false;
+      this._processChangeRecords();
+    }
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

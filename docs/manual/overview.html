@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Overview</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="overview">
+    <h1 class="manual-toc-title"><a href="manual/overview.html" data-ice="title">Overview</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#order-5" data-ice="link">Order:   5</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#declaring-models" data-ice="link">Declaring Models</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#retrieving-models" data-ice="link">Retrieving Models</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#retrieving-pages-of-models" data-ice="link">Retrieving Pages of Models</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#saving-and-updating-models" data-ice="link">Saving and Updating Models</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#saving-drafts" data-ice="link">Saving Drafts</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#removing-models" data-ice="link">Removing Models</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#advanced-model-attributes" data-ice="link">Advanced Model Attributes</a></li>
+<li data-ice="manualNav" class="indent-h4"><span class="manual-dot"></span><a href="manual/overview.html#attribute-joineddata" data-ice="link">Attribute.JoinedData</a></li>
+<li data-ice="manualNav" class="indent-h4"><span class="manual-dot"></span><a href="manual/overview.html#attribute-collection" data-ice="link">Attribute.Collection</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#listening-for-changes" data-ice="link">Listening for Changes</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#but-why-can-t-i-" data-ice="link">But why can&apos;t I...?</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <h1 class="manual-toc-title"><a href="identifiers.html" data-ice="title">Reference</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#function" data-ice="link">Function</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="changelog">
+    <h1 class="manual-toc-title"><a href="manual/changelog.html" data-ice="title">Changelog</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#changelog" data-ice="link">Changelog</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Overview</span>
+  </div>
+  <div data-ice="content"><hr>
+<p>Title:   Accessing the Database
+Section: Guides</p>
+<h2 id="order-5">Order:   5</h2>
+<p>N1 is built on top of a custom database layer modeled after ActiveRecord. For many parts of the application, the database is the source of truth. Data is retrieved from the API, written to the database, and changes to the database trigger Stores and components to refresh their contents. The illustration below shows this flow of data:</p>
+<p><img src="./manual/./images/database-flow.png"></p>
+<p>The Database connection is managed by the {DatabaseStore}, a singleton object that exists in every window. All Database requests are asynchronous. Queries are forwarded to the application&apos;s <code>Browser</code> process via IPC and run in SQLite.</p>
+<h2 id="declaring-models">Declaring Models</h2>
+<p>In N1, Models are thin wrappers around data with a particular schema. Each {Model} class declares a set of attributes that define the object&apos;s data. For example:</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">class Example extends Model
+
+  @attributes:
+    &apos;id&apos;: Attributes.String
+      queryable: true
+      modelKey: &apos;id&apos;
+
+    &apos;object&apos;: Attributes.String
+      modelKey: &apos;object&apos;
+
+    &apos;namespaceId&apos;: Attributes.String
+      queryable: true
+      modelKey: &apos;namespaceId&apos;
+      jsonKey: &apos;namespace_id&apos;
+
+    &apos;body&apos;: Attributes.JoinedData
+      modelTable: &apos;MessageBody&apos;
+      modelKey: &apos;body&apos;
+
+    &apos;files&apos;: Attributes.Collection
+      modelKey: &apos;files&apos;
+      itemClass: File
+
+    &apos;unread&apos;: Attributes.Boolean
+      queryable: true
+      modelKey: &apos;unread&apos;</code>
+</code></pre>
+<p>When models are inflated from JSON using <code>fromJSON</code> or converted to JSON using <code>toJSON</code>, only the attributes declared on the model are copied. The <code>modelKey</code> and <code>jsonKey</code> options allow you to specify where a particular key should be found. Attributes are also coerced to the proper types: String attributes will always be strings, Boolean attributes will always be <code>true</code> or <code>false</code>, etc. <code>null</code> is a valid value for all types.</p>
+<p>The {DatabaseStore} automatically maintains cache tables for storing Model objects. By default, models are stored in the cache as JSON blobs and basic attributes are not queryable. When the <code>queryable</code> option is specified on an attribute, it is given a separate column and index in the SQLite table for the model, and you can construct queries using the attribute:</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">Thread.attributes.namespaceId.equals(&quot;123&quot;)
+// where namespace_id = &apos;123&apos;
+
+Thread.attributes.lastMessageTimestamp.greaterThan(123)
+// where last_message_timestamp &gt; 123
+
+Thread.attributes.lastMessageTimestamp.descending()
+// order by last_message_timestamp DESC</code>
+</code></pre>
+<h2 id="retrieving-models">Retrieving Models</h2>
+<p>You can make queries for models stored in SQLite using a {Promise}-based ActiveRecord-style syntax. There is no way to make raw SQL queries against the local data store.</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">DatabaseStore.find(Thread, &apos;123&apos;).then (thread) -&gt;
+    # thread is a thread object
+
+DatabaseStore.findBy(Thread, {subject: &apos;Hello World&apos;}).then (thread) -&gt;
+    # find a single thread by subject
+
+DatabaseStore.findAll(Thread).where([Thread.attributes.tags.contains(&apos;inbox&apos;)]).then (threads) -&gt;
+    # find threads with the inbox tag
+
+DatabaseStore.count(Thread).where([Thread.attributes.lastMessageTimestamp.greaterThan(120315123)]).then (results) -&gt;
+    # count threads where last message received since 120315123.</code>
+</code></pre>
+<h2 id="retrieving-pages-of-models">Retrieving Pages of Models</h2>
+<p>If you need to paginate through a view of data, you should use a <code>DatabaseView</code>. Database views can be configured with a sort order and a set of where clauses. After the view is configured, it maintains a cache of models in memory in a highly efficient manner and makes it easy to implement pagination. <code>DatabaseView</code> also performs deep inspection of its cache when models are changed and can avoid costly SQL queries.</p>
+<h2 id="saving-and-updating-models">Saving and Updating Models</h2>
+<p>The {DatabaseStore} exposes two methods for creating and updating models: <code>persistModel</code> and <code>persistModels</code>. When you call <code>persistModel</code>, queries are automatically executed to update the object in the cache and the {DatabaseStore} triggers, broadcasting an update to the rest of the application so that views dependent on these kind of models can refresh.</p>
+<p>When possible, you should accumulate the objects you want to save and call <code>persistModels</code>. The {DatabaseStore} will generate batch insert statements, and a single notification will be broadcast throughout the application. Since saving objects can result in objects being re-fetched by many stores and components, you should be mindful of database insertions.</p>
+<h2 id="saving-drafts">Saving Drafts</h2>
+<p>Drafts in N1 presented us with a unique challenge. The same draft may be edited rapidly by unrelated parts of the application, causing race scenarios. (For example, when the user is typing and attachments finish uploading at the same time.) This problem could be solved by object locking, but we chose to marshall draft changes through a central DraftStore that debounces database queries and adds other helpful features. See the {DraftStore} documentation for more information.</p>
+<h2 id="removing-models">Removing Models</h2>
+<p>The {DatabaseStore} exposes a single method, <code>unpersistModel</code>, that allows you to purge an object from the cache. You cannot remove a model by ID alone - you must load it first.</p>
+<h4 id="advanced-model-attributes">Advanced Model Attributes</h4>
+<h5 id="attribute-joineddata">Attribute.JoinedData</h5>
+<p>Joined Data attributes allow you to store certain attributes of an object in a separate table in the database. We use this attribute type for Message bodies. Storing message bodies, which can be very large, in a separate table allows us to make queries on message metadata extremely fast, and inflate Message objects without their bodies to build the thread list.</p>
+<p>When building a {ModelQuery} on a model with a {JoinedDataAttribute}, you need to call <code>include</code> to explicitly load the joined data attribute. The query builder will automatically perform a <code>LEFT OUTER JOIN</code> with the secondary table to retrieve the attribute:</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">DatabaseStore.find(Message, &apos;123&apos;).then (message) -&gt;
+    // message.body is undefined
+
+DatabaseStore.find(Message, &apos;123&apos;).include(Message.attributes.body).then (message) -&gt;
+    // message.body is defined</code>
+</code></pre>
+<p>When you call <code>persistModel</code>, JoinedData attributes are automatically written to the secondary table.</p>
+<p>JoinedData attributes cannot be <code>queryable</code>.</p>
+<h5 id="attribute-collection">Attribute.Collection</h5>
+<p>Collection attributes provide basic support for one-to-many relationships. For example, {Thread}s in N1 have a collection of {Tag}s.</p>
+<p>When Collection attributes are marked as <code>queryable</code>, the {DatabaseStore} automatically creates a join table and maintains it as you create, save, and delete models. When you call <code>persistModel</code>, entries are added to the join table associating the ID of the model with the IDs of models in the collection.</p>
+<p>Collection attributes have an additional clause builder, <code>contains</code>:</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">DatabaseStore.findAll(Thread).where([Thread.attributes.tags.contains(&apos;inbox&apos;)])</code>
+</code></pre>
+<p>This is equivalent to writing the following SQL:</p>
+<pre><code class="lang-sql"><code class="source-code prettyprint">SELECT `Thread`.`data` FROM `Thread` INNER JOIN `ThreadTag` AS `M1` ON `M1`.`id` = `Thread`.`id` WHERE `M1`.`value` = &apos;inbox&apos; ORDER BY `Thread`.`last_message_timestamp` DESC</code>
+</code></pre>
+<h4 id="listening-for-changes">Listening for Changes</h4>
+<p>For many parts of the application, the Database is the source of truth. Funneling changes through the database ensures that they are available to the entire application. Basing your packages on the Database, and listening to it for changes, ensures that your views never fall out of sync.</p>
+<p>Within Reflux Stores, you can listen to the {DatabaseStore} using the <code>listenTo</code> helper method:</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">@listenTo(DatabaseStore, @_onDataChanged)</code>
+</code></pre>
+<p>Within generic code, you can listen to the {DatabaseStore} using this syntax:</p>
+<pre><code class="lang-coffee"><code class="source-code prettyprint">@unlisten = DatabaseStore.listen(@_onDataChanged, @)</code>
+</code></pre>
+<p>When a model is persisted or unpersisted from the database, your listener method will fire. It&apos;s very important to inspect the change payload before making queries to refresh your data. The change payload is a simple object with the following keys:</p>
+<pre><code><code class="source-code prettyprint">{
+    &quot;objectClass&quot;: // string: the name of the class that was changed. ie: &quot;Thread&quot;
+    &quot;objects&quot;: // array: the objects that were persisted or removed
+}</code>
+</code></pre><h2 id="but-why-can-t-i-">But why can&apos;t I...?</h2>
+<p>N1 exposes a minimal Database API that exposes high-level methods for saving and retrieving objects. The API was designed with several goals in mind, which will help us create a healthy ecosystem of third-party packages:</p>
+<ul>
+<li><p>Package code should not be tightly coupled to SQLite</p>
+</li>
+<li><p>Queries should be composed in a way that makes invalid queries impossible</p>
+</li>
+<li><p>All changes to the local database must be observable</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
