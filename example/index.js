@@ -1,13 +1,15 @@
 const {app, BrowserWindow} = require('electron');
+const fs = require('fs');
+const path = require('path');
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
 
-const {Coordinator} = require('electron-coresqlite');
-global.databaseCoordinator = new Coordinator();
+// adds RxDB coordinator to the main process
+require('electron-rxdb')();
 
-// prevent window being garbage collected
-let mainWindow;
+// prevent windows from being garbage collected
+let documentWindows = [];
 
 function createMainWindow() {
   const win = new BrowserWindow({
@@ -20,11 +22,16 @@ function createMainWindow() {
   win.once('ready-to-show', () => {
     win.show();
   })
-  win.on('closed', () => {
-    mainWindow = null;
+  win.once('closed', () => {
+    documentWindows = documentWindows.filter(w => w === win)
   });
 
   return win;
+}
+
+function prepareFilesystem(callback) {
+  global.dataDirectory = path.join(app.getPath('appData'), 'Notes');
+  fs.mkdir(global.dataDirectory, callback);
 }
 
 app.on('window-all-closed', () => {
@@ -33,12 +40,8 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('activate', () => {
-  if (!mainWindow) {
-    mainWindow = createMainWindow();
-  }
-});
-
 app.on('ready', () => {
-  mainWindow = createMainWindow();
+  prepareFilesystem(() => {
+    documentWindows.push(createMainWindow());
+  });
 });

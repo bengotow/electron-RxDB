@@ -1,4 +1,4 @@
-import {DatabaseObjectRegistry, Model, Attributes} from 'electron-coresqlite';
+import {Model, Attributes} from 'electron-rxdb';
 
 export default class Note extends Model {
   static attributes = Object.assign(Model.attributes, {
@@ -18,5 +18,3 @@ export default class Note extends Model {
     }),
   });
 }
-
-DatabaseObjectRegistry.register(Note.constructor.name, () => Note)

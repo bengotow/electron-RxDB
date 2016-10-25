@@ -1,7 +1,7 @@
 import RxDatabase from '../../lib/rx-database';
-import DatabaseObjectRegistry from '../../lib/database-object-registry';
 import Thread from './thread';
 import Message from './message';
+import TestModel from './test-model';
 import Category from './category';
 
 const Database = new RxDatabase({
@@ -14,13 +14,15 @@ const Database = new RxDatabase({
 
 Database._openDatabase = () =>
 
-DatabaseObjectRegistry.register(Thread.constructor.name, () => Thread)
-DatabaseObjectRegistry.register(Message.constructor.name, () => Message)
-DatabaseObjectRegistry.register(Category.constructor.name, () => Category)
+Database.models.register(Thread)
+Database.models.register(Message)
+Database.models.register(Category)
+Database.models.register(TestModel)
 
 module.exports = {
   Database,
   Thread,
   Message,
   Category,
+  TestModel,
 }

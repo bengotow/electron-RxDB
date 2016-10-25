@@ -1,5 +1,5 @@
 /* eslint quote-props: 0 */
-import TestModel from './fixtures/db-test-model';
+import TestModel from './fixtures/test-model';
 import Attributes from '../lib/attributes';
 import DatabaseSetupQueryBuilder from '../lib/database-setup-query-builder';
 

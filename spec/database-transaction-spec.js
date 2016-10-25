@@ -1,6 +1,5 @@
 /* eslint dot-notation:0 */
-import TestModel from './fixtures/db-test-model';
-import Category from './fixtures/category';
+import {Database, TestModel, Category} from './fixtures';
 import DatabaseTransaction from '../lib/database-transaction';
 import DatabaseChangeRecord from '../lib/database-change-record';
 
@@ -23,16 +22,15 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
   beforeEach(() => {
     this.databaseMutationHooks = [];
     this.performed = [];
-    this.database = {
-      _query: jasmine.createSpy('database._query').and.callFake((query, values = []) => {
-        this.performed.push({query, values});
-        return Promise.resolve([]);
-      }),
-      transactionDidCommitChanges: jasmine.createSpy('database.transactionDidCommitChanges'),
-      mutationHooks: () => this.databaseMutationHooks,
-    };
 
-    this.transaction = new DatabaseTransaction(this.database);
+    spyOn(Database, '_query').and.callFake((query, values = []) => {
+      this.performed.push({query, values});
+      return Promise.resolve([]);
+    });
+    spyOn(Database, 'transactionDidCommitChanges');
+    spyOn(Database, 'mutationHooks').and.returnValue(this.databaseMutationHooks)
+
+    this.transaction = new DatabaseTransaction(Database);
 
     jasmine.clock().install();
   });
@@ -63,11 +61,11 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
       });
 
       jasmine.waitFor(() =>
-        this.database.transactionDidCommitChanges.calls.count() > 0
+        Database.transactionDidCommitChanges.calls.count() > 0
       )
       .then(() => {
-        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
-        expect(change).toEqual([new DatabaseChangeRecord({
+        const change = Database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord(Database, {
           objectClass: TestModel.name,
           objectIds: [testModelInstanceA.id, testModelInstanceB.id],
           objects: [testModelInstanceA, testModelInstanceB],
@@ -198,10 +196,10 @@ describe("DatabaseTransaction", function DatabaseTransactionSpecs() {
         return this.transaction.unpersistModel(testModelInstance);
       });
       jasmine.waitFor(() =>
-        this.database.transactionDidCommitChanges.calls.count() > 0
+        Database.transactionDidCommitChanges.calls.count() > 0
       ).then(() => {
-        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
-        expect(change).toEqual([new DatabaseChangeRecord({
+        const change = Database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord(Database, {
           objectClass: TestModel.name,
           objectIds: [testModelInstance.id],
           objects: [testModelInstance],
