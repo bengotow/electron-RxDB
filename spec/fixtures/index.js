@@ -1,10 +1,10 @@
-import DatabaseStore from '../../lib/database-store';
+import RxDatabase from '../../lib/rx-database';
 import DatabaseObjectRegistry from '../../lib/database-object-registry';
 import Thread from './thread';
 import Message from './message';
 import Category from './category';
 
-const Database = new DatabaseStore({
+const Database = new RxDatabase({
   primary: true,
   databasePath: 'sqlite-test.db',
   databaseVersion: "1",

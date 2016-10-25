@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">lib/database-store.js | electron-RxDB API Document</title>
+  <title data-ice="title">lib/rx-database.js | electron-RxDB API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -33,7 +33,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -68,7 +68,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">lib/database-store.js</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">lib/rx-database.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint global-require: 0 */
 import Sqlite3 from &apos;better-sqlite3&apos;;
 import PromiseQueue from &apos;promise-queue&apos;;
@@ -99,7 +99,7 @@ class IncorrectVersionError extends Error {
   }
 }
 /**
-The DatabaseStore is the central database object of RxDB. You can instantiate
+The RxDatabase is the central database object of RxDB. You can instantiate
 as many databases as you&apos;d like at the same time, and opening the same
 database path in multiple windows is fine - RxDB uses SQLite transactions and
 dispatches change events across windows via the Electron IPC module.
@@ -113,7 +113,7 @@ guide.
 @extends EventEmitter
 */
 
-export default class DatabaseStore extends EventEmitter {
+export default class RxDatabase extends EventEmitter {
 
   static ChangeRecord = DatabaseChangeRecord;
   static IncorrectVersionError = IncorrectVersionError;
@@ -124,10 +124,10 @@ export default class DatabaseStore extends EventEmitter {
     this.setMaxListeners(100);
 
     if (!databasePath) {
-      throw new Error(&quot;DatabaseStore: You must provide a SQLite file path.&quot;);
+      throw new Error(&quot;RxDatabase: You must provide a SQLite file path.&quot;);
     }
     if (!databaseVersion || (typeof databaseVersion !== &apos;string&apos;)) {
-      throw new Error(&quot;DatabaseStore: You must provide a database schema version number.&quot;);
+      throw new Error(&quot;RxDatabase: You must provide a database schema version number.&quot;);
     }
 
     this._options = {primary, databasePath, databaseVersion, logQueries, logQueryPlans};
@@ -155,9 +155,9 @@ export default class DatabaseStore extends EventEmitter {
   }
 
   /**
-  Typically, instances of DatabaseStore are long-lasting and are created in
+  Typically, instances of RxDatabase are long-lasting and are created in
   renderer processes when they load. If you need to manually tear down an instance
-  of DatabaseStore, call `disconnect`.
+  of RxDatabase, call `disconnect`.
   */
   disconnect() {
     ipcRenderer.removeListener(&apos;database-phase-change&apos;, this._onPhaseChange);
@@ -262,7 +262,7 @@ export default class DatabaseStore extends EventEmitter {
     try {
       for (const query of this._queryBuilder.setupQueries()) {
         if (this._options.logQueries) {
-          console.log(`DatabaseStore: ${query}`);
+          console.log(`RxDatabase: ${query}`);
         }
         this._db.prepare(query).run();
       }
@@ -273,7 +273,7 @@ export default class DatabaseStore extends EventEmitter {
     this._db.pragma(`user_version=${this._options.databaseVersion}`);
 
     /**
-    @event DatabaseStore#did-setup-database
+    @event RxDatabase#did-setup-database
     @type {object}
     @property {object} sqlite - The underlying SQLite3 database instance.
     */
@@ -288,7 +288,7 @@ export default class DatabaseStore extends EventEmitter {
       const query = queries.shift();
       if (query) {
         if (this._options.logQueries) {
-          console.log(`DatabaseStore: ${query}`);
+          console.log(`RxDatabase: ${query}`);
         }
         this._db.prepare(query).run();
         setTimeout(step, 100);
@@ -301,7 +301,7 @@ export default class DatabaseStore extends EventEmitter {
 
   _handleSetupError(error = (new Error(`Manually called _handleSetupError`))) {
     /**
-    @event DatabaseStore#will-rebuild-database
+    @event RxDatabase#will-rebuild-database
     @type {object}
     @property {object} sqlite - The underlying SQLite3 database instance.
     @property {Error} error - The error that occurred.
@@ -383,7 +383,7 @@ export default class DatabaseStore extends EventEmitter {
             tries += 1;
           } else {
             // note: this function may throw a promise, which causes our Promise to reject
-            throw new Error(`DatabaseStore: Query ${query}, ${JSON.stringify(values)} failed ${err.toString()}`);
+            throw new Error(`RxDatabase: Query ${query}, ${JSON.stringify(values)} failed ${err.toString()}`);
           }
         }
       }
@@ -423,10 +423,10 @@ export default class DatabaseStore extends EventEmitter {
   */
   find(klass, id) {
     if (!klass) {
-      throw new Error(`DatabaseStore::find - You must provide a class`);
+      throw new Error(`RxDatabase::find - You must provide a class`);
     }
     if (typeof id !== &apos;string&apos;) {
-      throw new Error(`DatabaseStore::find - You must provide a string id. You may have intended to use findBy.`);
+      throw new Error(`RxDatabase::find - You must provide a string id. You may have intended to use findBy.`);
     }
     return new Query(klass, this).where({id}).one();
   }
@@ -442,7 +442,7 @@ export default class DatabaseStore extends EventEmitter {
   */
   findBy(klass, predicates = []) {
     if (!klass) {
-      throw new Error(`DatabaseStore::findBy - You must provide a class`);
+      throw new Error(`RxDatabase::findBy - You must provide a class`);
     }
     return new Query(klass, this).where(predicates).one();
   }
@@ -459,7 +459,7 @@ export default class DatabaseStore extends EventEmitter {
   */
   findAll(klass, predicates = []) {
     if (!klass) {
-      throw new Error(`DatabaseStore::findAll - You must provide a class`);
+      throw new Error(`RxDatabase::findAll - You must provide a class`);
     }
     return new Query(klass, this).where(predicates);
   }
@@ -476,7 +476,7 @@ export default class DatabaseStore extends EventEmitter {
   */
   count(klass, predicates = []) {
     if (!klass) {
-      throw new Error(`DatabaseStore::count - You must provide a class`);
+      throw new Error(`RxDatabase::count - You must provide a class`);
     }
     return new Query(klass, this).where(predicates).count();
   }
@@ -555,32 +555,32 @@ export default class DatabaseStore extends EventEmitter {
   add functionality within the transaction, before and/or after the standard
   REPLACE / INSERT queries are made.
 
-   - beforeDatabaseChange: Run queries, etc. and return a promise. The DatabaseStore
+   - beforeDatabaseChange: Run queries, etc. and return a promise. The RxDatabase
      will proceed with changes once your promise has finished. You cannot call
      persistModel or unpersistModel from this hook. Instead, use low level calls
-     like DatabaseStore._query.
+     like RxDatabase._query.
 
    - afterDatabaseChange: Run queries, etc. after the `REPLACE` / `INSERT` queries
 
   Warning: this is very low level. If you just want to watch for changes, You
-  should subscribe to the DatabaseStore&apos;s trigger events.
+  should subscribe to the RxDatabase&apos;s trigger events.
 
   Example: N1 uses these hooks to watch for changes to unread counts, which are
   maintained in a separate table to avoid frequent `COUNT(*)` queries.
   */
   addMutationHook({beforeDatabaseChange, afterDatabaseChange}) {
     if (!beforeDatabaseChange) {
-      throw new Error(`DatabaseStore:addMutationHook - You must provide a beforeDatabaseChange function`);
+      throw new Error(`RxDatabase:addMutationHook - You must provide a beforeDatabaseChange function`);
     }
     if (!afterDatabaseChange) {
-      throw new Error(`DatabaseStore:addMutationHook - You must provide a afterDatabaseChange function`);
+      throw new Error(`RxDatabase:addMutationHook - You must provide a afterDatabaseChange function`);
     }
     this._mutationHooks.push({beforeDatabaseChange, afterDatabaseChange});
   }
 
   /**
   Removes a previously registered mutation hook. You must pass the exact
-  same object that was provided to {DatabaseStore.addMutationHook}.
+  same object that was provided to {RxDatabase.addMutationHook}.
   */
   removeMutationHook(hook) {
     this._mutationHooks = this._mutationHooks.filter(h =&gt; h !== hook);
@@ -617,7 +617,7 @@ export default class DatabaseStore extends EventEmitter {
   @returns {Promise} - A promise that resolves when the transaction has
     successfully completed.
 
-  @emits DatabaseStore#trigger
+  @emits RxDatabase#trigger
   **/
   inTransaction(fn) {
     return this._transactionQueue.add(() =&gt;
@@ -672,7 +672,7 @@ export default class DatabaseStore extends EventEmitter {
   */
   dropSearchIndex(klass) {
     if (!klass) {
-      throw new Error(`DatabaseStore::createSearchIndex - You must provide a class`);
+      throw new Error(`RxDatabase::createSearchIndex - You must provide a class`);
     }
     const searchTableName = `${klass.name}Search`
     const sql = `DROP TABLE IF EXISTS \`${searchTableName}\``
@@ -781,7 +781,7 @@ export default class DatabaseStore extends EventEmitter {
   */
   listen(callback, bindContext = this) {
     if (!callback) {
-      throw new Error(&quot;DatabaseStore.listen called with undefined callback&quot;);
+      throw new Error(&quot;RxDatabase.listen called with undefined callback&quot;);
     }
     let aborted = false
     const eventHandler = (...args) =&gt; {
@@ -804,7 +804,7 @@ export default class DatabaseStore extends EventEmitter {
       json: record.toJSON(),
     });
     /**
-    @event DatabaseStore#trigger
+    @event RxDatabase#trigger
     @type {DatabaseChangeRecord}
     */
     this.emit(&apos;trigger&apos;, record);

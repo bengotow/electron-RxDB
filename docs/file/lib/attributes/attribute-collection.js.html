@@ -33,7 +33,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -76,7 +76,7 @@ import Matcher from &apos;./matcher&apos;;
 Collection attributes provide basic support for one-to-many relationships.
 For example, Threads in N1 have a collection of Labels or Folders.
 
-When Collection attributes are marked as `queryable`, the DatabaseStore
+When Collection attributes are marked as `queryable`, the RxDatabase
 automatically creates a join table and maintains it as you create, save,
 and delete models. When you call `persistModel`, entries are added to the
 join table associating the ID of the model with the IDs of models in the collection.

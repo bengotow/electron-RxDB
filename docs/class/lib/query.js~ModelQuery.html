@@ -33,7 +33,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -97,11 +97,11 @@
   
   <div class="description" data-ice="description"><p>ModelQuery exposes an ActiveRecord-style syntax for building database queries
 that return models and model counts. Model queries are returned from the factory methods
-{DatabaseStore::find}, {DatabaseStore::findBy}, {DatabaseStore::findAll},
-and {DatabaseStore::count}, and are the primary interface for retrieving data
+{RxDatabase::find}, {RxDatabase::findBy}, {RxDatabase::findAll},
+and {RxDatabase::count}, and are the primary interface for retrieving data
 from the app&apos;s local cache.</p>
 <p>ModelQuery does not allow you to modify the local cache. To create, update or
-delete items from the local cache, see {DatabaseStore::inTransaction}
+delete items from the local cache, see {RxDatabase::inTransaction}
 and {DatabaseTransaction::persistModel}.</p>
 <p><em>Simple Example:*</em> Fetch a thread</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">const query = db.find(Thread, &apos;123a2sc1ef4131&apos;);
@@ -146,7 +146,7 @@ query.where([Thread.attributes.categories.contains(&apos;label-id&apos;)])
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(class: <span><a href="class/lib/model.js~Model.html">Model</a></span>, database: <span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span>)</span>
+           <span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(class: <span><a href="class/lib/model.js~Model.html">Model</a></span>, database: <span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span>)</span>
         </p>
       </div>
       <div>
@@ -872,7 +872,7 @@ This method is chainable.</p>
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(class: <span><a href="class/lib/model.js~Model.html">Model</a></span>, database: <span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span>)</span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(class: <span><a href="class/lib/model.js~Model.html">Model</a></span>, database: <span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span>)</span>
     <span class="right-info">
       
       
@@ -904,9 +904,9 @@ This method is chainable.</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">database</td>
-      <td data-ice="type"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></td>
+      <td data-ice="type"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li></ul></td>
-      <td data-ice="description"><p>An optional reference to a {DatabaseStore}
+      <td data-ice="description"><p>An optional reference to a {RxDatabase}
 the query will be executed on.</p>
 </td>
     </tr>

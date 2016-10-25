@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">DatabaseStore | electron-RxDB API Document</title>
+  <title data-ice="title">RxDatabase | electron-RxDB API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -33,7 +33,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -69,23 +69,23 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import DatabaseStore from &apos;<span><a href="file/lib/database-store.js.html#lineNumber45">electron-coresqlite/lib/database-store.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RxDatabase from &apos;<span><a href="file/lib/rx-database.js.html#lineNumber45">electron-coresqlite/lib/rx-database.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/lib/database-store.js.html#lineNumber45">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/lib/rx-database.js.html#lineNumber45">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">DatabaseStore</h1>
+  <h1 data-ice="name">RxDatabase</h1>
 
   
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>*</span> &#x2192; DatabaseStore</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>*</span> &#x2192; RxDatabase</div></div>
   
   
   
@@ -95,7 +95,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>The DatabaseStore is the central database object of RxDB. You can instantiate
+  <div class="description" data-ice="description"><p>The RxDatabase is the central database object of RxDB. You can instantiate
 as many databases as you&apos;d like at the same time, and opening the same
 database path in multiple windows is fine - RxDB uses SQLite transactions and
 dispatches change events across windows via the Electron IPC module.</p>
@@ -131,7 +131,7 @@ guide.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(objectPattern: {&quot;primary&quot;: <span>*</span>, &quot;databasePath&quot;: <span>*</span>, &quot;databaseVersion&quot;: <span>*</span>, &quot;logQueries&quot;: <span>*</span>, &quot;logQueryPlans&quot;: <span>*</span>})</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(objectPattern: {&quot;primary&quot;: <span>*</span>, &quot;databasePath&quot;: <span>*</span>, &quot;databaseVersion&quot;: <span>*</span>, &quot;logQueries&quot;: <span>*</span>, &quot;logQueryPlans&quot;: <span>*</span>})</span>
         </p>
       </div>
       <div>
@@ -164,7 +164,7 @@ guide.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-addMutationHook">addMutationHook</a></span></span><span data-ice="signature">(objectPattern: {&quot;beforeDatabaseChange&quot;: <span>*</span>, &quot;afterDatabaseChange&quot;: <span>*</span>})</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-addMutationHook">addMutationHook</a></span></span><span data-ice="signature">(objectPattern: {&quot;beforeDatabaseChange&quot;: <span>*</span>, &quot;afterDatabaseChange&quot;: <span>*</span>})</span>
         </p>
       </div>
       <div>
@@ -192,7 +192,7 @@ REPLACE / INSERT queries are made.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-count">count</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, predicates: <span><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span><span>[]</span></span>): <span>Query</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-count">count</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, predicates: <span><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span><span>[]</span></span>): <span>Query</span></span>
         </p>
       </div>
       <div>
@@ -219,13 +219,13 @@ the predicates provided.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-disconnect">disconnect</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-disconnect">disconnect</a></span></span><span data-ice="signature">()</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Typically, instances of DatabaseStore are long-lasting and are created in
+        <div data-ice="description"><p>Typically, instances of RxDatabase are long-lasting and are created in
 renderer processes when they load.</p>
 </div>
       </div>
@@ -246,7 +246,7 @@ renderer processes when they load.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-find">find</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>Query</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-find">find</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>Query</span></span>
         </p>
       </div>
       <div>
@@ -273,7 +273,7 @@ the class and id.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-findAll">findAll</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, predicates: <span><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span><span>[]</span></span>): <span>Query</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-findAll">findAll</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, predicates: <span><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span><span>[]</span></span>): <span>Query</span></span>
         </p>
       </div>
       <div>
@@ -300,7 +300,7 @@ predicates provided.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-findBy">findBy</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, predicates: <span><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span><span>[]</span></span>): <span>Query</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-findBy">findBy</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, predicates: <span><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span><span>[]</span></span>): <span>Query</span></span>
         </p>
       </div>
       <div>
@@ -327,7 +327,7 @@ predicates provided.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-findJSONBlob">findJSONBlob</a></span></span><span data-ice="signature">(id: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-findJSONBlob">findJSONBlob</a></span></span><span data-ice="signature">(id: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -352,7 +352,7 @@ predicates provided.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-inTransaction">inTransaction</a></span></span><span data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-inTransaction">inTransaction</a></span></span><span data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -379,7 +379,7 @@ transaction.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-listen">listen</a></span></span><span data-ice="signature">(callback: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, bindContext: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-listen">listen</a></span></span><span data-ice="signature">(callback: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, bindContext: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -406,7 +406,7 @@ the database using <code>listen</code>:</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-modelify">modelify</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, arr: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-modelify">modelify</a></span></span><span data-ice="signature">(klass: <span><a href="class/lib/model.js~Model.html">Model</a></span>, arr: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -433,7 +433,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-mutationHooks">mutationHooks</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-mutationHooks">mutationHooks</a></span></span><span data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -458,7 +458,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-refreshDatabaseSchema">refreshDatabaseSchema</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-refreshDatabaseSchema">refreshDatabaseSchema</a></span></span><span data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -483,7 +483,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-removeMutationHook">removeMutationHook</a></span></span><span data-ice="signature">(hook: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-removeMutationHook">removeMutationHook</a></span></span><span data-ice="signature">(hook: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -515,7 +515,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-_query">_query</a></span></span><span data-ice="signature">(query: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, values: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-_query">_query</a></span></span><span data-ice="signature">(query: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, values: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -541,7 +541,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-createSearchIndex">createSearchIndex</a></span></span><span data-ice="signature">(klass: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-createSearchIndex">createSearchIndex</a></span></span><span data-ice="signature">(klass: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -566,7 +566,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-dropSearchIndex">dropSearchIndex</a></span></span><span data-ice="signature">(klass: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-dropSearchIndex">dropSearchIndex</a></span></span><span data-ice="signature">(klass: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -591,7 +591,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-indexModel">indexModel</a></span></span><span data-ice="signature">(model: <span>*</span>, indexData: <span>*</span>, isModelIndexed: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-indexModel">indexModel</a></span></span><span data-ice="signature">(model: <span>*</span>, indexData: <span>*</span>, isModelIndexed: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -616,7 +616,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-isIndexEmptyForAccount">isIndexEmptyForAccount</a></span></span><span data-ice="signature">(accountId: <span>*</span>, modelKlass: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-isIndexEmptyForAccount">isIndexEmptyForAccount</a></span></span><span data-ice="signature">(accountId: <span>*</span>, modelKlass: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -641,7 +641,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-isModelIndexed">isModelIndexed</a></span></span><span data-ice="signature">(model: <span>*</span>, isIndexed: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-isModelIndexed">isModelIndexed</a></span></span><span data-ice="signature">(model: <span>*</span>, isIndexed: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -666,7 +666,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-run">run</a></span></span><span data-ice="signature">(modelQuery: <span>Query</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-run">run</a></span></span><span data-ice="signature">(modelQuery: <span>Query</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -692,7 +692,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-searchIndexSize">searchIndexSize</a></span></span><span data-ice="signature">(klass: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-searchIndexSize">searchIndexSize</a></span></span><span data-ice="signature">(klass: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -717,7 +717,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-transactionDidCommitChanges">transactionDidCommitChanges</a></span></span><span data-ice="signature">(changeRecords: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-transactionDidCommitChanges">transactionDidCommitChanges</a></span></span><span data-ice="signature">(changeRecords: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -742,7 +742,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-trigger">trigger</a></span></span><span data-ice="signature">(record: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-trigger">trigger</a></span></span><span data-ice="signature">(record: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -767,7 +767,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-unindexModel">unindexModel</a></span></span><span data-ice="signature">(model: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModel">unindexModel</a></span></span><span data-ice="signature">(model: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -792,7 +792,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-unindexModelsForAccount">unindexModelsForAccount</a></span></span><span data-ice="signature">(accountId: <span>*</span>, modelKlass: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModelsForAccount">unindexModelsForAccount</a></span></span><span data-ice="signature">(accountId: <span>*</span>, modelKlass: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -817,7 +817,7 @@ queries for items that are missing.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html#instance-method-updateModelIndex">updateModelIndex</a></span></span><span data-ice="signature">(model: <span>*</span>, indexData: <span>*</span>, isModelIndexed: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html#instance-method-updateModelIndex">updateModelIndex</a></span></span><span data-ice="signature">(model: <span>*</span>, indexData: <span>*</span>, isModelIndexed: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -852,7 +852,7 @@ queries for items that are missing.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber50">source</a></span></span>
     </span>
   </h3>
 
@@ -913,7 +913,7 @@ queries for items that are missing.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber500">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber500">source</a></span></span>
     </span>
   </h3>
 
@@ -924,16 +924,16 @@ queries for items that are missing.</p>
 add functionality within the transaction, before and/or after the standard
 REPLACE / INSERT queries are made.</p>
 <ul>
-<li><p>beforeDatabaseChange: Run queries, etc. and return a promise. The DatabaseStore
+<li><p>beforeDatabaseChange: Run queries, etc. and return a promise. The RxDatabase
 will proceed with changes once your promise has finished. You cannot call
 persistModel or unpersistModel from this hook. Instead, use low level calls
-like DatabaseStore._query.</p>
+like RxDatabase._query.</p>
 </li>
 <li><p>afterDatabaseChange: Run queries, etc. after the <code>REPLACE</code> / <code>INSERT</code> queries</p>
 </li>
 </ul>
 <p>Warning: this is very low level. If you just want to watch for changes, You
-should subscribe to the DatabaseStore&apos;s trigger events.</p>
+should subscribe to the RxDatabase&apos;s trigger events.</p>
 <p>Example: N1 uses these hooks to watch for changes to unread counts, which are
 maintained in a separate table to avoid frequent <code>COUNT(*)</code> queries.</p>
 </div>
@@ -985,7 +985,7 @@ maintained in a separate table to avoid frequent <code>COUNT(*)</code> queries.<
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber406">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber406">source</a></span></span>
     </span>
   </h3>
 
@@ -1062,16 +1062,16 @@ must match.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber91">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber91">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Typically, instances of DatabaseStore are long-lasting and are created in
+  <div data-ice="description"><p>Typically, instances of RxDatabase are long-lasting and are created in
 renderer processes when they load. If you need to manually tear down an instance
-of DatabaseStore, call <code>disconnect</code>.</p>
+of RxDatabase, call <code>disconnect</code>.</p>
 </div>
 
   
@@ -1105,7 +1105,7 @@ of DatabaseStore, call <code>disconnect</code>.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber353">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber353">source</a></span></span>
     </span>
   </h3>
 
@@ -1186,7 +1186,7 @@ the class and id.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber389">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber389">source</a></span></span>
     </span>
   </h3>
 
@@ -1263,7 +1263,7 @@ predicates the returned model must match.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber372">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber372">source</a></span></span>
     </span>
   </h3>
 
@@ -1339,7 +1339,7 @@ predicates provided.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber478">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber478">source</a></span></span>
     </span>
   </h3>
 
@@ -1405,7 +1405,7 @@ predicates provided.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber551">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber551">source</a></span></span>
     </span>
   </h3>
 
@@ -1474,7 +1474,7 @@ successfully completed.</p>
       
       <tr class="emit" data-ice="emit">
         <td><p data-ice="emitName"><span>*</span></p></td>
-        <td data-ice="emitDesc"><p>DatabaseStore#trigger</p>
+        <td data-ice="emitDesc"><p>RxDatabase#trigger</p>
 </td>
       </tr>
 </tbody>
@@ -1503,7 +1503,7 @@ successfully completed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber711">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber711">source</a></span></span>
     </span>
   </h3>
 
@@ -1583,7 +1583,7 @@ this._unsubscribe = db.listen(this._onDataChanged, this);
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber428">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber428">source</a></span></span>
     </span>
   </h3>
 
@@ -1664,7 +1664,7 @@ if no query is necessary. It does not change the order of items in the array.</p
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber521">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber521">source</a></span></span>
     </span>
   </h3>
 
@@ -1715,7 +1715,7 @@ if no query is necessary. It does not change the order of items in the array.</p
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber136">source</a></span></span>
     </span>
   </h3>
 
@@ -1755,7 +1755,7 @@ if no query is necessary. It does not change the order of items in the array.</p
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber514">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber514">source</a></span></span>
     </span>
   </h3>
 
@@ -1763,7 +1763,7 @@ if no query is necessary. It does not change the order of items in the array.</p
   
   
   <div data-ice="description"><p>Removes a previously registered mutation hook. You must pass the exact
-same object that was provided to {DatabaseStore.addMutationHook}.</p>
+same object that was provided to {RxDatabase.addMutationHook}.</p>
 </div>
 
   
@@ -1815,7 +1815,7 @@ same object that was provided to {DatabaseStore.addMutationHook}.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber254">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber254">source</a></span></span>
     </span>
   </h3>
 
@@ -1894,7 +1894,7 @@ the query has failed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber571">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber571">source</a></span></span>
     </span>
   </h3>
 
@@ -1960,7 +1960,7 @@ the query has failed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber602">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber602">source</a></span></span>
     </span>
   </h3>
 
@@ -2026,7 +2026,7 @@ the query has failed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber630">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber630">source</a></span></span>
     </span>
   </h3>
 
@@ -2104,7 +2104,7 @@ the query has failed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber588">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber588">source</a></span></span>
     </span>
   </h3>
 
@@ -2176,7 +2176,7 @@ the query has failed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber614">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber614">source</a></span></span>
     </span>
   </h3>
 
@@ -2248,7 +2248,7 @@ the query has failed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber468">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber468">source</a></span></span>
     </span>
   </h3>
 
@@ -2318,7 +2318,7 @@ called transparently and you do not need to invoke it directly.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber579">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber579">source</a></span></span>
     </span>
   </h3>
 
@@ -2384,7 +2384,7 @@ called transparently and you do not need to invoke it directly.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber560">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber560">source</a></span></span>
     </span>
   </h3>
 
@@ -2440,7 +2440,7 @@ called transparently and you do not need to invoke it directly.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber730">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber730">source</a></span></span>
     </span>
   </h3>
 
@@ -2496,7 +2496,7 @@ called transparently and you do not need to invoke it directly.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber675">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber675">source</a></span></span>
     </span>
   </h3>
 
@@ -2562,7 +2562,7 @@ called transparently and you do not need to invoke it directly.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber686">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber686">source</a></span></span>
     </span>
   </h3>
 
@@ -2634,7 +2634,7 @@ called transparently and you do not need to invoke it directly.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/database-store.js.html#lineNumber651">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/rx-database.js.html#lineNumber651">source</a></span></span>
     </span>
   </h3>
 

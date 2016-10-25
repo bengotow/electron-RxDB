@@ -115,7 +115,7 @@
         62
       ]
     },
-    "lib/database-store.js": {
+    "lib/rx-database.js": {
       "expectCount": 28,
       "actualCount": 25,
       "undocumentLines": [

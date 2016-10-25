@@ -60,9 +60,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "electron-coresqlite/lib/database-store.js~databasestore",
-    "class/lib/database-store.js~DatabaseStore.html",
-    "<span>DatabaseStore</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-store.js</span>",
+    "electron-coresqlite/lib/rx-database.js~RxDatabase",
+    "class/lib/rx-database.js~RxDatabase.html",
+    "<span>RxDatabase</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/rx-database.js</span>",
     "class"
   ],
   [
@@ -523,151 +523,151 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber9",
+    "test-file/spec/rx-database-spec.js.html#lineNumber9",
     "Database",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber130",
+    "test-file/spec/rx-database-spec.js.html#lineNumber130",
     "Database count",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber131",
+    "test-file/spec/rx-database-spec.js.html#lineNumber131",
     "Database count should pass the provided predicates on to the ModelQuery",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber136",
+    "test-file/spec/rx-database-spec.js.html#lineNumber136",
     "Database count should return a ModelQuery configured for COUNT ready to be executed",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber35",
+    "test-file/spec/rx-database-spec.js.html#lineNumber35",
     "Database find",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber54",
+    "test-file/spec/rx-database-spec.js.html#lineNumber54",
     "Database findAll",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber55",
+    "test-file/spec/rx-database-spec.js.html#lineNumber55",
     "Database findAll should pass the provided predicates on to the ModelQuery",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber60",
+    "test-file/spec/rx-database-spec.js.html#lineNumber60",
     "Database findAll should return a ModelQuery ready to be executed",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber42",
+    "test-file/spec/rx-database-spec.js.html#lineNumber42",
     "Database findBy",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber43",
+    "test-file/spec/rx-database-spec.js.html#lineNumber43",
     "Database findBy should pass the provided predicates on to the ModelQuery",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber48",
+    "test-file/spec/rx-database-spec.js.html#lineNumber48",
     "Database findBy should return a ModelQuery ready to be executed",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber142",
+    "test-file/spec/rx-database-spec.js.html#lineNumber142",
     "Database inTransaction",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber165",
+    "test-file/spec/rx-database-spec.js.html#lineNumber165",
     "Database inTransaction always fires a COMMIT, even if the body function fails",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber143",
+    "test-file/spec/rx-database-spec.js.html#lineNumber143",
     "Database inTransaction calls the provided function inside an exclusive transaction",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber177",
+    "test-file/spec/rx-database-spec.js.html#lineNumber177",
     "Database inTransaction can be called multiple times and get queued",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber266",
+    "test-file/spec/rx-database-spec.js.html#lineNumber266",
     "Database inTransaction can be called multiple times and get queued",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber250",
+    "test-file/spec/rx-database-spec.js.html#lineNumber250",
     "Database inTransaction can be called multiple times and preserve return values",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber195",
+    "test-file/spec/rx-database-spec.js.html#lineNumber195",
     "Database inTransaction carries on if one of them fails, but still calls the COMMIT for the failed block",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber216",
+    "test-file/spec/rx-database-spec.js.html#lineNumber216",
     "Database inTransaction is actually running in series and blocks on never-finishing specs",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber155",
+    "test-file/spec/rx-database-spec.js.html#lineNumber155",
     "Database inTransaction preserves resolved values",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber66",
+    "test-file/spec/rx-database-spec.js.html#lineNumber66",
     "Database modelify",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber93",
+    "test-file/spec/rx-database-spec.js.html#lineNumber93",
     "Database modelify when given an array of mixed ids and models",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber84",
+    "test-file/spec/rx-database-spec.js.html#lineNumber84",
     "Database modelify when given an array or input that is not an array",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber117",
+    "test-file/spec/rx-database-spec.js.html#lineNumber117",
     "Database modelify when the input is all models",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-store-spec.js.html#lineNumber105",
+    "test-file/spec/rx-database-spec.js.html#lineNumber105",
     "Database modelify when the input is only IDs",
     "test"
   ],
@@ -2250,171 +2250,171 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "lib/database-store.js",
-    "file/lib/database-store.js.html",
-    "lib/database-store.js",
+    "lib/rx-database.js",
+    "file/lib/rx-database.js.html",
+    "lib/rx-database.js",
     "file"
   ],
   [
-    "lib/database-store.js~databasestore#_query",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-_query",
-    "lib/database-store.js~DatabaseStore#_query",
+    "lib/rx-database.js~RxDatabase#_query",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-_query",
+    "lib/rx-database.js~RxDatabase#_query",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#addmutationhook",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-addMutationHook",
-    "lib/database-store.js~DatabaseStore#addMutationHook",
+    "lib/rx-database.js~RxDatabase#addmutationhook",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-addMutationHook",
+    "lib/rx-database.js~RxDatabase#addMutationHook",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#constructor",
-    "class/lib/database-store.js~DatabaseStore.html#instance-constructor-constructor",
-    "lib/database-store.js~DatabaseStore#constructor",
+    "lib/rx-database.js~RxDatabase#constructor",
+    "class/lib/rx-database.js~RxDatabase.html#instance-constructor-constructor",
+    "lib/rx-database.js~RxDatabase#constructor",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#count",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-count",
-    "lib/database-store.js~DatabaseStore#count",
+    "lib/rx-database.js~RxDatabase#count",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-count",
+    "lib/rx-database.js~RxDatabase#count",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#createsearchindex",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-createSearchIndex",
-    "lib/database-store.js~DatabaseStore#createSearchIndex",
+    "lib/rx-database.js~RxDatabase#createsearchindex",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-createSearchIndex",
+    "lib/rx-database.js~RxDatabase#createSearchIndex",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#disconnect",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-disconnect",
-    "lib/database-store.js~DatabaseStore#disconnect",
+    "lib/rx-database.js~RxDatabase#disconnect",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-disconnect",
+    "lib/rx-database.js~RxDatabase#disconnect",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#dropsearchindex",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-dropSearchIndex",
-    "lib/database-store.js~DatabaseStore#dropSearchIndex",
+    "lib/rx-database.js~RxDatabase#dropsearchindex",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-dropSearchIndex",
+    "lib/rx-database.js~RxDatabase#dropSearchIndex",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#find",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-find",
-    "lib/database-store.js~DatabaseStore#find",
+    "lib/rx-database.js~RxDatabase#find",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-find",
+    "lib/rx-database.js~RxDatabase#find",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#findall",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-findAll",
-    "lib/database-store.js~DatabaseStore#findAll",
+    "lib/rx-database.js~RxDatabase#findall",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-findAll",
+    "lib/rx-database.js~RxDatabase#findAll",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#findby",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-findBy",
-    "lib/database-store.js~DatabaseStore#findBy",
+    "lib/rx-database.js~RxDatabase#findby",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-findBy",
+    "lib/rx-database.js~RxDatabase#findBy",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#findjsonblob",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-findJSONBlob",
-    "lib/database-store.js~DatabaseStore#findJSONBlob",
+    "lib/rx-database.js~RxDatabase#findjsonblob",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-findJSONBlob",
+    "lib/rx-database.js~RxDatabase#findJSONBlob",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#intransaction",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-inTransaction",
-    "lib/database-store.js~DatabaseStore#inTransaction",
+    "lib/rx-database.js~RxDatabase#intransaction",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-inTransaction",
+    "lib/rx-database.js~RxDatabase#inTransaction",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#indexmodel",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-indexModel",
-    "lib/database-store.js~DatabaseStore#indexModel",
+    "lib/rx-database.js~RxDatabase#indexmodel",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-indexModel",
+    "lib/rx-database.js~RxDatabase#indexModel",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#isindexemptyforaccount",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-isIndexEmptyForAccount",
-    "lib/database-store.js~DatabaseStore#isIndexEmptyForAccount",
+    "lib/rx-database.js~RxDatabase#isindexemptyforaccount",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-isIndexEmptyForAccount",
+    "lib/rx-database.js~RxDatabase#isIndexEmptyForAccount",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#ismodelindexed",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-isModelIndexed",
-    "lib/database-store.js~DatabaseStore#isModelIndexed",
+    "lib/rx-database.js~RxDatabase#ismodelindexed",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-isModelIndexed",
+    "lib/rx-database.js~RxDatabase#isModelIndexed",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#listen",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-listen",
-    "lib/database-store.js~DatabaseStore#listen",
+    "lib/rx-database.js~RxDatabase#listen",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-listen",
+    "lib/rx-database.js~RxDatabase#listen",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#modelify",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-modelify",
-    "lib/database-store.js~DatabaseStore#modelify",
+    "lib/rx-database.js~RxDatabase#modelify",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-modelify",
+    "lib/rx-database.js~RxDatabase#modelify",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#mutationhooks",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-mutationHooks",
-    "lib/database-store.js~DatabaseStore#mutationHooks",
+    "lib/rx-database.js~RxDatabase#mutationhooks",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-mutationHooks",
+    "lib/rx-database.js~RxDatabase#mutationHooks",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#refreshdatabaseschema",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-refreshDatabaseSchema",
-    "lib/database-store.js~DatabaseStore#refreshDatabaseSchema",
+    "lib/rx-database.js~RxDatabase#refreshdatabaseschema",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-refreshDatabaseSchema",
+    "lib/rx-database.js~RxDatabase#refreshDatabaseSchema",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#removemutationhook",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-removeMutationHook",
-    "lib/database-store.js~DatabaseStore#removeMutationHook",
+    "lib/rx-database.js~RxDatabase#removemutationhook",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-removeMutationHook",
+    "lib/rx-database.js~RxDatabase#removeMutationHook",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#run",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-run",
-    "lib/database-store.js~DatabaseStore#run",
+    "lib/rx-database.js~RxDatabase#run",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-run",
+    "lib/rx-database.js~RxDatabase#run",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#searchindexsize",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-searchIndexSize",
-    "lib/database-store.js~DatabaseStore#searchIndexSize",
+    "lib/rx-database.js~RxDatabase#searchindexsize",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-searchIndexSize",
+    "lib/rx-database.js~RxDatabase#searchIndexSize",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#transactiondidcommitchanges",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-transactionDidCommitChanges",
-    "lib/database-store.js~DatabaseStore#transactionDidCommitChanges",
+    "lib/rx-database.js~RxDatabase#transactiondidcommitchanges",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-transactionDidCommitChanges",
+    "lib/rx-database.js~RxDatabase#transactionDidCommitChanges",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#trigger",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-trigger",
-    "lib/database-store.js~DatabaseStore#trigger",
+    "lib/rx-database.js~RxDatabase#trigger",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-trigger",
+    "lib/rx-database.js~RxDatabase#trigger",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#unindexmodel",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-unindexModel",
-    "lib/database-store.js~DatabaseStore#unindexModel",
+    "lib/rx-database.js~RxDatabase#unindexmodel",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModel",
+    "lib/rx-database.js~RxDatabase#unindexModel",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#unindexmodelsforaccount",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-unindexModelsForAccount",
-    "lib/database-store.js~DatabaseStore#unindexModelsForAccount",
+    "lib/rx-database.js~RxDatabase#unindexmodelsforaccount",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModelsForAccount",
+    "lib/rx-database.js~RxDatabase#unindexModelsForAccount",
     "method"
   ],
   [
-    "lib/database-store.js~databasestore#updatemodelindex",
-    "class/lib/database-store.js~DatabaseStore.html#instance-method-updateModelIndex",
-    "lib/database-store.js~DatabaseStore#updateModelIndex",
+    "lib/rx-database.js~RxDatabase#updatemodelindex",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-updateModelIndex",
+    "lib/rx-database.js~RxDatabase#updateModelIndex",
     "method"
   ],
   [
@@ -3054,9 +3054,9 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "spec/database-store-spec.js",
-    "test-file/spec/database-store-spec.js.html",
-    "spec/database-store-spec.js",
+    "spec/rx-database-spec.js",
+    "test-file/spec/rx-database-spec.js.html",
+    "spec/rx-database-spec.js",
     "testFile"
   ],
   [

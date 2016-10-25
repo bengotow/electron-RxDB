@@ -33,7 +33,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-store.js~DatabaseStore.html">DatabaseStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -87,7 +87,7 @@ DatabaseTransaction exposes a convenient API for querying and modifying an RxDB
 within a SQLite transaction.
 
 You shouldn&apos;t need to instantiate this class directly. Instead, use
-DatabaseStore#inTransaction.
+RxDatabase#inTransaction.
 */
 export default class DatabaseTransaction {
   constructor(database) {
@@ -97,7 +97,7 @@ export default class DatabaseTransaction {
   }
 
   /**
-  @borrows DatabaseStore#find
+  @borrows RxDatabase#find
   */
   find(...args) { return this.database.find(...args) }
   findBy(...args) { return this.database.findBy(...args) }

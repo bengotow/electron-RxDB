@@ -14,7 +14,7 @@
     "test": "xo",
     "start": "electron . --enable-logging",
     "build": "electron-packager . --out=dist --asar --overwrite --all",
-    "postinstall": "rm -f ./node_modules/electron-coresqlite; ln -s ../../ ./node_modules/electron-coresqlite; ./node_modules/.bin/electron-rebuild"
+    "postinstall": "rm -f ./node_modules/electron-rxdb; ln -s ../../ ./node_modules/electron-rxdb; ./node_modules/.bin/electron-rebuild"
   },
   "files": [
     "index.js",

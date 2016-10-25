@@ -4,7 +4,7 @@ if (process.type === 'renderer') {
     Attributes: require('./lib/attributes'),
     Model: require('./lib/model').default,
     DatabaseObjectRegistry: require('./lib/database-object-registry').default,
-    DatabaseStore: require('./lib/database-store').default,
+    RxDatabase: require('./lib/rx-database').default,
   };
 } else if (process.type === 'browser') {
   module.exports = {

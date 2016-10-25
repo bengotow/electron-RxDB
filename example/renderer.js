@@ -1,9 +1,9 @@
-import {DatabaseStore} from 'electron-coresqlite';
+import {RxDatabase} from 'electron-rxdb';
 import Container from './src/components/container';
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-window.Database = new DatabaseStore({
+window.Database = new RxDatabase({
   primary: true,
   databasePath: 'sqlite.db',
   databaseVersion: "1",
