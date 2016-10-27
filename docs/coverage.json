@@ -1,6 +1,6 @@
 {
-  "coverage": "35.65%",
-  "expectCount": 230,
+  "coverage": "36.77%",
+  "expectCount": 223,
   "actualCount": 82,
   "files": {
     "lib/attributes/attribute.js": {
@@ -93,35 +93,24 @@
       ]
     },
     "lib/browser/coordinator.js": {
-      "expectCount": 7,
-      "actualCount": 1,
-      "undocumentLines": [
-        15,
-        60,
-        70,
-        28,
-        39,
-        32
-      ]
-    },
-    "lib/database-change-record.js": {
       "expectCount": 6,
       "actualCount": 1,
       "undocumentLines": [
-        41,
-        37,
-        14,
         15,
-        62
+        69,
+        79,
+        48,
+        41
       ]
     },
-    "lib/rx-database.js": {
-      "expectCount": 28,
-      "actualCount": 25,
+    "lib/database-change-record.js": {
+      "expectCount": 5,
+      "actualCount": 1,
       "undocumentLines": [
-        50,
-        478,
-        136
+        40,
+        36,
+        12,
+        61
       ]
     },
     "lib/database-transaction.js": {
@@ -145,8 +134,8 @@
       "undocumentLines": [
         11,
         31,
-        26,
-        30
+        30,
+        26
       ]
     },
     "lib/attributes/matcher.js": {
@@ -262,6 +251,15 @@
         171
       ]
     },
+    "lib/rx-database.js": {
+      "expectCount": 28,
+      "actualCount": 25,
+      "undocumentLines": [
+        49,
+        468,
+        61
+      ]
+    },
     "lib/attributes/sort-order.js": {
       "expectCount": 6,
       "actualCount": 1,
@@ -274,15 +272,13 @@
       ]
     },
     "lib/utils.js": {
-      "expectCount": 6,
+      "expectCount": 4,
       "actualCount": 0,
       "undocumentLines": [
-        36,
-        41,
-        26,
+        11,
         16,
-        3,
-        46
+        1,
+        21
       ]
     },
     "lib/console-utils.js": {
@@ -290,15 +286,6 @@
       "actualCount": 0,
       "undocumentLines": [
         2
-      ]
-    },
-    "lib/database-object-registry.js": {
-      "expectCount": 3,
-      "actualCount": 0,
-      "undocumentLines": [
-        88,
-        78,
-        70
       ]
     }
   }

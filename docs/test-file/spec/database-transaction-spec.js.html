@@ -33,7 +33,6 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -43,16 +42,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
@@ -70,8 +65,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/database-transaction-spec.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint dot-notation:0 */
-import TestModel from &apos;./fixtures/db-test-model&apos;;
-import Category from &apos;./fixtures/category&apos;;
+import {Database, TestModel, Category} from &apos;./fixtures&apos;;
 import DatabaseTransaction from &apos;../lib/database-transaction&apos;;
 import DatabaseChangeRecord from &apos;../lib/database-change-record&apos;;
 
@@ -94,16 +88,15 @@ describe(&quot;DatabaseTransaction&quot;, function DatabaseTransactionSpecs() {
   beforeEach(() =&gt; {
     this.databaseMutationHooks = [];
     this.performed = [];
-    this.database = {
-      _query: jasmine.createSpy(&apos;database._query&apos;).and.callFake((query, values = []) =&gt; {
-        this.performed.push({query, values});
-        return Promise.resolve([]);
-      }),
-      transactionDidCommitChanges: jasmine.createSpy(&apos;database.transactionDidCommitChanges&apos;),
-      mutationHooks: () =&gt; this.databaseMutationHooks,
-    };
 
-    this.transaction = new DatabaseTransaction(this.database);
+    spyOn(Database, &apos;_query&apos;).and.callFake((query, values = []) =&gt; {
+      this.performed.push({query, values});
+      return Promise.resolve([]);
+    });
+    spyOn(Database, &apos;transactionDidCommitChanges&apos;);
+    spyOn(Database, &apos;mutationHooks&apos;).and.returnValue(this.databaseMutationHooks)
+
+    this.transaction = new DatabaseTransaction(Database);
 
     jasmine.clock().install();
   });
@@ -134,11 +127,11 @@ describe(&quot;DatabaseTransaction&quot;, function DatabaseTransactionSpecs() {
       });
 
       jasmine.waitFor(() =&gt;
-        this.database.transactionDidCommitChanges.calls.count() &gt; 0
+        Database.transactionDidCommitChanges.calls.count() &gt; 0
       )
       .then(() =&gt; {
-        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
-        expect(change).toEqual([new DatabaseChangeRecord({
+        const change = Database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord(Database, {
           objectClass: TestModel.name,
           objectIds: [testModelInstanceA.id, testModelInstanceB.id],
           objects: [testModelInstanceA, testModelInstanceB],
@@ -269,10 +262,10 @@ describe(&quot;DatabaseTransaction&quot;, function DatabaseTransactionSpecs() {
         return this.transaction.unpersistModel(testModelInstance);
       });
       jasmine.waitFor(() =&gt;
-        this.database.transactionDidCommitChanges.calls.count() &gt; 0
+        Database.transactionDidCommitChanges.calls.count() &gt; 0
       ).then(() =&gt; {
-        const change = this.database.transactionDidCommitChanges.calls.first().args[0];
-        expect(change).toEqual([new DatabaseChangeRecord({
+        const change = Database.transactionDidCommitChanges.calls.first().args[0];
+        expect(change).toEqual([new DatabaseChangeRecord(Database, {
           objectClass: TestModel.name,
           objectIds: [testModelInstance.id],
           objects: [testModelInstance],

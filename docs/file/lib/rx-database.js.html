@@ -1,24 +1,90 @@
-/* eslint global-require: 0 */
-import Sqlite3 from 'better-sqlite3';
-import PromiseQueue from 'promise-queue';
-import {ipcRenderer} from 'electron';
-import LRU from 'lru-cache';
-import {EventEmitter} from 'events';
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/rx-database.js | electron-RxDB API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
 
-import Query from './query';
-import {logSQLString} from './console-utils';
-import ModelRegistry from './model-registry';
-import DatabaseChangeRecord from './database-change-record';
-import DatabaseChangeRecordDebouncer from './database-change-record-debouncer';
-import QuerySubscriptionPool from './query-subscription-pool';
-import DatabaseTransaction from './database-transaction';
-import DatabaseSetupQueryBuilder from './database-setup-query-builder';
-import JSONBlob from './json-blob';
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-result-set.js~MutableQueryResultSet.html">MutableQueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/mutable-query-subscription.js~MutableQuerySubscription.html">MutableQuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-range.js~QueryRange.html">QueryRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-joined-data.js~AttributeJoinedData.html">AttributeJoinedData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-number.js~AttributeNumber.html">AttributeNumber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-object.js~AttributeObject.html">AttributeObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-string.js~AttributeString.html">AttributeString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute.js~Attribute.html">Attribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/matcher.js~Matcher.html">Matcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/sort-order.js~SortOrder.html">SortOrder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">browser</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/browser/coordinator.js~Coordinator.html">Coordinator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/rx-database.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint global-require: 0 */
+import Sqlite3 from &apos;better-sqlite3&apos;;
+import PromiseQueue from &apos;promise-queue&apos;;
+import {ipcRenderer} from &apos;electron&apos;;
+import LRU from &apos;lru-cache&apos;;
+import {EventEmitter} from &apos;events&apos;;
+
+import Query from &apos;./query&apos;;
+import {logSQLString} from &apos;./console-utils&apos;;
+import ModelRegistry from &apos;./model-registry&apos;;
+import DatabaseChangeRecord from &apos;./database-change-record&apos;;
+import DatabaseChangeRecordDebouncer from &apos;./database-change-record-debouncer&apos;;
+import QuerySubscriptionPool from &apos;./query-subscription-pool&apos;;
+import DatabaseTransaction from &apos;./database-transaction&apos;;
+import DatabaseSetupQueryBuilder from &apos;./database-setup-query-builder&apos;;
+import JSONBlob from &apos;./json-blob&apos;;
 
 const DatabasePhase = {
-  Setup: 'setup',
-  Ready: 'ready',
-  Close: 'close',
+  Setup: &apos;setup&apos;,
+  Ready: &apos;ready&apos;,
+  Close: &apos;close&apos;,
 }
 
 class IncorrectVersionError extends Error {
@@ -28,7 +94,7 @@ class IncorrectVersionError extends Error {
 }
 /**
 The RxDatabase is the central database object of RxDB. You can instantiate
-as many databases as you'd like at the same time, and opening the same
+as many databases as you&apos;d like at the same time, and opening the same
 database path in multiple windows is fine - RxDB uses SQLite transactions and
 dispatches change events across windows via the Electron IPC module.
 
@@ -52,10 +118,10 @@ export default class RxDatabase extends EventEmitter {
     this.setMaxListeners(100);
 
     if (!databasePath) {
-      throw new Error("RxDatabase: You must provide a SQLite file path.");
+      throw new Error(&quot;RxDatabase: You must provide a SQLite file path.&quot;);
     }
-    if (!databaseVersion || (typeof databaseVersion !== 'string')) {
-      throw new Error("RxDatabase: You must provide a database schema version number.");
+    if (!databaseVersion || (typeof databaseVersion !== &apos;string&apos;)) {
+      throw new Error(&quot;RxDatabase: You must provide a database schema version number.&quot;);
     }
 
     this.models = new ModelRegistry();
@@ -71,17 +137,17 @@ export default class RxDatabase extends EventEmitter {
     this._waiting = [];
     this._mutationHooks = [];
     this._debouncer = new DatabaseChangeRecordDebouncer({
-      onTrigger: (record) => this.trigger(record),
+      onTrigger: (record) =&gt; this.trigger(record),
       maxTriggerDelay: 10,
     })
 
     // Listen to events from the application telling us when the database is ready,
     // should be closed so it can be deleted, etc.
-    ipcRenderer.on('rxdb-phase-changed', this._onPhaseChanged);
-    setTimeout(() => this._onPhaseChanged(), 0);
+    ipcRenderer.on(&apos;rxdb-phase-changed&apos;, this._onPhaseChanged);
+    setTimeout(() =&gt; this._onPhaseChanged(), 0);
 
     // Listen for trigger events originating in other windows
-    ipcRenderer.on('rxdb-trigger', this._onIPCTrigger);
+    ipcRenderer.on(&apos;rxdb-trigger&apos;, this._onIPCTrigger);
   }
 
   /**
@@ -90,31 +156,31 @@ export default class RxDatabase extends EventEmitter {
   of RxDatabase, call `disconnect`.
   */
   disconnect() {
-    ipcRenderer.removeListener('rxdb-phase-changed', this._onPhaseChanged);
-    ipcRenderer.removeListener('rxdb-trigger', this._onIPCTrigger);
+    ipcRenderer.removeListener(&apos;rxdb-phase-changed&apos;, this._onPhaseChanged);
+    ipcRenderer.removeListener(&apos;rxdb-trigger&apos;, this._onIPCTrigger);
   }
 
-  _onIPCTrigger = ({json, path}) => {
+  _onIPCTrigger = ({json, path}) =&gt; {
     if (path === this._options.databasePath) {
-      this.emit('trigger', new DatabaseChangeRecord(this, json));
+      this.emit(&apos;trigger&apos;, new DatabaseChangeRecord(this, json));
     }
   }
 
-  _onPhaseChanged = () => {
-    const phase = ipcRenderer.sendSync('rxdb-get-phase');
+  _onPhaseChanged = () =&gt; {
+    const phase = ipcRenderer.sendSync(&apos;rxdb-get-phase&apos;);
 
-    if (phase === DatabasePhase.Setup && this._options.primary) {
-      this._openDatabase(() => {
-        this._checkDatabaseVersion({allowUnset: true}, () => {
-          this._runDatabaseSetup(() => {
-            ipcRenderer.sendSync('rxdb-set-phase', DatabasePhase.Ready);
-            setTimeout(() => this._runDatabaseAnalyze(), 60 * 1000);
+    if (phase === DatabasePhase.Setup &amp;&amp; this._options.primary) {
+      this._openDatabase(() =&gt; {
+        this._checkDatabaseVersion({allowUnset: true}, () =&gt; {
+          this._runDatabaseSetup(() =&gt; {
+            ipcRenderer.sendSync(&apos;rxdb-set-phase&apos;, DatabasePhase.Ready);
+            setTimeout(() =&gt; this._runDatabaseAnalyze(), 60 * 1000);
           });
         });
       });
     } else if (phase === DatabasePhase.Ready) {
-      this._openDatabase(() => {
-        this._checkDatabaseVersion({}, () => {
+      this._openDatabase(() =&gt; {
+        this._checkDatabaseVersion({}, () =&gt; {
           this._open = true;
           for (const w of this._waiting) {
             w();
@@ -139,11 +205,11 @@ export default class RxDatabase extends EventEmitter {
 
     this._db = new Sqlite3(this._options.databasePath, {});
 
-    this._db.on('close', (err) => {
+    this._db.on(&apos;close&apos;, (err) =&gt; {
       this._handleSetupError(err);
     })
 
-    this._db.on('open', () => {
+    this._db.on(&apos;open&apos;, () =&gt; {
       // Note: These are properties of the connection, so they must be set regardless
       // of whether the database setup queries are run.
 
@@ -163,10 +229,10 @@ export default class RxDatabase extends EventEmitter {
   }
 
   _checkDatabaseVersion({allowUnset} = {}, ready) {
-    const result = this._db.pragma('user_version', true);
-    const isUnsetVersion = (result === '0');
+    const result = this._db.pragma(&apos;user_version&apos;, true);
+    const isUnsetVersion = (result === &apos;0&apos;);
     const isWrongVersion = (result !== this._options.databaseVersion);
-    if (isWrongVersion && !(isUnsetVersion && allowUnset)) {
+    if (isWrongVersion &amp;&amp; !(isUnsetVersion &amp;&amp; allowUnset)) {
       return this._handleSetupError(new IncorrectVersionError({
         actual: result,
         expected: this._options.databaseVersion,
@@ -194,14 +260,14 @@ export default class RxDatabase extends EventEmitter {
     @type {object}
     @property {object} sqlite - The underlying SQLite3 database instance.
     */
-    this.emit('did-setup-database', {sqlite: this._db});
+    this.emit(&apos;did-setup-database&apos;, {sqlite: this._db});
 
     return ready();
   }
 
   _runDatabaseAnalyze() {
     const queries = this._queryBuilder.analyzeQueries();
-    const step = () => {
+    const step = () =&gt; {
       const query = queries.shift();
       if (query) {
         if (this._options.logQueries) {
@@ -223,8 +289,8 @@ export default class RxDatabase extends EventEmitter {
     @property {object} sqlite - The underlying SQLite3 database instance.
     @property {Error} error - The error that occurred.
     */
-    this.emit('will-rebuild-database', {sqlite: this._db, error: error});
-    ipcRenderer.sendSync('rxdb-handle-setup-error');
+    this.emit(&apos;will-rebuild-database&apos;, {sqlite: this._db, error: error});
+    ipcRenderer.sendSync(&apos;rxdb-handle-setup-error&apos;);
   }
 
   /**
@@ -240,15 +306,15 @@ export default class RxDatabase extends EventEmitter {
     the query has failed.
   */
   _query(query, values = []) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =&gt; {
       if (!this._open) {
-        this._waiting.push(() => this._query(query, values).then(resolve, reject));
+        this._waiting.push(() =&gt; this._query(query, values).then(resolve, reject));
         return;
       }
 
       // Undefined, True, and False are not valid SQLite datatypes:
       // https://www.sqlite.org/datatype3.html
-      values.forEach((val, idx) => {
+      values.forEach((val, idx) =&gt; {
         if (val === false) {
           values[idx] = 0;
         } else if (val === true) {
@@ -258,34 +324,34 @@ export default class RxDatabase extends EventEmitter {
         }
       });
 
-      if (query.startsWith(`SELECT `) && this._options.logQueryPlans) {
+      if (query.startsWith(`SELECT `) &amp;&amp; this._options.logQueryPlans) {
         const plan = this._db.prepare(`EXPLAIN QUERY PLAN ${query}`).all(values);
-        const planString = `${plan.map(row => row.detail).join('\n')} for ${query}`;
-        if (planString.includes('ThreadCounts')) {
+        const planString = `${plan.map(row =&gt; row.detail).join(&apos;\n&apos;)} for ${query}`;
+        if (planString.includes(&apos;ThreadCounts&apos;)) {
           return;
         }
-        if (planString.includes('ThreadSearch')) {
+        if (planString.includes(&apos;ThreadSearch&apos;)) {
           return;
         }
-        if (planString.includes('SCAN') && !planString.includes('COVERING INDEX')) {
+        if (planString.includes(&apos;SCAN&apos;) &amp;&amp; !planString.includes(&apos;COVERING INDEX&apos;)) {
           logSQLString(planString);
         }
       }
 
       if (query.startsWith(`BEGIN`)) {
         if (this._inflightTransactions !== 0) {
-          throw new Error("Assertion Failure: BEGIN called when an existing transaction is in-flight. Use inTransaction() to aquire transactions.")
+          throw new Error(&quot;Assertion Failure: BEGIN called when an existing transaction is in-flight. Use inTransaction() to aquire transactions.&quot;)
         }
         this._inflightTransactions += 1;
       }
 
-      const fn = query.startsWith('SELECT') ? 'all' : 'run';
+      const fn = query.startsWith(&apos;SELECT&apos;) ? &apos;all&apos; : &apos;run&apos;;
       let tries = 0;
       let results = null;
 
       // Because other processes may be writing to the database and modifying the
       // schema (running ANALYZE, etc.), we may `prepare` a statement and then be
-      // unable to execute it. Handle this case silently unless it's persistent.
+      // unable to execute it. Handle this case silently unless it&apos;s persistent.
       while (!results) {
         try {
           let stmt = this._preparedStatementCache.get(query);
@@ -295,7 +361,7 @@ export default class RxDatabase extends EventEmitter {
           }
           results = stmt[fn](values);
         } catch (err) {
-          if (tries < 3 && err.toString().includes('database schema has changed')) {
+          if (tries &lt; 3 &amp;&amp; err.toString().includes(&apos;database schema has changed&apos;)) {
             this._preparedStatementCache.del(query);
             tries += 1;
           } else {
@@ -305,11 +371,11 @@ export default class RxDatabase extends EventEmitter {
         }
       }
 
-      if (query === 'COMMIT') {
+      if (query === &apos;COMMIT&apos;) {
         this._inflightTransactions -= 1;
-        if (this._inflightTransactions < 0) {
+        if (this._inflightTransactions &lt; 0) {
           this._inflightTransactions = 0;
-          throw new Error("Assertion Failure: COMMIT was called too many times and the transaction count went negative.")
+          throw new Error(&quot;Assertion Failure: COMMIT was called too many times and the transaction count went negative.&quot;)
         }
       }
 
@@ -325,13 +391,13 @@ export default class RxDatabase extends EventEmitter {
   Creates a new Query for retrieving a single model specified by
   the class and id.
 
-  @param {Model} klass - The class of the {Model} you're trying to retrieve.
-  @param {String} id - The id of the {Model} you're trying to retrieve
+  @param {Model} klass - The class of the {Model} you&apos;re trying to retrieve.
+  @param {String} id - The id of the {Model} you&apos;re trying to retrieve
 
   Example:
 
   ```js
-  db.find(Thread, 'id-123').then((thread) => {
+  db.find(Thread, &apos;id-123&apos;).then((thread) =&gt; {
     // thread is a Thread object, or null if no match was found.
   });
   ```
@@ -342,7 +408,7 @@ export default class RxDatabase extends EventEmitter {
     if (!klass) {
       throw new Error(`RxDatabase::find - You must provide a class`);
     }
-    if (typeof id !== 'string') {
+    if (typeof id !== &apos;string&apos;) {
       throw new Error(`RxDatabase::find - You must provide a string id. You may have intended to use findBy.`);
     }
     return new Query(klass, this).where({id}).one();
@@ -352,7 +418,7 @@ export default class RxDatabase extends EventEmitter {
   Creates a new Model Query for retrieving a single model matching the
   predicates provided.
 
-  @param {Model} klass - The class of the {Model} you're trying to retrieve.
+  @param {Model} klass - The class of the {Model} you&apos;re trying to retrieve.
   @param {Matcher[]} predicates - the set of predicates the returned model must match.
 
   @returns {Query}
@@ -368,7 +434,7 @@ export default class RxDatabase extends EventEmitter {
   Creates a new Model Query for retrieving all models matching the
   predicates provided.
 
-  @param {Model} klass - The class you're trying to retrieve.
+  @param {Model} klass - The class you&apos;re trying to retrieve.
   @param {Matcher[]} predicates - An array of matcher objects. The set of
     predicates the returned model must match.
 
@@ -385,7 +451,7 @@ export default class RxDatabase extends EventEmitter {
   Creates a new Query that returns the number of models matching
   the predicates provided.
 
-  @param {Model} klass - The Model class you're trying to retrieve.
+  @param {Model} klass - The Model class you&apos;re trying to retrieve.
   @param {Matcher[]} predicates - The set of predicates the returned model
   must match.
 
@@ -403,7 +469,7 @@ export default class RxDatabase extends EventEmitter {
   queries for items that are missing. The returned array contains just model
   instances, or null if the model could not be found.
 
-  This function is useful if your code may receive an item or it's ID.
+  This function is useful if your code may receive an item or it&apos;s ID.
 
   Modelify is efficient and uses a single database query. It resolves Immediately
   if no query is necessary. It does not change the order of items in the array.
@@ -422,22 +488,22 @@ export default class RxDatabase extends EventEmitter {
     for (const item of arr) {
       if (item instanceof klass) {
         ids.push(item.id);
-      } else if (typeof item === 'string') {
+      } else if (typeof item === &apos;string&apos;) {
         ids.push(item);
       } else {
         throw new Error(`modelify: Not sure how to convert ${item} into a ${klass.name}`);
       }
     }
-    if ((ids.length === 0) && (ids.length === 0)) {
+    if ((ids.length === 0) &amp;&amp; (ids.length === 0)) {
       return Promise.resolve(arr);
     }
 
-    return this.findAll(klass).where(klass.attributes.id.in(ids)).then((modelsFromIds) => {
+    return this.findAll(klass).where(klass.attributes.id.in(ids)).then((modelsFromIds) =&gt; {
       const modelsByString = {};
       for (const model of modelsFromIds) {
         modelsByString[model.id] = model;
       }
-      return Promise.resolve(arr.map(item =>
+      return Promise.resolve(arr.map(item =&gt;
         (item instanceof klass ? item : modelsByString[item]))
       );
     });
@@ -456,7 +522,7 @@ export default class RxDatabase extends EventEmitter {
   @returns {Promise} - A promise that resolves with the result of the database query.
   */
   run(modelQuery, options = {format: true}) {
-    return this._query(modelQuery.sql(), []).then((result) => {
+    return this._query(modelQuery.sql(), []).then((result) =&gt; {
       let transformed = modelQuery.inflateResult(result);
       if (options.format !== false) {
         transformed = modelQuery.formatResult(transformed)
@@ -482,7 +548,7 @@ export default class RxDatabase extends EventEmitter {
    - afterDatabaseChange: Run queries, etc. after the `REPLACE` / `INSERT` queries
 
   Warning: this is very low level. If you just want to watch for changes, You
-  should subscribe to the RxDatabase's trigger events.
+  should subscribe to the RxDatabase&apos;s trigger events.
 
   Example: N1 uses these hooks to watch for changes to unread counts, which are
   maintained in a separate table to avoid frequent `COUNT(*)` queries.
@@ -502,7 +568,7 @@ export default class RxDatabase extends EventEmitter {
   same object that was provided to {RxDatabase.addMutationHook}.
   */
   removeMutationHook(hook) {
-    this._mutationHooks = this._mutationHooks.filter(h => h !== hook);
+    this._mutationHooks = this._mutationHooks.filter(h =&gt; h !== hook);
   }
 
   /**
@@ -524,7 +590,7 @@ export default class RxDatabase extends EventEmitter {
     excute until the promise returned by `fn` has finished.
 
   - Single Process Writing: No other process will be able to write to the
-    database while the provided function is running. RxDB uses SQLite's
+    database while the provided function is running. RxDB uses SQLite&apos;s
     `BEGIN IMMEDIATE TRANSACTION`, with the following semantics:
       + No other connection will be able to write any changes.
       + Other connections can read from the database, but they will not see
@@ -539,7 +605,7 @@ export default class RxDatabase extends EventEmitter {
   @emits RxDatabase#trigger
   **/
   inTransaction(fn) {
-    return this._transactionQueue.add(() =>
+    return this._transactionQueue.add(() =&gt;
       new DatabaseTransaction(this).execute(fn)
     );
   }
@@ -569,7 +635,7 @@ export default class RxDatabase extends EventEmitter {
   searchIndexSize(klass) {
     const searchTableName = `${klass.name}Search`;
     const sql = `SELECT COUNT(content_id) as count FROM \`${searchTableName}\``;
-    return this._query(sql).then((result) => result[0].count);
+    return this._query(sql).then((result) =&gt; result[0].count);
   }
 
   /**
@@ -583,7 +649,7 @@ export default class RxDatabase extends EventEmitter {
       ON \`${modelTable}\`.id = \`${searchTable}\`.\`content_id\` WHERE \`${modelTable}\`.\`account_id\` = ?
       LIMIT 1`
     );
-    return this._query(sql, [accountId]).then(result => result.length === 0);
+    return this._query(sql, [accountId]).then(result =&gt; result.length === 0);
   }
 
   /**
@@ -609,8 +675,8 @@ export default class RxDatabase extends EventEmitter {
     const exists = (
       `SELECT rowid FROM \`${searchTableName}\` WHERE \`${searchTableName}\`.\`content_id\` = ?`
     )
-    return this._query(exists, [model.id]).then((results) =>
-      Promise.resolve(results.length > 0)
+    return this._query(exists, [model.id]).then((results) =&gt;
+      Promise.resolve(results.length &gt; 0)
     )
   }
 
@@ -619,15 +685,15 @@ export default class RxDatabase extends EventEmitter {
   */
   indexModel(model, indexData, isModelIndexed) {
     const searchTableName = `${model.constructor.name}Search`;
-    return this.isModelIndexed(model, isModelIndexed).then((isIndexed) => {
+    return this.isModelIndexed(model, isModelIndexed).then((isIndexed) =&gt; {
       if (isIndexed) {
         return this.updateModelIndex(model, indexData, isIndexed);
       }
 
       const indexFields = Object.keys(indexData)
       const keysSql = `content_id, ${indexFields.join(`, `)}`
-      const valsSql = `?, ${indexFields.map(() => '?').join(', ')}`
-      const values = [model.id].concat(indexFields.map(k => indexData[k]))
+      const valsSql = `?, ${indexFields.map(() =&gt; &apos;?&apos;).join(&apos;, &apos;)}`
+      const values = [model.id].concat(indexFields.map(k =&gt; indexData[k]))
       const sql = (
         `INSERT INTO \`${searchTableName}\`(${keysSql}) VALUES (${valsSql})`
       )
@@ -640,17 +706,17 @@ export default class RxDatabase extends EventEmitter {
   */
   updateModelIndex(model, indexData, isModelIndexed) {
     const searchTableName = `${model.constructor.name}Search`;
-    this.isModelIndexed(model, isModelIndexed).then((isIndexed) => {
+    this.isModelIndexed(model, isModelIndexed).then((isIndexed) =&gt; {
       if (!isIndexed) {
         return this.indexModel(model, indexData, isIndexed);
       }
 
       const indexFields = Object.keys(indexData);
-      const values = indexFields.map(key => indexData[key]).concat([model.id]);
+      const values = indexFields.map(key =&gt; indexData[key]).concat([model.id]);
       const setSql = (
         indexFields
-        .map((key) => `\`${key}\` = ?`)
-        .join(', ')
+        .map((key) =&gt; `\`${key}\` = ?`)
+        .join(&apos;, &apos;)
       );
       const sql = (
         `UPDATE \`${searchTableName}\` SET ${setSql} WHERE \`${searchTableName}\`.\`content_id\` = ?`
@@ -700,17 +766,17 @@ export default class RxDatabase extends EventEmitter {
   */
   listen(callback, bindContext = this) {
     if (!callback) {
-      throw new Error("RxDatabase.listen called with undefined callback");
+      throw new Error(&quot;RxDatabase.listen called with undefined callback&quot;);
     }
     let aborted = false
-    const eventHandler = (...args) => {
+    const eventHandler = (...args) =&gt; {
       if (aborted) { return }
       callback.apply(bindContext, args);
     }
-    this.addListener('trigger', eventHandler);
-    return () => {
+    this.addListener(&apos;trigger&apos;, eventHandler);
+    return () =&gt; {
       aborted = true;
-      this.removeListener('trigger', eventHandler);
+      this.removeListener(&apos;trigger&apos;, eventHandler);
     }
   }
 
@@ -718,7 +784,7 @@ export default class RxDatabase extends EventEmitter {
   @protected
   */
   trigger(record) {
-    ipcRenderer.send('rxdb-trigger', {
+    ipcRenderer.send(&apos;rxdb-trigger&apos;, {
       path: this._options.databasePath,
       json: record.toJSON(),
     });
@@ -726,6 +792,23 @@ export default class RxDatabase extends EventEmitter {
     @event RxDatabase#trigger
     @type {DatabaseChangeRecord}
     */
-    this.emit('trigger', record);
+    this.emit(&apos;trigger&apos;, record);
   }
 }
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

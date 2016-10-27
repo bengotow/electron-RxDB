@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">lib/query-subscription-pool.js | electron-RxDB API Document</title>
+  <title data-ice="title">lib/model-registry.js | electron-RxDB API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -63,120 +63,134 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">lib/query-subscription-pool.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint global-require: 0 */
-import QuerySubscription from &apos;./query-subscription&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">lib/model-registry.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Model from &apos;./model&apos;;
 
 /**
-The QuerySubscriptionPool maintains a list of all of the query
-subscriptions in the app. In the future, this class will monitor performance,
-merge equivalent subscriptions, etc.
+This keeps track of constructors so we know how to inflate
+serialized objects.
+
+We map constructor string names with factory functions that will return
+the actual constructor itself.
+
+The reason we have an extra function call to return a constructor is so
+we don&apos;t need to `require` all constructors at once on load. We are
+wasting a very large amount of time on bootup requiring files that may
+never be used or only used way down the line.
+
+If 3rd party packages want to register new inflatable models, they can
+use `register` and pass the constructor generator along with the name.
+
+Note that there is one registry per window.
 
 @private
 */
-export default class QuerySubscriptionPool {
-  constructor(database) {
-    this._database = database;
-    this._subscriptions = {};
-    this._cleanupChecks = [];
-    this._setup();
-  }
+export default class ModelRegistry {
+  constructor() {
+    this._classMap = {};
 
-  add(query, callback) {
-    // TODO
-    // if (NylasEnv.inDevMode()) {
-    //   callback._registrationPoint = this._formatRegistrationPoint((new Error).stack);
-    // }
+    const registry = this;
 
-    const key = this._keyForQuery(query);
-    let subscription = this._subscriptions[key];
-    if (!subscription) {
-      subscription = new QuerySubscription(query);
-      this._subscriptions[key] = subscription;
-    }
-
-    subscription.addCallback(callback);
-    return () =&gt; {
-      subscription.removeCallback(callback);
-      this._scheduleCleanupCheckForSubscription(key);
-    };
-  }
-
-  addPrivateSubscription(key, subscription, callback) {
-    this._subscriptions[key] = subscription;
-    subscription.addCallback(callback);
-    return () =&gt; {
-      subscription.removeCallback(callback);
-      this._scheduleCleanupCheckForSubscription(key);
-    };
-  }
-
-  printSubscriptions() {
-    // TODO
-    // if (!NylasEnv.inDevMode()) {
-    //   console.log(&quot;printSubscriptions is only available in developer mode.&quot;);
-    //   return;
-    // }
-
-    for (const key of Object.keys(this._subscriptions)) {
-      const subscription = this._subscriptions[key];
-      console.log(key);
-      console.group();
-      for (const callback of subscription._callbacks) {
-        console.log(`${callback._registrationPoint}`);
+    this.JSONReviver = function JSONReviver(k, v) {
+      const type = v ? v.__constructorName : null;
+      if (!type) {
+        return v;
       }
-      console.groupEnd();
-    }
-  }
 
-  _scheduleCleanupCheckForSubscription(key) {
-    // We unlisten / relisten to lots of subscriptions and setTimeout is actually
-    // /not/ that fast. Create one timeout for all checks, not one for each.
-    if (this._cleanupChecks.length === 0) {
-      setTimeout(() =&gt; this._runCleanupChecks(), 1);
-    }
-    this._cleanupChecks.push(key);
-  }
-
-  _runCleanupChecks() {
-    for (const key of this._cleanupChecks) {
-      const subscription = this._subscriptions[key];
-      if (subscription &amp;&amp; (subscription.callbackCount() === 0)) {
-        delete this._subscriptions[key];
+      if (registry.has(type)) {
+        return registry.deserialize(type, v);
       }
-    }
-    this._cleanupChecks = [];
-  }
 
-  _formatRegistrationPoint(stackString) {
-    const stack = stackString.split(&apos;\n&apos;);
-    let ii = 0;
-    let seenRx = false;
-    while (ii &lt; stack.length) {
-      const hasRx = stack[ii].indexOf(&apos;rx.lite&apos;) !== -1;
-      seenRx = seenRx || hasRx;
-      if (seenRx === true &amp;&amp; !hasRx) {
-        break;
+      return v;
+    }
+
+    this.JSONReplacer = function JSONReplacer(k, v) {
+      if (v instanceof Object) {
+        const type = this[k].constructor.name;
+        if (registry.has(type)) {
+          v.__constructorName = type;
+        }
       }
-      ii += 1;
+      return v;
+    }
+  }
+
+  /**
+  @param {String} name - The name of the class
+  @returns {Model} - The Model subclass with the given name.
+  */
+  get(name) {
+    return this._classMap[name].call(null);
+  }
+
+  getAllConstructors() {
+    return Object.keys(this._classMap).map((name) =&gt; this.get(name))
+  }
+
+  /**
+  @param {String} name - The name of the class.
+  @returns {Boolean} - True if a class with the given name has been registered.
+  */
+  has(name) {
+    return !!this._classMap[name];
+  }
+
+  /**
+  Add a Model class so that it can be used with an RxDB database.
+
+  @param {Model} klass - The subclass of Model to register
+  */
+  register(klass) {
+    this.registerDeferred({
+      name: klass.constructor.name,
+      resolver: () =&gt; klass,
+    })
+  }
+
+  /**
+  Add a Model class without requiring it immediately. Provide the name of
+  the class and a resolver function that returns it upon request.
+
+  The resolver will not be invoked until an instance of the class is needed
+  for the first time, which can improve load time.
+
+  @param {String} name - The class name
+  @param {Function} resolver - A function that will return the class. Generally,
+    this function calls `require`.
+  */
+  registerDeferred({name, resolver}) {
+    this._classMap[name] = resolver;
+  }
+
+  /**
+  Remove a Model class.
+  */
+  unregister(name) {
+    delete this._classMap[name];
+  }
+
+  /**
+  @private
+  */
+  deserialize(name, dataJSON) {
+    let data = dataJSON;
+    if (typeof data === &quot;string&quot;) {
+      data = JSON.parse(dataJSON);
     }
 
-    return stack.slice(ii, ii + 4).join(&apos;\n&apos;);
-  }
+    const constructor = this.get(name);
 
-  _keyForQuery(query) {
-    return query.sql();
-  }
-
-  _setup() {
-    this._database.listen(this._onChange);
-  }
-
-  _onChange = (record) =&gt; {
-    for (const key of Object.keys(this._subscriptions)) {
-      const subscription = this._subscriptions[key];
-      subscription.applyChangeRecord(record);
+    if (typeof constructor !== &quot;function&quot;) {
+      throw new Error(`ModelRegistry: Unsure of how to inflate ${JSON.stringify(data)}. Your constructor factory must return a class constructor.`);
     }
+
+    const object = new constructor();
+    if (!(object instanceof Model)) {
+      throw new Error(`ModelRegistry: ${name} is not a subclass of RxDB.Model.`);
+    }
+    object.fromJSON(data);
+
+    return object;
   }
 }
 </code></pre>

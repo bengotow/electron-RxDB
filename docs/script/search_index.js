@@ -60,12 +60,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "electron-coresqlite/lib/rx-database.js~RxDatabase",
-    "class/lib/rx-database.js~RxDatabase.html",
-    "<span>RxDatabase</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/rx-database.js</span>",
-    "class"
-  ],
-  [
     "electron-coresqlite/lib/database-transaction.js~databasetransaction",
     "class/lib/database-transaction.js~DatabaseTransaction.html",
     "<span>DatabaseTransaction</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-transaction.js</span>",
@@ -126,6 +120,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "electron-coresqlite/lib/rx-database.js~rxdatabase",
+    "class/lib/rx-database.js~RxDatabase.html",
+    "<span>RxDatabase</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/rx-database.js</span>",
+    "class"
+  ],
+  [
     "electron-coresqlite/lib/attributes/sort-order.js~sortorder",
     "class/lib/attributes/sort-order.js~SortOrder.html",
     "<span>SortOrder</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/attributes/sort-order.js</span>",
@@ -153,36 +153,6 @@ window.esdocSearchIndex = [
     "electron-coresqlite/lib/utils.js~modelfreeze",
     "function/index.html#static-function-modelFreeze",
     "<span>modelFreeze</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/utils.js</span>",
-    "function"
-  ],
-  [
-    "electron-coresqlite/lib/utils.js~registeredobjectreplacer",
-    "function/index.html#static-function-registeredObjectReplacer",
-    "<span>registeredObjectReplacer</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/utils.js</span>",
-    "function"
-  ],
-  [
-    "electron-coresqlite/lib/utils.js~registeredobjectreviver",
-    "function/index.html#static-function-registeredObjectReviver",
-    "<span>registeredObjectReviver</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/utils.js</span>",
-    "function"
-  ],
-  [
-    "electron-coresqlite/lib/database-object-registry.js~registry",
-    "variable/index.html#static-variable-registry",
-    "<span>registry</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-object-registry.js</span>",
-    "variable"
-  ],
-  [
-    "electron-coresqlite/lib/database-object-registry.js~replacer",
-    "function/index.html#static-function-replacer",
-    "<span>replacer</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-object-registry.js</span>",
-    "function"
-  ],
-  [
-    "electron-coresqlite/lib/database-object-registry.js~reviver",
-    "function/index.html#static-function-reviver",
-    "<span>reviver</span> <span class=\"search-result-import-path\">electron-coresqlite/lib/database-object-registry.js</span>",
     "function"
   ],
   [
@@ -523,182 +493,152 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber9",
+    "test-file/spec/database-store-spec.js.html#lineNumber9",
     "Database",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber130",
+    "test-file/spec/database-store-spec.js.html#lineNumber130",
     "Database count",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber131",
+    "test-file/spec/database-store-spec.js.html#lineNumber131",
     "Database count should pass the provided predicates on to the ModelQuery",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber136",
+    "test-file/spec/database-store-spec.js.html#lineNumber136",
     "Database count should return a ModelQuery configured for COUNT ready to be executed",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber35",
+    "test-file/spec/database-store-spec.js.html#lineNumber35",
     "Database find",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber54",
+    "test-file/spec/database-store-spec.js.html#lineNumber54",
     "Database findAll",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber55",
+    "test-file/spec/database-store-spec.js.html#lineNumber55",
     "Database findAll should pass the provided predicates on to the ModelQuery",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber60",
+    "test-file/spec/database-store-spec.js.html#lineNumber60",
     "Database findAll should return a ModelQuery ready to be executed",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber42",
+    "test-file/spec/database-store-spec.js.html#lineNumber42",
     "Database findBy",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber43",
+    "test-file/spec/database-store-spec.js.html#lineNumber43",
     "Database findBy should pass the provided predicates on to the ModelQuery",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber48",
+    "test-file/spec/database-store-spec.js.html#lineNumber48",
     "Database findBy should return a ModelQuery ready to be executed",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber142",
+    "test-file/spec/database-store-spec.js.html#lineNumber142",
     "Database inTransaction",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber165",
+    "test-file/spec/database-store-spec.js.html#lineNumber165",
     "Database inTransaction always fires a COMMIT, even if the body function fails",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber143",
+    "test-file/spec/database-store-spec.js.html#lineNumber143",
     "Database inTransaction calls the provided function inside an exclusive transaction",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber177",
+    "test-file/spec/database-store-spec.js.html#lineNumber266",
     "Database inTransaction can be called multiple times and get queued",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber266",
+    "test-file/spec/database-store-spec.js.html#lineNumber177",
     "Database inTransaction can be called multiple times and get queued",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber250",
+    "test-file/spec/database-store-spec.js.html#lineNumber250",
     "Database inTransaction can be called multiple times and preserve return values",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber195",
+    "test-file/spec/database-store-spec.js.html#lineNumber195",
     "Database inTransaction carries on if one of them fails, but still calls the COMMIT for the failed block",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber216",
+    "test-file/spec/database-store-spec.js.html#lineNumber216",
     "Database inTransaction is actually running in series and blocks on never-finishing specs",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber155",
+    "test-file/spec/database-store-spec.js.html#lineNumber155",
     "Database inTransaction preserves resolved values",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber66",
+    "test-file/spec/database-store-spec.js.html#lineNumber66",
     "Database modelify",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber93",
+    "test-file/spec/database-store-spec.js.html#lineNumber93",
     "Database modelify when given an array of mixed ids and models",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber84",
+    "test-file/spec/database-store-spec.js.html#lineNumber84",
     "Database modelify when given an array or input that is not an array",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber117",
+    "test-file/spec/database-store-spec.js.html#lineNumber117",
     "Database modelify when the input is all models",
     "test"
   ],
   [
     "",
-    "test-file/spec/rx-database-spec.js.html#lineNumber105",
+    "test-file/spec/database-store-spec.js.html#lineNumber105",
     "Database modelify when the input is only IDs",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/database-object-registry-spec.js.html#lineNumber15",
-    "DatabaseObjectRegistry",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/database-object-registry-spec.js.html#lineNumber24",
-    "DatabaseObjectRegistry Tests if a constructor is in the registry",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/database-object-registry-spec.js.html#lineNumber18",
-    "DatabaseObjectRegistry can register constructors",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/database-object-registry-spec.js.html#lineNumber29",
-    "DatabaseObjectRegistry deserializes the objects for a constructor",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/database-object-registry-spec.js.html#lineNumber36",
-    "DatabaseObjectRegistry throws an error if the object can't be deserialized",
     "test"
   ],
   [
@@ -751,217 +691,217 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber22",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber21",
     "DatabaseTransaction",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber251",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber249",
     "DatabaseTransaction _writeModels",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber310",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber308",
     "DatabaseTransaction _writeModels model collection attributes query building",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber317",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber346",
     "DatabaseTransaction _writeModels model collection attributes query building should page association records into multiple queries correctly",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber348",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber315",
     "DatabaseTransaction _writeModels model collection attributes query building should page association records into multiple queries correctly",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber332",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber330",
     "DatabaseTransaction _writeModels model collection attributes query building should page association records into multiple queries correctly",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber252",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber250",
     "DatabaseTransaction _writeModels should compose a REPLACE INTO query to save the model",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber258",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber256",
     "DatabaseTransaction _writeModels should save the model JSON into the data column",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber263",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber261",
     "DatabaseTransaction _writeModels when the model defines additional queryable attributes",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber275",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber273",
     "DatabaseTransaction _writeModels when the model defines additional queryable attributes should populate additional columns defined by the attributes",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber280",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber278",
     "DatabaseTransaction _writeModels when the model defines additional queryable attributes should use the JSON-form values of the queryable attributes",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber292",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber290",
     "DatabaseTransaction _writeModels when the model has collection attributes",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber300",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber298",
     "DatabaseTransaction _writeModels when the model has collection attributes should delete all association records for the model from join tables",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber304",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber302",
     "DatabaseTransaction _writeModels when the model has collection attributes should insert new association records into join tables in a single query, and include queryableBy columns",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber366",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber364",
     "DatabaseTransaction _writeModels when the model has joined data attributes",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber369",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber367",
     "DatabaseTransaction _writeModels when the model has joined data attributes should not include the value to the joined attribute in the JSON written to the main model table",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber382",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber380",
     "DatabaseTransaction _writeModels when the model has joined data attributes should not write the value to the joined table if it undefined",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber375",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber373",
     "DatabaseTransaction _writeModels when the model has joined data attributes should write the value to the joined table if it is defined",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber44",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber42",
     "DatabaseTransaction execute",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber46",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber44",
     "DatabaseTransaction persistModel",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber51",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber49",
     "DatabaseTransaction persistModel should call through to persistModels",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber47",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber45",
     "DatabaseTransaction persistModel should throw an exception if the model is not a subclass of Model",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber59",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber57",
     "DatabaseTransaction persistModels",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber97",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber95",
     "DatabaseTransaction persistModels mutationHooks",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber171",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber169",
     "DatabaseTransaction persistModels mutationHooks should carry on if a pre-mutation hook rejects",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber163",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber161",
     "DatabaseTransaction persistModels mutationHooks should carry on if a pre-mutation hook throws",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber128",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber126",
     "DatabaseTransaction persistModels mutationHooks should run pre-mutation hooks, wait to write models, and then run post-mutation hooks",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber80",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber78",
     "DatabaseTransaction persistModels should call through to _writeModels after checking them",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber60",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber58",
     "DatabaseTransaction persistModels should call transactionDidCommitChanges with a change that contains the models",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber93",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber91",
     "DatabaseTransaction persistModels should throw an exception if the models are not a subclass of Model",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber89",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber87",
     "DatabaseTransaction persistModels should throw an exception if the models are not the same class, since it cannot be specified by the trigger payload",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber181",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber179",
     "DatabaseTransaction unpersistModel",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber196",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber194",
     "DatabaseTransaction unpersistModel should call transactionDidCommitChanges with a change that contains the model",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber182",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber180",
     "DatabaseTransaction unpersistModel should delete the model by id",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber214",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber212",
     "DatabaseTransaction unpersistModel when the model has collection attributes",
     "test"
   ],
   [
     "",
-    "test-file/spec/database-transaction-spec.js.html#lineNumber232",
+    "test-file/spec/database-transaction-spec.js.html#lineNumber230",
     "DatabaseTransaction unpersistModel when the model has joined data attributes",
     "test"
   ],
@@ -1297,6 +1237,60 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber28",
+    "ModelRegistry",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber49",
+    "ModelRegistry deserialize",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber50",
+    "ModelRegistry deserialize deserializes the objects for a constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber56",
+    "ModelRegistry deserialize throws an error if the object can't be deserialized",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber60",
+    "ModelRegistry deserialize throws if the registered constructor was not a model subclass",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber42",
+    "ModelRegistry has",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber43",
+    "ModelRegistry has tests if a constructor is in the registry",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber34",
+    "ModelRegistry registerDeferred",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/model-registry-spec.js.html#lineNumber35",
+    "ModelRegistry registerDeferred can register constructors",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/mutable-query-result-set-spec.js.html#lineNumber5",
     "MutableQueryResultSet",
     "test"
@@ -1441,13 +1435,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber28",
+    "test-file/spec/query-range-spec.js.html#lineNumber33",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber48",
+    "test-file/spec/query-range-spec.js.html#lineNumber38",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
@@ -1459,13 +1453,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber33",
+    "test-file/spec/query-range-spec.js.html#lineNumber28",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
   [
     "",
-    "test-file/spec/query-range-spec.js.html#lineNumber38",
+    "test-file/spec/query-range-spec.js.html#lineNumber48",
     "QueryRange @rangesBySubtracting should return one or more ranges created by punching the provided range ",
     "test"
   ],
@@ -2172,12 +2166,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "lib/browser/coordinator.js~coordinator#phase",
-    "class/lib/browser/coordinator.js~Coordinator.html#instance-method-phase",
-    "lib/browser/coordinator.js~Coordinator#phase",
-    "method"
-  ],
-  [
     "lib/browser/coordinator.js~coordinator#recoverfromfataldatabaseerror",
     "class/lib/browser/coordinator.js~Coordinator.html#instance-method-recoverFromFatalDatabaseError",
     "lib/browser/coordinator.js~Coordinator#recoverFromFatalDatabaseError",
@@ -2226,196 +2214,16 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "lib/database-change-record.js~databasechangerecord#options",
-    "class/lib/database-change-record.js~DatabaseChangeRecord.html#instance-member-options",
-    "lib/database-change-record.js~DatabaseChangeRecord#options",
-    "member"
-  ],
-  [
     "lib/database-change-record.js~databasechangerecord#tojson",
     "class/lib/database-change-record.js~DatabaseChangeRecord.html#instance-method-toJSON",
     "lib/database-change-record.js~DatabaseChangeRecord#toJSON",
     "method"
   ],
   [
-    "lib/database-object-registry.js",
-    "file/lib/database-object-registry.js.html",
-    "lib/database-object-registry.js",
-    "file"
-  ],
-  [
     "lib/database-setup-query-builder.js",
     "file/lib/database-setup-query-builder.js.html",
     "lib/database-setup-query-builder.js",
     "file"
-  ],
-  [
-    "lib/rx-database.js",
-    "file/lib/rx-database.js.html",
-    "lib/rx-database.js",
-    "file"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#_query",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-_query",
-    "lib/rx-database.js~RxDatabase#_query",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#addmutationhook",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-addMutationHook",
-    "lib/rx-database.js~RxDatabase#addMutationHook",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#constructor",
-    "class/lib/rx-database.js~RxDatabase.html#instance-constructor-constructor",
-    "lib/rx-database.js~RxDatabase#constructor",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#count",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-count",
-    "lib/rx-database.js~RxDatabase#count",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#createsearchindex",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-createSearchIndex",
-    "lib/rx-database.js~RxDatabase#createSearchIndex",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#disconnect",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-disconnect",
-    "lib/rx-database.js~RxDatabase#disconnect",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#dropsearchindex",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-dropSearchIndex",
-    "lib/rx-database.js~RxDatabase#dropSearchIndex",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#find",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-find",
-    "lib/rx-database.js~RxDatabase#find",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#findall",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-findAll",
-    "lib/rx-database.js~RxDatabase#findAll",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#findby",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-findBy",
-    "lib/rx-database.js~RxDatabase#findBy",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#findjsonblob",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-findJSONBlob",
-    "lib/rx-database.js~RxDatabase#findJSONBlob",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#intransaction",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-inTransaction",
-    "lib/rx-database.js~RxDatabase#inTransaction",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#indexmodel",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-indexModel",
-    "lib/rx-database.js~RxDatabase#indexModel",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#isindexemptyforaccount",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-isIndexEmptyForAccount",
-    "lib/rx-database.js~RxDatabase#isIndexEmptyForAccount",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#ismodelindexed",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-isModelIndexed",
-    "lib/rx-database.js~RxDatabase#isModelIndexed",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#listen",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-listen",
-    "lib/rx-database.js~RxDatabase#listen",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#modelify",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-modelify",
-    "lib/rx-database.js~RxDatabase#modelify",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#mutationhooks",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-mutationHooks",
-    "lib/rx-database.js~RxDatabase#mutationHooks",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#refreshdatabaseschema",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-refreshDatabaseSchema",
-    "lib/rx-database.js~RxDatabase#refreshDatabaseSchema",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#removemutationhook",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-removeMutationHook",
-    "lib/rx-database.js~RxDatabase#removeMutationHook",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#run",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-run",
-    "lib/rx-database.js~RxDatabase#run",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#searchindexsize",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-searchIndexSize",
-    "lib/rx-database.js~RxDatabase#searchIndexSize",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#transactiondidcommitchanges",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-transactionDidCommitChanges",
-    "lib/rx-database.js~RxDatabase#transactionDidCommitChanges",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#trigger",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-trigger",
-    "lib/rx-database.js~RxDatabase#trigger",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#unindexmodel",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModel",
-    "lib/rx-database.js~RxDatabase#unindexModel",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#unindexmodelsforaccount",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModelsForAccount",
-    "lib/rx-database.js~RxDatabase#unindexModelsForAccount",
-    "method"
-  ],
-  [
-    "lib/rx-database.js~RxDatabase#updatemodelindex",
-    "class/lib/rx-database.js~RxDatabase.html#instance-method-updateModelIndex",
-    "lib/rx-database.js~RxDatabase#updateModelIndex",
-    "method"
   ],
   [
     "lib/database-transaction.js",
@@ -2524,6 +2332,12 @@ window.esdocSearchIndex = [
     "class/lib/json-blob.js~JSONBlob.html#instance-get-key",
     "lib/json-blob.js~JSONBlob#key",
     "member"
+  ],
+  [
+    "lib/model-registry.js",
+    "file/lib/model-registry.js.html",
+    "lib/model-registry.js",
+    "file"
   ],
   [
     "lib/model.js",
@@ -3036,16 +2850,178 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "lib/rx-database.js",
+    "file/lib/rx-database.js.html",
+    "lib/rx-database.js",
+    "file"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#_query",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-_query",
+    "lib/rx-database.js~RxDatabase#_query",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#addmutationhook",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-addMutationHook",
+    "lib/rx-database.js~RxDatabase#addMutationHook",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#constructor",
+    "class/lib/rx-database.js~RxDatabase.html#instance-constructor-constructor",
+    "lib/rx-database.js~RxDatabase#constructor",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#count",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-count",
+    "lib/rx-database.js~RxDatabase#count",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#createsearchindex",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-createSearchIndex",
+    "lib/rx-database.js~RxDatabase#createSearchIndex",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#disconnect",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-disconnect",
+    "lib/rx-database.js~RxDatabase#disconnect",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#dropsearchindex",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-dropSearchIndex",
+    "lib/rx-database.js~RxDatabase#dropSearchIndex",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#find",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-find",
+    "lib/rx-database.js~RxDatabase#find",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#findall",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-findAll",
+    "lib/rx-database.js~RxDatabase#findAll",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#findby",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-findBy",
+    "lib/rx-database.js~RxDatabase#findBy",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#findjsonblob",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-findJSONBlob",
+    "lib/rx-database.js~RxDatabase#findJSONBlob",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#intransaction",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-inTransaction",
+    "lib/rx-database.js~RxDatabase#inTransaction",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#indexmodel",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-indexModel",
+    "lib/rx-database.js~RxDatabase#indexModel",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#isindexemptyforaccount",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-isIndexEmptyForAccount",
+    "lib/rx-database.js~RxDatabase#isIndexEmptyForAccount",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#ismodelindexed",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-isModelIndexed",
+    "lib/rx-database.js~RxDatabase#isModelIndexed",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#listen",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-listen",
+    "lib/rx-database.js~RxDatabase#listen",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#modelify",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-modelify",
+    "lib/rx-database.js~RxDatabase#modelify",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#models",
+    "class/lib/rx-database.js~RxDatabase.html#instance-member-models",
+    "lib/rx-database.js~RxDatabase#models",
+    "member"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#mutationhooks",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-mutationHooks",
+    "lib/rx-database.js~RxDatabase#mutationHooks",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#removemutationhook",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-removeMutationHook",
+    "lib/rx-database.js~RxDatabase#removeMutationHook",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#run",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-run",
+    "lib/rx-database.js~RxDatabase#run",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#searchindexsize",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-searchIndexSize",
+    "lib/rx-database.js~RxDatabase#searchIndexSize",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#transactiondidcommitchanges",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-transactionDidCommitChanges",
+    "lib/rx-database.js~RxDatabase#transactionDidCommitChanges",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#trigger",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-trigger",
+    "lib/rx-database.js~RxDatabase#trigger",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#unindexmodel",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModel",
+    "lib/rx-database.js~RxDatabase#unindexModel",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#unindexmodelsforaccount",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-unindexModelsForAccount",
+    "lib/rx-database.js~RxDatabase#unindexModelsForAccount",
+    "method"
+  ],
+  [
+    "lib/rx-database.js~rxdatabase#updatemodelindex",
+    "class/lib/rx-database.js~RxDatabase.html#instance-method-updateModelIndex",
+    "lib/rx-database.js~RxDatabase#updateModelIndex",
+    "method"
+  ],
+  [
     "lib/utils.js",
     "file/lib/utils.js.html",
     "lib/utils.js",
     "file"
-  ],
-  [
-    "spec/database-object-registry-spec.js",
-    "test-file/spec/database-object-registry-spec.js.html",
-    "spec/database-object-registry-spec.js",
-    "testFile"
   ],
   [
     "spec/database-setup-query-builder-spec.js",
@@ -3054,15 +3030,21 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "spec/rx-database-spec.js",
-    "test-file/spec/rx-database-spec.js.html",
-    "spec/rx-database-spec.js",
+    "spec/database-store-spec.js",
+    "test-file/spec/database-store-spec.js.html",
+    "spec/database-store-spec.js",
     "testFile"
   ],
   [
     "spec/database-transaction-spec.js",
     "test-file/spec/database-transaction-spec.js.html",
     "spec/database-transaction-spec.js",
+    "testFile"
+  ],
+  [
+    "spec/model-registry-spec.js",
+    "test-file/spec/model-registry-spec.js.html",
+    "spec/model-registry-spec.js",
     "testFile"
   ],
   [

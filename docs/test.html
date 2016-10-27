@@ -33,7 +33,6 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -43,16 +42,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
@@ -79,39 +74,6 @@
   </thead>
 
   <tbody data-ice="tests">
-<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/database-object-registry-spec.js.html#lineNumber15"><p>DatabaseObjectRegistry</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td data-ice="testCount">4</td>
-</tr>
-
-<tr data-ice="testIt" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/spec/database-object-registry-spec.js.html#lineNumber18"><p>can register constructors</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-<tr data-ice="testIt" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/spec/database-object-registry-spec.js.html#lineNumber24"><p>Tests if a constructor is in the registry</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-<tr data-ice="testIt" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/spec/database-object-registry-spec.js.html#lineNumber29"><p>deserializes the objects for a constructor</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-<tr data-ice="testIt" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/spec/database-object-registry-spec.js.html#lineNumber36"><p>throws an error if the object can&apos;t be deserialized</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-
-
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="0">
   <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/database-setup-query-builder-spec.js.html#lineNumber6"><p>DatabaseSetupQueryBuilder</p>
 </a></span></td>
@@ -170,7 +132,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber9"><p>Database</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber9"><p>Database</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">14</td>
@@ -179,7 +141,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber35"><p>find</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber35"><p>find</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -188,20 +150,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber42"><p>findBy</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber42"><p>findBy</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber43"><p>should pass the provided predicates on to the ModelQuery</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber43"><p>should pass the provided predicates on to the ModelQuery</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber48"><p>should return a ModelQuery ready to be executed</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber48"><p>should return a ModelQuery ready to be executed</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -209,20 +171,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber54"><p>findAll</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber54"><p>findAll</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber55"><p>should pass the provided predicates on to the ModelQuery</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber55"><p>should pass the provided predicates on to the ModelQuery</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber60"><p>should return a ModelQuery ready to be executed</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber60"><p>should return a ModelQuery ready to be executed</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -230,7 +192,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber66"><p>modelify</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber66"><p>modelify</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -239,7 +201,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber84"><p>when given an array or input that is not an array</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber84"><p>when given an array or input that is not an array</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -248,7 +210,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber93"><p>when given an array of mixed ids and models</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber93"><p>when given an array of mixed ids and models</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -257,7 +219,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber105"><p>when the input is only IDs</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber105"><p>when the input is only IDs</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -266,7 +228,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber117"><p>when the input is all models</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber117"><p>when the input is all models</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -275,20 +237,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber130"><p>count</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber130"><p>count</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber131"><p>should pass the provided predicates on to the ModelQuery</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber131"><p>should pass the provided predicates on to the ModelQuery</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber136"><p>should return a ModelQuery configured for COUNT ready to be executed</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber136"><p>should return a ModelQuery configured for COUNT ready to be executed</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -296,56 +258,56 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber142"><p>inTransaction</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-store-spec.js.html#lineNumber142"><p>inTransaction</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">8</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber143"><p>calls the provided function inside an exclusive transaction</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber143"><p>calls the provided function inside an exclusive transaction</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber155"><p>preserves resolved values</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber155"><p>preserves resolved values</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber165"><p>always fires a COMMIT, even if the body function fails</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber165"><p>always fires a COMMIT, even if the body function fails</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber177"><p>can be called multiple times and get queued</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber177"><p>can be called multiple times and get queued</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber195"><p>carries on if one of them fails, but still calls the COMMIT for the failed block</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber195"><p>carries on if one of them fails, but still calls the COMMIT for the failed block</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber216"><p>is actually running in series and blocks on never-finishing specs</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber216"><p>is actually running in series and blocks on never-finishing specs</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber250"><p>can be called multiple times and preserve return values</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber250"><p>can be called multiple times and preserve return values</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/rx-database-spec.js.html#lineNumber266"><p>can be called multiple times and get queued</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-store-spec.js.html#lineNumber266"><p>can be called multiple times and get queued</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -353,7 +315,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber22"><p>DatabaseTransaction</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber21"><p>DatabaseTransaction</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">23</td>
@@ -362,7 +324,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber44"><p>execute</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber42"><p>execute</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -371,20 +333,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber46"><p>persistModel</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber44"><p>persistModel</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber47"><p>should throw an exception if the model is not a subclass of Model</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber45"><p>should throw an exception if the model is not a subclass of Model</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber51"><p>should call through to persistModels</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber49"><p>should call through to persistModels</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -392,32 +354,32 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber59"><p>persistModels</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber57"><p>persistModels</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">7</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber60"><p>should call transactionDidCommitChanges with a change that contains the models</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber58"><p>should call transactionDidCommitChanges with a change that contains the models</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber80"><p>should call through to _writeModels after checking them</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber78"><p>should call through to _writeModels after checking them</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber89"><p>should throw an exception if the models are not the same class, since it cannot be specified by the trigger payload</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber87"><p>should throw an exception if the models are not the same class, since it cannot be specified by the trigger payload</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber93"><p>should throw an exception if the models are not a subclass of Model</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber91"><p>should throw an exception if the models are not a subclass of Model</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -425,26 +387,26 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber97"><p>mutationHooks</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber95"><p>mutationHooks</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber128"><p>should run pre-mutation hooks, wait to write models, and then run post-mutation hooks</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber126"><p>should run pre-mutation hooks, wait to write models, and then run post-mutation hooks</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber163"><p>should carry on if a pre-mutation hook throws</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber161"><p>should carry on if a pre-mutation hook throws</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber171"><p>should carry on if a pre-mutation hook rejects</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber169"><p>should carry on if a pre-mutation hook rejects</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -452,20 +414,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber181"><p>unpersistModel</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber179"><p>unpersistModel</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber182"><p>should delete the model by id</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber180"><p>should delete the model by id</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber196"><p>should call transactionDidCommitChanges with a change that contains the model</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber194"><p>should call transactionDidCommitChanges with a change that contains the model</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -473,7 +435,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber214"><p>when the model has collection attributes</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber212"><p>when the model has collection attributes</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -482,7 +444,7 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber232"><p>when the model has joined data attributes</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber230"><p>when the model has joined data attributes</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   
@@ -491,20 +453,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber251"><p>_writeModels</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber249"><p>_writeModels</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">12</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber252"><p>should compose a REPLACE INTO query to save the model</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber250"><p>should compose a REPLACE INTO query to save the model</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber258"><p>should save the model JSON into the data column</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber256"><p>should save the model JSON into the data column</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -512,20 +474,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber263"><p>when the model defines additional queryable attributes</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber261"><p>when the model defines additional queryable attributes</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber275"><p>should populate additional columns defined by the attributes</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber273"><p>should populate additional columns defined by the attributes</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber280"><p>should use the JSON-form values of the queryable attributes</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber278"><p>should use the JSON-form values of the queryable attributes</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -533,47 +495,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber292"><p>when the model has collection attributes</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber290"><p>when the model has collection attributes</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber300"><p>should delete all association records for the model from join tables</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber298"><p>should delete all association records for the model from join tables</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber304"><p>should insert new association records into join tables in a single query, and include queryableBy columns</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-
-
-<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber310"><p>model collection attributes query building</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td data-ice="testCount">3</td>
-</tr>
-
-<tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber317"><p>should page association records into multiple queries correctly</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-<tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber332"><p>should page association records into multiple queries correctly</p>
-</a></span></td>
-  <td data-ice="testTarget" class="test-target">-</td>
-  <td></td>
-</tr>
-<tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber348"><p>should page association records into multiple queries correctly</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber302"><p>should insert new association records into join tables in a single query, and include queryableBy columns</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -581,26 +516,119 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber366"><p>when the model has joined data attributes</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber308"><p>model collection attributes query building</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber369"><p>should not include the value to the joined attribute in the JSON written to the main model table</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber315"><p>should page association records into multiple queries correctly</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber375"><p>should write the value to the joined table if it is defined</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber330"><p>should page association records into multiple queries correctly</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber382"><p>should not write the value to the joined table if it undefined</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber346"><p>should page association records into multiple queries correctly</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+
+
+<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber364"><p>when the model has joined data attributes</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testCount">3</td>
+</tr>
+
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber367"><p>should not include the value to the joined attribute in the JSON written to the main model table</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber373"><p>should write the value to the joined table if it is defined</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/spec/database-transaction-spec.js.html#lineNumber380"><p>should not write the value to the joined table if it undefined</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+
+
+<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber28"><p>ModelRegistry</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testCount">5</td>
+</tr>
+
+
+
+<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber34"><p>registerDeferred</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testCount">1</td>
+</tr>
+
+<tr data-ice="testIt" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber35"><p>can register constructors</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+
+
+<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber42"><p>has</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testCount">1</td>
+</tr>
+
+<tr data-ice="testIt" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber43"><p>tests if a constructor is in the registry</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+
+
+<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber49"><p>deserialize</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testCount">3</td>
+</tr>
+
+<tr data-ice="testIt" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber50"><p>deserializes the objects for a constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber56"><p>throws an error if the object can&apos;t be deserialized</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/spec/model-registry-spec.js.html#lineNumber60"><p>throws if the registered constructor was not a model subclass</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>

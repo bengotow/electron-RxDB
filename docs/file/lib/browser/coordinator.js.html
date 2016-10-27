@@ -33,7 +33,6 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-change-record.js~DatabaseChangeRecord.html">DatabaseChangeRecord</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/database-transaction.js~DatabaseTransaction.html">DatabaseTransaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/json-blob.js~JSONBlob.html">JSONBlob</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/model.js~Model.html">Model</a></span></span></li>
@@ -43,16 +42,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-result-set.js~QueryResultSet.html">QueryResultSet</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query-subscription.js~QuerySubscription.html">QuerySubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/query.js~ModelQuery.html">ModelQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/rx-database.js~RxDatabase.html">RxDatabase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSQLString">logSQLString</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-replacer">replacer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reviver">reviver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateTempId">generateTempId</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTempId">isTempId</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modelFreeze">modelFreeze</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReplacer">registeredObjectReplacer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registeredObjectReviver">registeredObjectReviver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tableNameForJoin">tableNameForJoin</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-registry">registry</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">attributes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-boolean.js~AttributeBoolean.html">AttributeBoolean</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-collection.js~AttributeCollection.html">AttributeCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/attributes/attribute-datetime.js~AttributeDateTime.html">AttributeDateTime</a></span></span></li>
@@ -86,24 +81,33 @@ export default class Coordinator {
   constructor() {
     this._phase = &apos;setup&apos;;
 
-    ipcMain.on(&apos;database-trigger&apos;, (event, ...args) =&gt; {
+    ipcMain.on(&apos;rxdb-get-phase&apos;, (event) =&gt; {
+      event.returnValue = this._phase;
+    });
+
+    ipcMain.on(&apos;rxdb-set-phase&apos;, (event, phase) =&gt; {
+      console.log(phase);
+      this.setPhase(phase);
+    });
+
+    ipcMain.on(&apos;rxdb-handle-setup-error&apos;, () =&gt; {
+      this.recoverFromFatalDatabaseError();
+    });
+
+    ipcMain.on(&apos;rxdb-trigger&apos;, (event, ...args) =&gt; {
       const sender = BrowserWindow.fromWebContents(event.sender);
       BrowserWindow.getAllWindows().forEach((win) =&gt; {
         if (win !== sender) {
-          win.webContents.send(&apos;database-trigger&apos;, ...args);
+          win.webContents.send(&apos;rxdb-trigger&apos;, ...args);
         }
       });
     });
   }
 
-  phase() {
-    return this._phase;
-  }
-
   setPhase(phase) {
     this._phase = phase;
     BrowserWindow.getAllWindows().forEach((win) =&gt; {
-      win.webContents.send(&apos;database-phase-change&apos;);
+      win.webContents.send(&apos;rxdb-phase-changed&apos;);
     });
   }
 
@@ -112,12 +116,12 @@ export default class Coordinator {
       if (this._databasePhase === &apos;close&apos;) {
         return;
       }
-      this.setDatabasePhase(&apos;close&apos;);
+      this.setPhase(&apos;close&apos;);
       BrowserWindow.getAllWindows().forEach((win) =&gt; {
         win.hide();
       });
-      this._deleteDatabase(databasePath, () =&gt; {
-        this.setDatabasePhase(&apos;setup&apos;);
+      this.deleteDatabase(databasePath, () =&gt; {
+        this.setPhase(&apos;setup&apos;);
         BrowserWindow.getAllWindows().forEach((win) =&gt; {
           win.reload();
           win.once(&apos;ready-to-show&apos;, () =&gt; {
