@@ -38,8 +38,14 @@ export default class Detail extends React.Component {
     return (
       <div className="detail">
         <div className="actions">
-          <button onClick={this._onPopout}> ⇪ </button>
-          <button onClick={this._onDelete}> ✖️ </button>
+          <button
+            onClick={this._onPopout}
+            title="Popout"
+            className="popout" />
+          <button
+            onClick={this._onDelete}
+            title="Delete"
+            className="delete" />
         </div>
         <h2
           ref="name"

@@ -31,6 +31,7 @@ function createMainWindow() {
 
 function prepareFilesystem(callback) {
   global.dataDirectory = path.join(app.getPath('appData'), 'Notes');
+  console.log(`Using SQLite database at path: ${global.dataDirectory}`)
   fs.mkdir(global.dataDirectory, callback);
 }
 

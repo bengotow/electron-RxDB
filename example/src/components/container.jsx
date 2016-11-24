@@ -9,7 +9,8 @@ export default class Container extends React.Component {
     super(props);
     this.state = {
       items: [],
-      selectedItem: null,
+      searchValue: null,
+      selectedId: -1,
     };
   }
 
@@ -19,10 +20,7 @@ export default class Container extends React.Component {
       .order(Note.attributes.createdAt.descending());
 
     this._unsubscribe = query.observe().subscribe((nextItems) => {
-      this.setState({
-        items: nextItems,
-        selectedItem: this._nextSelectedItem(nextItems),
-      });
+      this.setState({items: nextItems});
     });
   }
 
@@ -30,20 +28,12 @@ export default class Container extends React.Component {
     this._unsubscribe();
   }
 
-  _nextSelectedItem(nextItems) {
-    let {selectedItem} = this.state;
-
-    if (selectedItem) {
-      const oldIndex = this.state.items.findIndex(({id}) => selectedItem.id === id);
-      const nextIndex = nextItems.findIndex(({id}) => selectedItem.id === id);
-      if (nextIndex === -1) {
-        selectedItem = nextItems[oldIndex] || nextItems[oldIndex - 1] || nextItems[oldIndex + 1];
-      }
-    }
+  _onSearchChange = (event) => {
+    this.setState({searchValue: event.target.value});
   }
 
   _onSelectItem = (item) => {
-    this.setState({selectedItem: item});
+    this.setState({selectedId: item.id});
   }
 
   _onCreateItem = () => {
@@ -54,20 +44,29 @@ export default class Container extends React.Component {
     });
     window.Database.inTransaction((t) => {
       return t.persistModel(item);
+    }).then(() => {
+      this.setState({
+        selectedId: item.id,
+        searchValue: null,
+      });
     });
   }
 
   render() {
+    const {items, selectedId, searchValue} = this.state;
+    const selected = items.find(i => i.id === selectedId);
+
     return (
       <div className="container">
+        <input type="search" onChange={this._onSearchChange} value={this.state.search} />
         <Sidebar
-          items={this.state.items}
-          selectedItem={this.state.selectedItem}
+          items={items}
+          selectedItem={selected}
           onSelect={this._onSelectItem}
         />
-        <Detail item={this.state.selectedItem} />
+        <Detail item={selected} />
         <div className="floating">
-          <button onClick={this._onCreateItem}>➕</button>
+          <button title="Add Note..." onClick={this._onCreateItem} />
         </div>
       </div>
     )
