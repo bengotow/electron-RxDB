@@ -1,36 +1,35 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb",
-  "globals": {
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "jasmine": true
-  },
-  "rules": {
-    "arrow-parens": "off",
-    "arrow-body-style": "off",
-    "prefer-arrow-callback": ["error", {"allowNamedFunctions": true}],
-    "object-curly-spacing": "off",
-    "max-len": "off",
-    "new-cap": ["error", {"capIsNew": false}],
-    "newline-per-chained-call": "off",
-    "no-plusplus": "off",
-    "no-mixed-operators": "off",
-    "no-console": "off",
-    "no-continue": "off",
-    "no-lonely-if": "off",
-    "no-underscore-dangle": "off",
-    "object-shorthand": "off",
-    "quotes": "off",
-    "class-methods-use-this": "off",
-    "semi": "off",
-    "no-param-reassign": ["error", { "props": false }],
-    "import/extensions": ["error", "never"],
-    "import/no-unresolved": ["error", {"ignore": ["nylas-exports", "nylas-component-kit", "electron", "nylas-store", "react-dom/server", "nylas-observables", "windows-shortcuts", "moment-round", "chrono-node", "event-kit", "enzyme"]}]
-  },
-  "settings": {
-    "import/core-modules": [ "electron", "jasmine" ]
-  }
+    "parser": "babel-eslint",
+    "extends": "standard",
+    "plugins": [
+      "react",
+      "standard",
+      "promise",
+      "import",
+      "jsx-a11y"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true
+    },
+    "rules": {
+      "semi": ["off"],
+      "react/jsx-uses-vars": [2],
+      "space-before-function-paren": ["off"],
+      "no-multiple-empty-lines": ["off"],
+      "quotes": ["off"],
+      "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+      }]
+    }
 }

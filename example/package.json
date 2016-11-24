@@ -11,15 +11,12 @@
     "url": ""
   },
   "scripts": {
-    "test": "xo",
     "start": "electron . --enable-logging",
     "build": "electron-packager . --out=dist --asar --overwrite --all",
     "postinstall": "rm -f ./node_modules/electron-rxdb; ln -s ../../ ./node_modules/electron-rxdb; ./node_modules/.bin/electron-rebuild"
   },
   "files": [
-    "index.js",
-    "index.html",
-    "index.css"
+    "index.js"
   ],
   "keywords": [
     "electron-app",
@@ -34,16 +31,7 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
-    "devtron": "^1.3.0",
     "electron-prebuilt-compile": "^1.4.4",
-    "electron-rebuild": "^1.2.1",
-    "xo": "^0.16.0"
-  },
-  "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "browser"
-    ]
+    "electron-rebuild": "^1.2.1"
   }
 }
