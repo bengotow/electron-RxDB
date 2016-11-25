@@ -51,8 +51,11 @@ div, h2 {
 .actions button.delete {
   background:url(./img/delete.svg) center;
 }
-.actions button.popout {
-  background:url(./img/popout.svg) center;
+.actions button.starred {
+  background:url(./img/favorite.svg) center;
+}
+.actions button.starred.is-true {
+  background:url(./img/favorite-true.svg) center;
 }
 .actions button:hover {
   background-color: rgba(0,0,0,0.05);
@@ -87,28 +90,69 @@ div, h2 {
   flex: 1;
   overflow-x: hidden;
   overflow-y: scroll;
+  line-height: 1.45em;
 }
 .sidebar {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
   background-color: #313a3e;
   color: #eee;
-  overflow-x: hidden;
-  overflow-y: scroll;
   box-shadow: inset -2px 0 2px 0 rgba(0,0,0,0.2);
   min-width: 130px;
 }
+
+.sidebar .search-results {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-top: 5px;
+  flex: 1;
+}
+.sidebar .recents {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.sidebar .recents .heading {
+  padding: 5px 10px;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.sidebar .search {
+  flex-grow: 0;
+}
+
+.sidebar .search input {
+  width: 100%;
+  outline: 0;
+  font-size: 13px;
+  padding: 5px 10px;
+  padding-top: 25px;
+  background-color: transparent;
+  border: 0;
+  color: #eee;
+  border-bottom: 2px dotted rgba(255, 255, 255, 0.2);
+}
 .sidebar .item {
   padding: 5px 10px;
-  font-size: 13px;
+  -webkit-user-select: none;
 }
 .sidebar .item:hover {
   cursor: pointer;
   background-color: rgba(0,0,0,0.1);
 }
+.sidebar .item.starred {
+  background:url(./img/favorite-true.svg) center right no-repeat;
+}
+
 .sidebar .item.selected,
 .sidebar .item.selected:hover {
   background-color: gray;
+  -webkit-user-select: text;
 }
+
 .floating {
   position: absolute;
   right: 10px;
@@ -121,6 +165,31 @@ div, h2 {
   height: 40px;
   display: inline-block;
   outline: 0;
+  margin-left: 8px;
+  vertical-align: top;
+}
+
+.floating button.add {
   background: rgb(100,200,255) url(./img/add.svg);
   border: 1px solid rgba(0,0,0,0.3);
+}
+.floating button.wikipedia {
+  font-size: 20px;
+  line-height: 35px;
+  font-family: serif;
+  color: #111;
+  background: rgb(226, 226, 226);
+  border: 1px solid rgba(0,0,0,0.3);
+}
+.floating button.wikipedia.running {
+  font-family: sans-serif;
+  background: linear-gradient(270deg, #ffcccc, #ccffcc);
+  background-size: 400% 400%;
+  -webkit-animation: ImportRunning 1.5s ease infinite;
+}
+
+@-webkit-keyframes ImportRunning {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }

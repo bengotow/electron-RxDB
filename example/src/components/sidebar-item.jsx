@@ -44,7 +44,7 @@ export default class SidebarItem extends React.Component {
     const {isSelected, onSelected, item} = this.props;
     const {editing} = this.state;
 
-    const className = `item ${isSelected ? " selected" : ""}`;
+    const className = `item ${isSelected ? " selected" : ""} ${item.starred ? " starred" : ""}`;
 
     return (
       <div

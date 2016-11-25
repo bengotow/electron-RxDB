@@ -1,0 +1,20 @@
+<p>
+  This is a small Notes app built on <a href="https://github.com/bengotow/electron-rxdb">Electron-RxDB</a>.
+  A few notes have been added already - you can update a note by typing here,
+  or create a new note in the bottom right. As you make changes, notes are saved
+  back to SQLite and the interface updates automatically. This is possible because
+  React components in the UI are bound to RxDB observable queries.
+</p>
+<p>
+  Check out <strong><code>sidebar-recents.jsx</code></strong> for an example of an observable query.
+</p>
+<p>
+  In this demo, you can also search notes using SQLite full-text search (FTS5). It's hard to
+  demonstrate on a small data set, but SQLite FTS5 remains performant on hundreds
+  of thousands of rows. <strong>To make things more fun, click the "Wikipedia" button below.</strong>
+  The demo will crawl Wikipedia and pull down articles until you click the button again.
+</p>
+<p>
+  Want to check out the SQLite data manually? This sample app writes to
+  <strong><code>~/Library/Application Support/Notes/sqlite.db</code></strong> on Mac OS X.
+</p>

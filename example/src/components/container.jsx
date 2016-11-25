@@ -1,6 +1,8 @@
 import React from 'react';
+import WikipediaButton from './wikipedia-button'
 
-import Sidebar from '../components/sidebar';
+import SidebarSearchResults from '../components/sidebar-search-results';
+import SidebarRecents from '../components/sidebar-recents';
 import Detail from '../components/detail';
 import Note from '../models/note';
 
@@ -8,24 +10,9 @@ export default class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      searchValue: null,
-      selectedId: -1,
+      selectedId: null,
+      searchValue: '',
     };
-  }
-
-  componentDidMount() {
-    const query = window.Database
-      .findAll(Note)
-      .order(Note.attributes.createdAt.descending());
-
-    this._unsubscribe = query.observe().subscribe((nextItems) => {
-      this.setState({items: nextItems});
-    });
-  }
-
-  componentWillUnmount() {
-    this._unsubscribe();
   }
 
   _onSearchChange = (event) => {
@@ -40,33 +27,50 @@ export default class Container extends React.Component {
     const item = new Note({
       name: 'Untitled',
       content: 'Write your note here!',
-      createdAt: new Date(),
+      updatedAt: new Date(),
     });
+
     window.Database.inTransaction((t) => {
       return t.persistModel(item);
     }).then(() => {
       this.setState({
         selectedId: item.id,
-        searchValue: null,
+        searchValue: '',
       });
     });
   }
 
   render() {
-    const {items, selectedId, searchValue} = this.state;
-    const selected = items.find(i => i.id === selectedId);
+    const {selectedId, searchValue} = this.state;
 
     return (
       <div className="container">
-        <input type="search" onChange={this._onSearchChange} value={this.state.search} />
-        <Sidebar
-          items={items}
-          selectedItem={selected}
-          onSelect={this._onSelectItem}
-        />
-        <Detail item={selected} />
+        <div className="sidebar">
+          <div className="search">
+            <input
+              type="search"
+              placeholder="Search notes..."
+              onChange={this._onSearchChange}
+              value={searchValue}
+            />
+          </div>
+          <SidebarSearchResults
+            searchValue={searchValue}
+            selectedId={selectedId}
+            onSelectItem={this._onSelectItem}
+          />
+          <SidebarRecents
+            onSelectItem={this._onSelectItem}
+          />
+        </div>
+        <Detail itemId={selectedId} />
         <div className="floating">
-          <button title="Add Note..." onClick={this._onCreateItem} />
+          <WikipediaButton />
+          <button
+            className="add"
+            title="Add Note..."
+            onClick={this._onCreateItem}
+          />
         </div>
       </div>
     )

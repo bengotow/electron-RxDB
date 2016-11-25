@@ -13,8 +13,8 @@ let documentWindows = [];
 
 function createMainWindow() {
   const win = new BrowserWindow({
-    width: 600,
-    height: 400,
+    width: 850,
+    height: 500,
     show: false,
   });
 

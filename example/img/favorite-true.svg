@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="favorite-true" sketch:type="MSLayerGroup" transform="translate(27.000000, 29.000000)" fill="#FF0000">
+            <g id="Group" sketch:type="MSShapeGroup">
+                <g id="Shape">
+                    <path d="M22.702,42.346 L18.978,38.622 C7.959,28.874 0,21.827 0,12.937 C0,5.683 5.682,0 12.936,0 C16.554,0 20.127,1.509 22.702,4.082 C25.277,1.509 28.85,0 32.468,0 C39.722,0 45.404,5.683 45.404,12.937 C45.404,21.833 37.434,28.884 26.403,38.643 L22.702,42.346 L22.702,42.346 L22.702,42.346 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
