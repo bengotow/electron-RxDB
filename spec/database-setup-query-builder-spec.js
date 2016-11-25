@@ -1,14 +1,10 @@
 /* eslint quote-props: 0 */
 import TestModel from './fixtures/test-model';
 import Attributes from '../lib/attributes';
-import QueryBuilder from '../lib/query-builder';
+import {setupQueriesForClass, analyzeQueriesForClass} from '../lib/query-builder';
 
 describe("QueryBuilder", function QueryBuilderSpecs() {
-  beforeEach(() => {
-    this.builder = new QueryBuilder();
-  });
-
-  describe("setupQueriesForTable", () => {
+  describe("setupQueriesForClass", () => {
     it("should return the queries for creating the table and the primary unique index", () => {
       TestModel.attributes = {
         'attrQueryable': Attributes.DateTime({
@@ -22,7 +18,7 @@ describe("QueryBuilder", function QueryBuilderSpecs() {
           jsonKey: 'attr_non_queryable',
         }),
       };
-      const queries = this.builder.setupQueriesForTable(TestModel);
+      const queries = setupQueriesForClass(TestModel);
       const expected = [
         'CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,attr_queryable INTEGER)',
         'CREATE UNIQUE INDEX IF NOT EXISTS `TestModel_id` ON `TestModel` (`id`)',
@@ -34,7 +30,7 @@ describe("QueryBuilder", function QueryBuilderSpecs() {
 
     it("should correctly create join tables for models that have queryable collections", () => {
       TestModel.configureWithCollectionAttribute();
-      const queries = this.builder.setupQueriesForTable(TestModel);
+      const queries = setupQueriesForClass(TestModel);
       const expected = [
         'CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,other TEXT)',
         'CREATE UNIQUE INDEX IF NOT EXISTS `TestModel_id` ON `TestModel` (`id`)',
@@ -49,7 +45,7 @@ describe("QueryBuilder", function QueryBuilderSpecs() {
 
     it("should use the correct column type for each attribute", () => {
       TestModel.configureWithAllAttributes();
-      const queries = this.builder.setupQueriesForTable(TestModel);
+      const queries = setupQueriesForClass(TestModel);
       expect(queries[0]).toBe('CREATE TABLE IF NOT EXISTS `TestModel` (id TEXT PRIMARY KEY,data BLOB,datetime INTEGER,string-json-key TEXT,boolean INTEGER,number INTEGER)');
     });
 
@@ -57,7 +53,7 @@ describe("QueryBuilder", function QueryBuilderSpecs() {
       it("the setup method should return these queries", () => {
         TestModel.configureWithAdditionalSQLiteConfig();
         spyOn(TestModel.additionalSQLiteConfig, 'setup').and.callThrough();
-        const queries = this.builder.setupQueriesForTable(TestModel);
+        const queries = setupQueriesForClass(TestModel);
         expect(TestModel.additionalSQLiteConfig.setup).toHaveBeenCalledWith();
         expect(queries.pop()).toBe('CREATE INDEX IF NOT EXISTS ThreadListIndex ON Thread(last_message_received_timestamp DESC, account_id, id)');
       });
@@ -65,7 +61,7 @@ describe("QueryBuilder", function QueryBuilderSpecs() {
       it("should not fail if additional config is present, but setup is undefined", () => {
         delete TestModel.additionalSQLiteConfig.setup;
         this.m = new TestModel({id: 'local-6806434c-b0cd', body: 'hello world'});
-        expect(() => this.builder.setupQueriesForTable(TestModel)).not.toThrow();
+        expect(() => setupQueriesForClass(TestModel)).not.toThrow();
       });
     });
   });
