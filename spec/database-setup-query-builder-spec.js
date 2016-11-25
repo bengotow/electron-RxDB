@@ -1,11 +1,11 @@
 /* eslint quote-props: 0 */
 import TestModel from './fixtures/test-model';
 import Attributes from '../lib/attributes';
-import DatabaseSetupQueryBuilder from '../lib/database-setup-query-builder';
+import QueryBuilder from '../lib/query-builder';
 
-describe("DatabaseSetupQueryBuilder", function DatabaseSetupQueryBuilderSpecs() {
+describe("QueryBuilder", function QueryBuilderSpecs() {
   beforeEach(() => {
-    this.builder = new DatabaseSetupQueryBuilder();
+    this.builder = new QueryBuilder();
   });
 
   describe("setupQueriesForTable", () => {
