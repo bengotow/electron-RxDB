@@ -1,6 +1,6 @@
 {
   "name": "electron-rxdb",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "RxDB is a high-performance, observable object store built on top of SQLite & intended for database-driven Electron applications.",
   "main": "lib/index.js",
   "dependencies": {

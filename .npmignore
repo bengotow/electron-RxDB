@@ -1,0 +1,5 @@
+.DS_Store
+/example
+/node_modules
+/docs/ast
+/src
