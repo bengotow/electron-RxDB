@@ -1,6 +1,6 @@
 import Category from './category'
-import Attributes from '../../lib/attributes'
-import Model from '../../lib/model'
+import Attributes from '../../src/attributes'
+import Model from '../../src/model'
 
 export default class Message extends Model {
 

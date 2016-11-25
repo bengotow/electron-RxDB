@@ -45,12 +45,12 @@ while (dir !== '/') {
 }
 
 if (targetElectronVersion === '*') {
-  throw new Error("Electron version is specified as `*` in your package.json file. You should lock it to at least a minor version, like ^1.4.0.")
+  throw new Error("Electron version is specified as `*` in your package.json file.\nYou should lock it to at least a minor version, like ^1.4.0.")
 }
 
 if (!targetElectronVersion) {
   targetElectronVersion = electronVersionFromPackageJSON(path.join(__dirname, 'package.json'));
-  console.warn("NOTE: Could not find `electron`, `electron-prebuilt` or `electron-prebuilt-compile` in a package.json file in the working path. Building SQLite3 for local Electron (v"+targetElectronVersion+") and `npm test`.");
+  console.warn("NOTE: Could not find `electron`, `electron-prebuilt` or `electron-prebuilt-compile`\nin a package.json file in the working path. Building SQLite3 for local\nElectron (v"+targetElectronVersion+") and `npm test`.");
 }
 
 // prepare other params
@@ -63,6 +63,11 @@ if (targetPlatform == "win32") {
   var targetArch = "ia32"
 }
 
-var cmd = "cd node_modules/better-sqlite3 && "+nodeGypPath+" configure rebuild --msvs_version=2013 --target="+targetElectronVersion+" --arch="+targetArch+" --target_platform="+targetPlatform+" --dist-url=https://atom.io/download/atom-shell";
+var pathToSqlite = ['../better-sqlite3', './node_modules/better-sqlite3'].find((p) => fs.existsSync(p));
+if (!pathToSqlite) {
+  throw new Error("Couldn't find better-sqlite3");
+}
+
+var cmd = "cd " + pathToSqlite + " && "+nodeGypPath+" configure rebuild --msvs_version=2013 --target="+targetElectronVersion+" --arch="+targetArch+" --target_platform="+targetPlatform+" --dist-url=https://atom.io/download/electron";
 console.log(cmd);
 execSync(cmd);

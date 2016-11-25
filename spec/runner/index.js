@@ -1,5 +1,5 @@
 import {app, BrowserWindow} from 'electron';
-import Coordinator from '../../lib/browser/coordinator';
+import Coordinator from '../../src/browser/coordinator';
 
 global.databaseCoordinator = new Coordinator();
 

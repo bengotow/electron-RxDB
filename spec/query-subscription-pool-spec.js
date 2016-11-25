@@ -1,4 +1,4 @@
-import QuerySubscriptionPool from '../lib/query-subscription-pool';
+import QuerySubscriptionPool from '../src/query-subscription-pool';
 import {Database, Category} from './fixtures';
 
 describe("QuerySubscriptionPool", function QuerySubscriptionPoolSpecs() {

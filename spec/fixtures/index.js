@@ -1,4 +1,4 @@
-import RxDatabase from '../../lib/rx-database';
+import RxDatabase from '../../src/rx-database';
 import Thread from './thread';
 import Message from './message';
 import TestModel from './test-model';

@@ -1,7 +1,7 @@
 /* eslint quote-props: 0 */
-import Model from '../lib/model';
-import Attributes from '../lib/attributes';
-import ModelRegistry from '../lib/model-registry';
+import Model from '../src/model';
+import Attributes from '../src/attributes';
+import ModelRegistry from '../src/model-registry';
 
 class GoodTest extends Model {
   static attributes = Object.assign({}, Model.attributes, {

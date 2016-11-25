@@ -1,6 +1,6 @@
 /* eslint quote-props: 0 */
-import MutableQueryResultSet from '../lib/mutable-query-result-set';
-import QueryRange from '../lib/query-range';
+import MutableQueryResultSet from '../src/mutable-query-result-set';
+import QueryRange from '../src/query-range';
 
 describe("MutableQueryResultSet", function MutableQueryResultSetSpecs() {
   describe("clipToRange", () => {

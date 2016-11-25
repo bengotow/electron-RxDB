@@ -1,6 +1,6 @@
 /* eslint quote-props: 0 */
-import Model from '../../lib/model';
-import Attributes from '../../lib/attributes';
+import Model from '../../src/model';
+import Attributes from '../../src/attributes';
 
 import Category from './category';
 

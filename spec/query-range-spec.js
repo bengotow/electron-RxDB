@@ -1,4 +1,4 @@
-import QueryRange from '../lib/query-range';
+import QueryRange from '../src/query-range';
 
 describe("QueryRange", function QueryRangeSpecs() {
   describe("@infinite", () =>

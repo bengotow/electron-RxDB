@@ -1,7 +1,7 @@
 /* eslint quote-props: 0 */
 import TestModel from './fixtures/test-model';
 import Thread from './fixtures/thread';
-import ModelQuery from '../lib/query';
+import ModelQuery from '../src/query';
 import {Database} from './fixtures';
 
 const testMatchers = {'id': 'b'};

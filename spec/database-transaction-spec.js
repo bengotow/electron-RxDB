@@ -1,7 +1,7 @@
 /* eslint dot-notation:0 */
 import {Database, TestModel, Category} from './fixtures';
-import DatabaseTransaction from '../lib/database-transaction';
-import DatabaseChangeRecord from '../lib/database-change-record';
+import DatabaseTransaction from '../src/database-transaction';
+import DatabaseChangeRecord from '../src/database-change-record';
 
 const testModelInstance = new TestModel({id: "1234"});
 const testModelInstanceA = new TestModel({id: "AAA"});

@@ -1,7 +1,7 @@
 /* eslint quote-props: 0 */
-import Model from '../lib/model';
-import {isTempId} from '../lib/utils';
-import Attributes from '../lib/attributes';
+import Model from '../src/model';
+import {isTempId} from '../src/utils';
+import Attributes from '../src/attributes';
 
 class SubSubmodel extends Model {
   static attributes = Object.assign({}, Model.attributes, {

@@ -1,7 +1,7 @@
 /* eslint quote-props: 0 */
-import Model from '../lib/model';
-import ModelQuery from '../lib/query';
-import Attributes from '../lib/attributes';
+import Model from '../src/model';
+import ModelQuery from '../src/query';
+import Attributes from '../src/attributes';
 
 import Thread from './fixtures/thread';
 import Message from './fixtures/message';

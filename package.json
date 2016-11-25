@@ -2,7 +2,7 @@
   "name": "electron-rxdb",
   "version": "0.8.0",
   "description": "RxDB is a high-performance, observable object store built on top of SQLite & intended for database-driven Electron applications.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "better-sqlite3": "git+https://github.com/bengotow/better-sqlite3.git#a888061ad334c76d2db4c06554c90785cc6e7cce",
     "lru-cache": "^4.0.1",
@@ -13,6 +13,7 @@
     "rx-lite": "^4.0.8"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-eslint": "7.1.0",
     "babel-preset-electron": "^0.37.8",
     "babel-preset-es2016-node5": "^1.1.2",
@@ -30,10 +31,12 @@
     "jasmine": "^2.5.2"
   },
   "scripts": {
+    "postinstall": "node ./post-install.js",
     "test": "CI=true electron ./spec/runner --enable-logging",
-    "lint": "./node_modules/.bin/eslint ./lib/ ./spec/",
+    "lint": "./node_modules/.bin/eslint ./src/ ./spec/",
     "docs": "esdoc -c esdoc.json",
-    "postinstall": "node ./post-install.js"
+    "compile": "rm -rf lib && babel -d lib/ src",
+    "prepublish": "npm run compile"
   },
   "author": "",
   "license": "ISC"

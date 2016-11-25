@@ -1,7 +1,7 @@
 /* eslint quote-props: 0 */
 import TestModel from './fixtures/test-model';
-import Attributes from '../lib/attributes';
-import {setupQueriesForClass, analyzeQueriesForClass} from '../lib/query-builder';
+import Attributes from '../src/attributes';
+import {setupQueriesForClass} from '../src/query-builder';
 
 describe("QueryBuilder", function QueryBuilderSpecs() {
   describe("setupQueriesForClass", () => {
