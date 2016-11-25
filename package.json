@@ -1,7 +1,7 @@
 {
-  "name": "electron-coresqlite",
-  "version": "1.0.0",
-  "description": "",
+  "name": "electron-rxdb",
+  "version": "0.8.0",
+  "description": "RxDB is a high-performance, observable object store built on top of SQLite & intended for database-driven Electron applications.",
   "main": "index.js",
   "dependencies": {
     "better-sqlite3": "git+https://github.com/bengotow/better-sqlite3.git#a888061ad334c76d2db4c06554c90785cc6e7cce",
