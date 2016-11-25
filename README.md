@@ -87,7 +87,7 @@ componentDidMount() {
     .where({name: 'Untitled'})
     .order(Note.attributes.createdAt.descending())
 
-  this._unsubscribe = query.observe().subscribe((items) => {
+  this._observable = query.observe().subscribe((items) => {
     this.setState({items});
   });
 }
@@ -140,9 +140,11 @@ Instead of expanding support for arbitrary queries, RxDB focuses on making
 reading and saving objects *blazing fast*, so doing a query, modifying a few
 hundred matches, and saving them back is perfectly fine.
 
-## API Reference
+## Examples & API Reference
 
-The example project may be the best place to get started, but a full
+<img src="https://raw.githubusercontent.com/bengotow/electron-RxDB/master/example/screenshot.png" />
+
+The example "Notes" app may be the best place to get started, but a full
 [API Reference](https://bengotow.github.io/electron-RxDB) is available
 on GitHub Pages.
 
