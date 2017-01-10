@@ -87,7 +87,7 @@ componentDidMount() {
     .where({name: 'Untitled'})
     .order(Note.attributes.createdAt.descending())
 
-  this._observable = query.observe().subscribe((items) => {
+  this._subscription = query.observe().subscribe((items) => {
     this.setState({items});
   });
 }
